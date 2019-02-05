@@ -15,6 +15,7 @@ html(lang="en")
         img(src='http://shagunblog.com/wp-content/uploads/2018/11/website-development.jpg',class='center')
         form#formAddUser(name="adduser",method="post",action="/adduser",class ="needs-validation",novalidate='')
             .container(class='formcenter')
+                .h4(class='text-primary') Personal Information
                 .form-row
                     +textinput('6','First Name','fname')
                     +textinput('6','Last Name','lname')
