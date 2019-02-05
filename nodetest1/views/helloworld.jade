@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    link(href="stylesheets/style.css", rel='stylesheet')
+  body
+    form
+      | What Do You Want?
+      br
+      input#show(type='radio', name='colors')
+      | show
+      br
+      input#hide(type='radio', name='colors')
+      | hide
+    #myDIV
+      | This is my DIV element.
+    p
+      b Note:
+      |  The element will not take up any space when the display property set to "none".
+    script.
+      function myFunction() {
+      var x = document.getElementById("myDIV");
+      if (document.getElementById("show").checked = true) {
+      x.style.display = "block";
+      } else {
+      x.style.display = "none";
+      }
+      }

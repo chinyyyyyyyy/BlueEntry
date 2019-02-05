@@ -1,0 +1,10 @@
+include mixins
+extends layout
+
++nav("Project name", "dropdown_menu")
+block content
+    h1.
+        Reservation List
+    ul
+        each row, i in userlist
+            li= i+1 + ' ' + row.Fname + ' ' + row.Lname + ' ' + row.Age+' ' + row.Email+' ' + row.Address

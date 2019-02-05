@@ -1,0 +1,18 @@
+doctype html
+html( lang="en" )
+    head
+        title Baking Bootstrap Snippets with Jade
+        title= title
+        meta( charset='utf-8' )
+        meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+        meta( name='viewport', content='width=device-width, initial-scale=1.0' )
+        meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+        //- Bootswatch Theme
+        link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css", rel="stylesheet")
+ 
+    body(style="padding-bottom:10rem;")
+        block content
+            div= 'Put content here.'
+        
+        block scripts
+            script(src='/js/jquery.js')
