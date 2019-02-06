@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('newuser', { title: 'BlueEntry' });
+  res.render('index', { title: 'BlueEntry' });
 });
 
 router.get('/helloworld', function(req, res, next) {
@@ -22,7 +22,7 @@ router.get('/userlist', function(req, res) {
  }); 
 
  /* GET New User page. */
-router.get('/newuser', function(req, res) {
+router.get('/HowToBuildWebApp', function(req, res) {
   res.render('newuser', { title: 'Add New User' });
 });
 
