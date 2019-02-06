@@ -47,7 +47,9 @@ router.post('/adduser', function(req, res) {
     }
     else {
 // And forward to success page
-      res.redirect("userlist");
+      setTimeout(function(){
+        res.redirect("HowToBuildWebApp");
+      }, 1500); 
     }
   });
 });

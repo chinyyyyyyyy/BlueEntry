@@ -9,6 +9,8 @@
           if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+          }else{
+            $('#exampleModal').modal('show');           
           }
           form.classList.add('was-validated');
         }, false);
