@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    h1.
+        Reservation List
+    ul
+        each row, i in userlist
+            li= i+1 + ' ' + row.Ename + ' ' + row.Category + ' ' + row.Price

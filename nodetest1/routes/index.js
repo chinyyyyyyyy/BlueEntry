@@ -10,18 +10,31 @@ router.get('/helloworld', function(req, res, next) {
   res.render('helloworld', { title: 'My Hello' });
  }); 
 
-/* GET Userlist page. */
-router.get('/userlist', function(req, res) {
+/*---------------------- GET Eventslist Page ---------------------------------*/
+router.get('/eventslist', function(req, res) {
   var db = req.db;
-  var collection = db.get('registration1');
+  var collection = db.get('events');
   collection.find({},{},function(e,docs){
-  res.render('userlist', {
-  "userlist" : docs
-  });
+  res.render('eventslist', {"userlist" : docs});
   });
  }); 
 
- /* GET New User page. */
+/*---------------------- GET Eventslist Page ---------------------------------*/
+router.post('/searching',function(req,res){
+  console.log(req.body.keyword);
+});
+
+
+router.get('/search/:start/:end', function(req, res) {
+  var db = req.db;
+  var collection = db.get('events');
+  var start = Number(req.params.start);
+  var end = Number(req.params.end);
+  collection.find({Price:{$gte:start,$lte:end}},function(e,docs){
+    res.render('results', {"userlist" : docs});
+    });
+  }); 
+/*---------------------- GET EventReservation Page ---------------------------------*/
 router.get('/HowToBuildWebApp', function(req, res) {
   res.render('newuser', { title: 'Add New User' });
 });

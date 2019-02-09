@@ -1,0 +1,23 @@
+body
+    h1.
+        Reservation List
+    form(name="searching",method="post",action="/searching",)
+        h5 keyword
+        input(type='text', name='keyword')
+        h5 Category
+        select(name='Category')
+            option(value='ComSci') ComSci
+            option(value='Finace') Finace
+            option(value='Life') Life
+            option(value='Art') Art
+            option(value='Others') Others
+        h5 Price Start
+        h5
+            input(type='text', name='start')
+        h5 Price End
+        h5
+            input(type='text', name='end') 
+        button(type="submit") Search   
+    ul
+        each row, i in userlist
+            li= i+1 + ' ' + row.Ename + ' ' + row.Category + ' ' + row.Price
