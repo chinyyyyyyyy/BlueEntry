@@ -1,23 +1,38 @@
-body
-    h1.
-        Reservation List
-    form(name="searching",method="post",action="/searching",)
-        h5 keyword
-        input(type='text', name='keyword')
-        h5 Category
-        select(name='Category')
-            option(value='ComSci') ComSci
-            option(value='Finace') Finace
-            option(value='Life') Life
-            option(value='Art') Art
-            option(value='Others') Others
-        h5 Price Start
-        h5
-            input(type='text', name='start')
-        h5 Price End
-        h5
-            input(type='text', name='end') 
-        button(type="submit") Search   
-    ul
-        each row, i in userlist
-            li= i+1 + ' ' + row.Ename + ' ' + row.Category + ' ' + row.Price
+doctype html
+html
+  head
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+    link(rel='stylesheet', href='stylesheets/style.css')
+    include mixins
+  body
+    .nav.navbar.navbar-light(style='background-color: #ffda56')
+      a.navbar-brand(href='#')
+        img.d-inline-block.align-top(src='images/logo.png', width='20', height='30', alt='')
+    .container
+      .d-flex.justify-content-center(style='margin: 10vh 0 0 0')
+        form.formcenter.d-flex.justify-content-between(name="searching",method="post",action="/searching",novalidate='')
+            p keyword
+            input.form-control.col.col-md-3(type='text', aria-label='',name='keyword')
+            select#inputGroupSelect01(classs='custom-elect col col-md-3',name='category')
+              option(value='allcat', selected='') All catagories
+              option(value='ComSci') Com-Sci
+              option(value='Finance') Finace
+              option(value='others') Others
+            p price
+            input.form-control.col.col-md-2(type='text', aria-label='',name='pstart',value=0)
+            |  to
+            input.form-control.col.col-md-2(type='text', aria-label='',name='pend',value=50000)
+            button.btn.btn-primary(role='button') Submit
+    each row in userlist
+      .row.justify-content-center(style='margin: 3vh 0 0 0')
+          .media.border
+          img.align-self-start.mr-3(src='images/defaultimage.jpg', alt='Generic placeholder image', width='175', height='175')
+          .media-body
+              .h5.mt-0(class = 'text-primary')= row.Ename
+              h6
+                b Category : 
+                | #{row.Category}
+              h6
+                b Price : 
+                | #{row.Price} 
+              .p see more 

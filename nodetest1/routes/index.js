@@ -15,30 +15,50 @@ router.get('/eventslist', function(req, res) {
   var db = req.db;
   var collection = db.get('events');
   collection.find({},{},function(e,docs){
-  res.render('eventslist', {"userlist" : docs});
+  res.render('results', {"userlist" : docs});
   });
  }); 
 
-/*---------------------- GET Eventslist Page ---------------------------------*/
-router.post('/searching',function(req,res){
-  console.log(req.body.keyword);
-});
-
-
-router.get('/search/:start/:end', function(req, res) {
+router.get('/searching', function(req, res) {
   var db = req.db;
   var collection = db.get('events');
-  var start = Number(req.params.start);
-  var end = Number(req.params.end);
-  collection.find({Price:{$gte:start,$lte:end}},function(e,docs){
-    res.render('results', {"userlist" : docs});
+  collection.find({},function(e,docs){
+  res.render('results', {"userlist" : docs});
+  });
+ }); 
+
+router.post('/searching',function(req,res){
+  var db = req.db;
+  var collection = db.get('events');
+  if(!Boolean(req.body.keyword) && req.body.category == 'allcat' ){
+    collection.find({Price:{$gte:Number(req.body.pstart),$lte:Number(req.body.pend)}},function(e,docs){
+       res.render('results', {"userlist" : docs});
     });
-  }); 
+  }
+
+  if(!Boolean(req.body.keyword) && req.body.category != 'allcat' ){
+    collection.find({$and:[{Price:{$gte:Number(req.body.pstart),$lte:Number(req.body.pend)}},{Category:req.body.category}]},function(e,docs){
+       res.render('results', {"userlist" : docs});
+    });
+  }
+
+  if(Boolean(req.body.keyword) && req.body.category == 'allcat' ){
+    collection.find({$and:[{Price:{$gte:Number(req.body.pstart),$lte:Number(req.body.pend)}},{$text:{$search:req.body.keyword}}]},function(e,docs){
+       res.render('results', {"userlist" : docs});
+    });
+  }
+
+  collection.find({$and:[{Price:{$gte:Number(req.body.pstart),$lte:Number(req.body.pend)}},{$text:{$search:req.body.keyword}},{Category:req.body.category}]},function(e,docs){
+    res.render('results', {"userlist" : docs});
+   });
+
+
+});
+
 /*---------------------- GET EventReservation Page ---------------------------------*/
 router.get('/HowToBuildWebApp', function(req, res) {
   res.render('newuser', { title: 'Add New User' });
 });
-
 
 /* POST to Add User Service */
 router.post('/adduser', function(req, res) {

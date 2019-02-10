@@ -2,9 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link href="public/stylesheets/slider.css" rel="stylesheet" />
         <link rel="stylesheet" href="stylesheets/style.css">
-        <script src="public/javascripts/slider.js"></script>
         <div class="nav navbar navbar-light" style='background-color: #ffda56'>
             <a class="navbar-brand"href='#'>
                 <img class="d-inline-block align-top"src='/nodetest1/public/images/logo.png' style="width: 25; height: 30;" alt=''>
@@ -14,23 +12,19 @@
     <body>   
         <div class="container">
                 <div class="d-flex justify-content-center" style="margin: 10vh 0 0 0">
-             
-                        <form class="formcenter d-flex justify-content-between">
+
+                    <form class="formcenter d-flex justify-content-between">
+                    			<p>keyword</p>
                                 <input type="text" aria-label="" class="form-control col col-md-3">            
-                                 <select class="custom-select col col-md-3" id="inputGroupSelect01">
-                                   <option selected>Choose Catagory</option>
-                                   <option value="All">All catagories(default)</option>
+                                 <select classs="custom-elect col col-md-3" id="inputGroupSelect01">
+                                   <option value="allcat" selected>All catagories</option>
                                    <option value="comsci">Com-Sci</option>
                                    <option value="finace">Finace</option>
                                    <option value="orters">Others</option>
-                                 </select>              
-                                 <div class="box">
-                                     <div id="value"></div>
-                             </div>  
-                             <div class="container">
-                                 <input type="range" min="0" max="100" value="50" 
-                                 class="slider" id="slider" onclick="slider()">
-                             </div>
+                                 </select>
+                                 <p>price</p>
+                                 <input type="text" aria-label="" class="form-control col col-md-2"> to
+                                 <input type="text" aria-label="" class="form-control col col-md-2">               
                              <button class="btn btn-primary" role="button">Submit</button>                  
                      </form>
                
