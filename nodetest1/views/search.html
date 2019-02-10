@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="public/stylesheets/slider.css" rel="stylesheet" />
+        <link rel="stylesheet" href="stylesheets/style.css">
         <script src="public/javascripts/slider.js"></script>
         <div class="nav navbar navbar-light" style='background-color: #ffda56'>
             <a class="navbar-brand"href='#'>
@@ -10,35 +11,43 @@
             </a>    
         </div>           
     </head>    
-    <body>        
-            <div class="row d-flex justify-content-center">
-                    <form class="form-group d-flex justify-content-between">
-                            <input type="text" aria-label="" class="form-control col col-md-3">            
-                             <select class="custom-select col col-md-3" id="inputGroupSelect01">
-                               <option selected>Choose Catagory</option>
-                               <option value="All">All catagories(default)</option>
-                               <option value="comsci">Com-Sci</option>
-                               <option value="finace">Finace</option>
-                               <option value="orters">Others</option>
-                             </select>              
-                             <div class="box">
-                                 <div id="value"></div>
-                         </div>  
-                         <div class="container">
-                             <input type="range" min="0" max="100" value="50" 
-                             class="slider" id="slider" onclick="slider()">
-                         </div>
-                         <button class="btn btn-primary" role="button">Submit</button>                  
-                 </form>
-            </div>            
-           <div class="row media border">
-               <img class="align-self-start mr-3" src="http://shagunblog.com/wp-content/uploads/2018/11/website-development.jpg" alt="Generic placeholder image" width="200" height="200">
-               <div class="media-body">
-                 <h5 class="mt-0">Web Development</h5>
-                 <p>brabrabrabrabarbarbarbrabarbarbarbarbraarbarbarbarbarbarbarbarbarbarbar</p>
-                 <p>brabrabrabrababrabababarbrabrbrabarbabarbrabrabrbrbrbrbrbarbarbababarbarbar</p>
-               </div>
-             </div>
+    <body>   
+        <div class="container">
+                <div class="d-flex justify-content-center" style="margin: 10vh 0 0 0">
+             
+                        <form class="formcenter d-flex justify-content-between">
+                                <input type="text" aria-label="" class="form-control col col-md-3">            
+                                 <select class="custom-select col col-md-3" id="inputGroupSelect01">
+                                   <option selected>Choose Catagory</option>
+                                   <option value="All">All catagories(default)</option>
+                                   <option value="comsci">Com-Sci</option>
+                                   <option value="finace">Finace</option>
+                                   <option value="orters">Others</option>
+                                 </select>              
+                                 <div class="box">
+                                     <div id="value"></div>
+                             </div>  
+                             <div class="container">
+                                 <input type="range" min="0" max="100" value="50" 
+                                 class="slider" id="slider" onclick="slider()">
+                             </div>
+                             <button class="btn btn-primary" role="button">Submit</button>                  
+                     </form>
+               
+                  
+                </div>
+                <div class="row justify-content-center" style="margin: 10vh 0 0 0">
+                        <div class="media border">
+                            <img class="align-self-start mr-3" src="http://shagunblog.com/wp-content/uploads/2018/11/website-development.jpg" alt="Generic placeholder image" width="200" height="200">
+                            <div class="media-body">
+                              <h5 class="mt-0">Web Development</h5>
+                              <p>brabrabrabrabarbarbarbrabarbarbarbarbraarbarbarbarbarbarbarbarbarbarbar</p>
+                              <p>brabrabrabrababrabababarbrabrbrabarbabarbrabrabrbrbrbrbrbarbarbababarbarbar</p>
+                            </div>
+                       </div>
+                    </div>  
+        </div>     
+          
      
 
     </body>
