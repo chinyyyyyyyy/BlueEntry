@@ -1,0 +1,39 @@
+collections events
+field -	Ename : Event name
+	Category : Event's category
+	Price : Event's price
+	AvaiSeat : Available Seats
+
+========================================================================
+
+query
+
+
+####show every matching events from keyword in event name####
+keyword = word we want to search(string)
+
+createIndex - <Field> Ename : <Type> text
+
+db.events.find({$text:{$search:"keyword"}})
+
+####show every matching events from price range####
+
+greater = Lower Boundary  (int)
+lower = Upper Boundary (int)
+
+db.events.find({Price:{$gte:greater , $lte:lower}})
+
+####show every matching events from single or multiple category(s)####
+
+cat1,cat2,... = category we want to search (string)
+
+db.events.find({Category:{$in:[cat1 , cat2,...]}})
+
+####show every matching events from multiple fields' condition####
+
+cond1,cond2,... = fields' condition we want to search
+
+db.events.find({$and:[{cond1} , {cond2} , ...]}) 
+
+
+========================================================================
