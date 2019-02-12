@@ -1,20 +1,20 @@
 html(lang="en")
     head
-        title Event : How to build Web Application
+        title #{event.Ename} 
         meta(charset="utf-8")
         link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css",integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS",crossorigin="anonymous")
-        link(rel="stylesheet", href="stylesheets/style.css")
-        script(src='javascripts/formvalidate.js')
+        link(rel="stylesheet", href="/stylesheets/style.css")
+        script(src='/javascripts/formvalidate.js')
         script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
         script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js', integrity='sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut', crossorigin='anonymous')
         script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js', integrity='sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k', crossorigin='anonymous')
         include mixins
     body
         nav.navbar.navbar-light(style='background-color: #fffefe')
-            a.navbar-brand(href='#')
-                img(src='images/logo.png', width='25', height='30',class="d-inline-block align-top", alt='') 
+            a.navbar-brand(href='/eventslist')
+                img(src='/images/logo.png', width='25', height='30',class="d-inline-block align-top", alt='') 
                 |   BlueEntry
-        h1(align='center')= 'Seat Reservation'
+        h1(align='center') #{event.Ename}
         h2(align='center',class="text-danger")= 'How to build Web Application'
         img(src='http://shagunblog.com/wp-content/uploads/2018/11/website-development.jpg',class='center')
         form#formAddUser(name="adduser",method="post",action="/adduser",class ="needs-validation",novalidate='')
