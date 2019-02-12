@@ -55,30 +55,22 @@ router.get('/HowToBuildWebApp', function (req, res) {
 });
 /* POST to Add User Service */
 router.post('/adduser', function (req, res) {
-  // Set our internal DB variable
-  // var db = req.db;
-  // // Get our form values. These rely on the "name" attributes
-  // var userFname = req.body.fname;
-  // var userLname = req.body.lname;
-  // var userAge = req.body.age;
-  // var userEmail = req.body.email;
-  // var userAddress = req.body.address;
-  // // Set our collection
-  // var collection = db.get('registration1');
-  // // Submit to the DB
-  // collection.insert({ "Fname": userFname, "Lname": userLname, "Age": userAge, "Email": userEmail, "Address": userAddress }, function (err, doc) {
-  //   if (err) {
-  //     // If it failed, return error
-  //     res.send("There was a problem adding the information to the database.");
-  //   }
-  //   else {
-  //     // And forward to success page
-  //     setTimeout(function () {
-  //       res.redirect("HowToBuildWebApp");
-  //     }, 1500);
-  //   }
-  // });
-  res.redirect("eventslist");
+  //Set our internal DB variable
+  var db = req.db;
+  var collection = db.get('events');
+  var reservedData = {"Fname": req.body.fname, "Lname": req.body.lname, "Age": req.body.age, "Email": req.body.email, "Address": req.body.address };
+  collection.update({"_id":req.body.id},{$push:{'reservation':reservedData}},function (err, doc) {
+    if (err) {
+      // If it failed, return error
+      res.send("There was a problem adding the information to the database.");
+    }
+    else {
+      // And forward to success page
+      setTimeout(function () {
+        res.redirect("/eventslist");
+      }, 1500);
+    }
+  });
 });
 
 module.exports = router;

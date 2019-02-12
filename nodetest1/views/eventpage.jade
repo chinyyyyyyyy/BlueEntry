@@ -38,6 +38,7 @@ html(lang="en")
                     +textinput('4','EXP year','expyear','YYYY')
                 .form-row
                     .col-md-3
+                        input(type="hidden", name='id',value=event._id)
                         button.form-control.btn.btn-primary.submit-button(type='submit') Submit
                 // Modal
                 #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
