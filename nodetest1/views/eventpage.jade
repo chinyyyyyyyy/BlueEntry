@@ -14,12 +14,11 @@ html(lang="en")
             a.navbar-brand(href='/eventslist')
                 img(src='/images/logo.png', width='25', height='30',class="d-inline-block align-top", alt='') 
                 |   BlueEntry
-        h1(align='center') #{event.Ename}
-        h2(align='center',class="text-danger")= 'How to build Web Application'
-        img(src='http://shagunblog.com/wp-content/uploads/2018/11/website-development.jpg',class='center')
+        h2(align='center',class="text-danger") #{event.Ename}
+        img(src='/images/defaultimage.jpg', width='200', height='500',class='center')
         form#formAddUser(name="adduser",method="post",action="/adduser",class ="needs-validation",novalidate='')
             .container(class='formcenter')
-                .h4(class='text-primary') Personal Information
+                h4(class='text-primary') Personal Information
                 .form-row
                     +textinput('6','First Name','fname')
                     +textinput('6','Last Name','lname')

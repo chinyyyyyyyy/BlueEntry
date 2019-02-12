@@ -35,7 +35,11 @@ html
               h6
                 b Category : 
                 | #{row.Category}
+              -  var price = Number(row.Price)
+              -  if(price == 0){
+              -  price = 'Free'
+              -  }
               h6
                 b Price : 
-                | #{row.Price} 
+                | #{price} 
               a(class="btn btn-primary" href=`/events/${row._id}` role="button")= 'See More'
