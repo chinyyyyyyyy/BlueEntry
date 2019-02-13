@@ -2,6 +2,7 @@ doctype html
 html
   head
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+    link(rel='stylesheet', href='/stylesheets/font.css')
     //link(rel='stylesheet', href='/stylesheets/style.css')
     include mixins
   body(style='font-family:Helvetica')
@@ -32,7 +33,7 @@ html
             .media.border
             img.align-self-start.mr-3(src='/images/defaultimage.jpg', alt='Generic placeholder image', width='375', height='300')
             .media-body
-                .h5.mt-0(class = 'text-primary')= row.Ename
+                a.mt-0(class = 'text-primary' href=`/events/${row._id}`)= row.Ename
                 h6
                   b Category : 
                   | #{row.Category}
@@ -43,4 +44,3 @@ html
                 h6
                   b Price : 
                   | #{price} 
-                a(class="btn btn-primary" href=`/events/${row._id}` role="button")= 'See More'
