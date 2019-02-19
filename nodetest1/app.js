@@ -11,7 +11,6 @@ var app = express();
 
 
 //Lab: new code
-var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('userkiki:kiki@gettingstarted-shard-00-00-oxpeq.gcp.mongodb.net:27017,gettingstarted-shard-00-01-oxpeq.gcp.mongodb.net:27017,gettingstarted-shard-00-02-oxpeq.gcp.mongodb.net:27017/BlueEntry?ssl=true&replicaSet=GettingStarted-shard-0&authSource=admin&retryWrites=true'); 
 
