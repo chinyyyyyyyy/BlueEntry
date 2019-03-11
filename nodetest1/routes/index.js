@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+
 /*===================================== GET home page ================================================ */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'BlueEntry' });
@@ -19,9 +20,8 @@ router.get('/events/:id', function (req, res) {
 
 /*===================================== GET Eventslist Page ===========================================*/
 router.get('/eventslist', function (req, res) {
-  var db = req.db;
-  var collection = db.get('events');
-  collection.find({}, function (e, docs) {
+  var eve = req.eve;
+  eve.find({}, function (e, docs) {
     res.render('results', { "userlist": docs });
   });
 });
