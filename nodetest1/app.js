@@ -10,9 +10,30 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 
-//Lab: new code
+//Database Part//
 var db = require('mongoose');
 db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/BlueEntry?retryWrites=true',{ useNewUrlParser: true });
+  var Regis = new db.Schema({
+    Fname: String,
+    Lname: String,
+    Age: String,
+    Email: String,
+    Address: String,
+  });
+
+  var Event = new db.Schema({
+    Ename: String,
+    Category: String,
+    Price: Number,
+    AvaiSeat: Number,
+    reservation: [{
+        Fname: String,
+        Lname: String,
+        Age: String,
+        Email: String,
+        Address: String
+    }]
+  });
 
 
 // view engine setup
@@ -25,30 +46,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Lab: make our db accessible to our router
 app.use(function(req,res,next){
   req.db = db;
-  var Regis = new db.Schema({
-      Fname: String,
-      Lname: String,
-      Age: String,
-      Email: String,
-      Address: String,
-  });
-
-  var Event = new db.Schema({
-      Ename: String,
-      Category: String,
-      Price: Number,
-      AvaiSeat: Number,
-      reservation: [{
-          Fname: String,
-          Lname: String,
-          Age: String,
-          Email: String,
-          Address: String
-      }]
-  });
   req.reg = db.model('registration1',Regis);
   req.eve = db.model('events',Event);
   next();

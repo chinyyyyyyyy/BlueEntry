@@ -11,9 +11,8 @@ router.get('/helloworld', function (req, res, next) {
 });
 /*===================================== GET Events Page ================================================ */
 router.get('/events/:id', function (req, res) {
-  var db = req.db;
-  var collection = db.get('events');
-  collection.findOne({_id:req.params.id}, function (e, docs) {
+    var eve = req.eve;
+    eve.findOne({_id:req.params.id}, function (e, docs) {
     res.render('eventpage', { "event": docs });
   });
 });
@@ -27,8 +26,7 @@ router.get('/eventslist', function (req, res) {
 });
 router.get('/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend', function (req, res) {
   var listcat = ['ComSci', 'Finance', 'HomeEcon', 'Life', 'Culture'];
-  var db = req.db;
-  var collection = db.get('events');
+  var eve = req.eve;
   var pstart = Number(req.params.pstart);
   var pend = Number(req.params.pend);
   var key = req.params.key;
@@ -36,11 +34,11 @@ router.get('/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend', function (req, 
     listcat = [req.params.cat];
   }
   if (key == "''") {
-    collection.find({ $and: [{ Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
+    eve.find({ $and: [{ Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
       res.render('results', { "userlist": docs });
     });
   } else {
-    collection.find({ $and: [{ $text: { $search: key } }, { Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
+    eve.find({ $and: [{ $text: { $search: key } }, { Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
       res.render('results', { "userlist": docs });
     });
   }
@@ -54,7 +52,7 @@ router.get('/HowToBuildWebApp', function (req, res) {
   res.render('newuser', { title: 'Add New User' });
 });
 /* POST to Add User Service */
-router.post('/adduser', function (req, res) {
+router.post('/addattendee', function (req, res) {
   //Set our internal DB variable
   var db = req.db;
   var collection = db.get('events');
