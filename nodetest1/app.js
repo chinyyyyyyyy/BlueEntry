@@ -1,13 +1,26 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+var createError           = require('http-errors'),
+    express               = require('express'),
+    path                  = require('path'), 
+    cookieParser          = require('cookie-parser'),
+    logger                = require('morgan'),
+    indexRouter           = require('./routes/index');
+    passport              = require('passport');
+    LocalStrategy         = require('passport-local'),
+    passportLocalMongoose = require('passport-local-mongoose');
+    User                  = require('./routes/users');
 var app = express();
+
+app.use(require('express-session')({
+  secret: "Hi",
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 
 //Database Part//
@@ -20,7 +33,6 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
     Email: String,
     Address: String,
   });
-
   var Event = new db.Schema({
     Ename: String,
     Category: String,
@@ -55,7 +67,6 @@ app.use(function(req,res,next){
  
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

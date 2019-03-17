@@ -1,13 +1,42 @@
-var express = require('express');
-var router = express.Router();
+var express               = require('express'),
+    router                = express.Router(),
+    passport              = require('passport');
+    LocalStrategy         = require('passport-local'),
+    passportLocalMongoose = require('passport-local-mongoose');
+    User                  = require('./users');
+/*===================================== Authentication Page ================================================ */
+router.get('/login',function(req,res,next){
+  res.render('login');
+});
+
+router.post('/login',passport.authenticate("local",{
+      successRedirect: "/eventslist",
+      failureRedirect: "/login"
+}),function(req,res,next){
+});
+
+router.get('/register',function(req,res,next){
+  res.render('register');
+});
+router.post('/regis',function(req,res){
+  console.log(req.body.username);
+  User.register(new User({username: req.body.username}), req.body.password, function(err,user){
+    if(err){
+        console.log(err);
+        return res.redirect('/register');
+    }
+    passport.authenticate("local")(req,res,function(){
+        res.redirect('/register');
+    });
+  });
+});
+
+
 
 
 /*===================================== GET home page ================================================ */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'BlueEntry' });
-});
-router.get('/helloworld', function (req, res, next) {
-  res.render('helloworld', { title: 'My Hello' });
 });
 /*===================================== GET Events Page ================================================ */
 router.get('/events/:id', function (req, res) {
@@ -16,7 +45,6 @@ router.get('/events/:id', function (req, res) {
     res.render('eventpage', { "event": docs });
   });
 });
-
 /*===================================== GET Eventslist Page ===========================================*/
 router.get('/eventslist', function (req, res) {
   var eve = req.eve;
@@ -43,7 +71,6 @@ router.get('/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend', function (req, 
     });
   }
 });
-/*POST SERVICE FOR REDIRECT*/
 router.post('/searching', function (req, res) {
   res.redirect(`/results/q='${req.body.keyword}'&cat=${req.body.category}&pstart=${req.body.pstart}&pend=${req.body.pend}`);
 });
