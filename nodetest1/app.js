@@ -3,10 +3,10 @@ var createError           = require('http-errors'),
     path                  = require('path'), 
     cookieParser          = require('cookie-parser'),
     logger                = require('morgan'),
-    indexRouter           = require('./routes/index');
-    passport              = require('passport');
+    indexRouter           = require('./routes/index'),
+    passport              = require('passport'),
     LocalStrategy         = require('passport-local'),
-    passportLocalMongoose = require('passport-local-mongoose');
+    passportLocalMongoose = require('passport-local-mongoose'),
     User                  = require('./routes/users');
 var app = express();
 

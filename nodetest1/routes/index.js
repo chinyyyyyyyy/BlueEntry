@@ -10,7 +10,7 @@ router.get('/login',function(req,res,next){
 });
 
 router.post('/login',passport.authenticate("local",{
-      successRedirect: "/eventslist",
+      successRedirect: "/myprofile",
       failureRedirect: "/login"
 }),function(req,res,next){
 });
@@ -29,6 +29,10 @@ router.post('/regis',function(req,res){
         res.redirect('/register');
     });
   });
+});
+
+router.get('/myprofile',function(req,res,next){
+  res.render('myprofile',{currentUser:req.user});
 });
 
 
