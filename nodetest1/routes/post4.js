@@ -9,22 +9,22 @@ router.post('/editeventorgprofile',function(req,res){
 
 });
 
-//23 Event Org add event
+//24 Event Org add event
 router.post('/addevent',function(req,res){
 
 });
 
-//23 Event Org boost event
+//25 Event Org boost event
 router.post('/boost',function(req,res){
 
 });
 
-//23 Event Org edit event
+//26 Event Org edit event
 router.post('/editevent',function(req,res){
 
 });
 
-//23 Event Org valid Attendee's receipt
+//27 Event Org valid Attendee's receipt
 router.post('/validreceipt',function(req,res){
 
 });

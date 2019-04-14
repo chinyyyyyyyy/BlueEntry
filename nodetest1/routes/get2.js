@@ -25,6 +25,23 @@ router.get('/eventorgregister',isntLoggedIn,function(req,res,next){
     res.render('');
 });
 
+//Special
+router.get('/logout',isLoggedIn,function (req, res) {
+    req.logout();
+    setTimeout(function () {
+        res.redirect("/login");
+    }, 1500);
+});
+
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.render("denied");
+    }
+}
+
 function isntLoggedIn(req, res, next) {
     if (!req.isAuthenticated()) {
         return next();

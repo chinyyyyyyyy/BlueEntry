@@ -7,7 +7,7 @@ var express               = require('express'),
 //1 home
 router.get('/',function(req,res,next){
   
-  res.render('./general/index',{currentUser:req.user, /*allevent:docs ,boosted_event:boostlist*/});
+  res.render('./general/index',{currentUser:req.user/*allevent:docs ,boosted_event:boostlist*/});
 });
 
 //2 eventpage
