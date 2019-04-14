@@ -3,10 +3,16 @@ var createError           = require('http-errors'),
     path                  = require('path'), 
     cookieParser          = require('cookie-parser'),
     logger                = require('morgan'),
-    indexRouter           = require('./routes/index'),
+    router_get1           = require('./routes/get1'),
+    router_get2           = require('./routes/get2'),
+    router_get3           = require('./routes/get3'),
+    router_get4           = require('./routes/get4'),
+    router_post1          = require('./routes/post1'),
+    router_post2          = require('./routes/post2'),
+    router_post3          = require('./routes/post3'),
+    router_post4          = require('./routes/post4'),
     passport              = require('passport'),
     LocalStrategy         = require('passport-local'),
-    passportLocalMongoose = require('passport-local-mongoose'),
     User                  = require('./routes/users');
 var app = express();
 
@@ -66,7 +72,15 @@ app.use(function(req,res,next){
  }); 
  
 
-app.use('/', indexRouter);
+app.use('/', router_get1);
+app.use('/', router_get2);
+app.use('/', router_get3);
+app.use('/', router_get4);
+app.use('/', router_post1);
+app.use('/', router_post2);
+app.use('/', router_post3);
+app.use('/', router_post4);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
