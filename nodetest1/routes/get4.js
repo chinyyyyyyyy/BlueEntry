@@ -12,11 +12,23 @@ router.get('/addevent',EVO_Login,function(req,res,next){
 
 //10 EventOrg edit event add see attendee list
 router.get('/eventdetail/:id',EVO_Login,function(req,res,next){
+    /*
+    var eve = req.eve
+    eve.findOne({_id :req.params.id} ,function(e,docs){
+        res.render('',{currentUser : req.user,event: docs})
+    })
+    */
     res.render('');
 });
 
 //11 EventOrg want to see 
 router.get('/attendeelist/:id',EVO_Login,function(req,res,next){
+    /*
+    var eve = req.eve
+    eve.findOne({_id :req.params.id}, 'reservation' ,function(e,docs){
+        res.render('',{currentUser : req.user,event: docs})
+    })
+    */
     res.render('');
 });
 
