@@ -39,18 +39,19 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
     Email: String,
     Address: String,
   });
+  var reservation_shcema = new db.Schema({
+    Fname: String,
+    Lname: String,
+    Email: String,
+    Address: String
+  })
+
   var Event = new db.Schema({
     Ename: String,
     Category: String,
     Price: Number,
     AvaiSeat: Number,
-    reservation: [{
-        Fname: String,
-        Lname: String,
-        Age: String,
-        Email: String,
-        Address: String
-    }]
+    reservation: [reservation_shcema]
   });
 
 
@@ -68,6 +69,7 @@ app.use(function(req,res,next){
   req.db = db;
   req.reg = db.model('registration1',Regis);
   req.eve = db.model('events',Event);
+  req.reserve = db.model('reservation',reservation_shcema)
   next();
  }); 
  
