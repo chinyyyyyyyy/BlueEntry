@@ -1,0 +1,52 @@
+extends ../layout.jade
+
+block head
+    title #{event.Ename}
+    include ../mixins/textinput.jade
+
+block body
+    nav.navbar.navbar-light(style='background-color: #fffefe')
+        a.navbar-brand(href='/eventslist')
+            img(src='/images/logo.png', width='25', height='30',class="d-inline-block align-top", alt='') 
+            |   BlueEntry
+    h2(align='center',class="text-danger") #{event.Ename}
+    img(src='/images/defaultimage.jpg', width='200', height='500',class='center')
+    form#formAddUser(name="adduser",method="post",action="/addattendee",class ="needs-validation",novalidate='')
+        .container(class='formcenter')
+            P Amount
+            label.radio-inline
+                input(type='radio', name='seat', checked='')
+                | 1
+            label.radio-inline
+                input(type='radio', name='seat')
+                | 2    
+            h4(class='text-primary') Personal Information
+            .form-row
+                +textinput('6','First Name','fname')
+                +textinput('6','Last Name','lname')
+            .form-row
+                +textinput('12','Telephone','tel')
+            .form-row
+                +textinput('12','Address','address')
+        .container(class='formcenter')
+            .h4(class='text-primary') Payment
+            .form-row
+                +textinput('6','Card Name','cardname')
+                +textinput('6','Card Number','cardnumber')
+            .form-row
+                +textinput('4','CVV','cvv','ex 123')
+                +textinput('4','EXP month','expmonth','MM')
+                +textinput('4','EXP year','expyear','YYYY')
+            .form-row
+                .col-md-3
+                    input(type="hidden", name='id',value=event._id)
+                    button.form-control.btn.btn-primary.submit-button(type='submit') Submit
+            // Modal
+            #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-body
+                            h4(align='center',class="text-success") Reservation Successful!
+                            h6(align='center',class='text-secondary') (please wait for redirecting...)
+                                    
+                    

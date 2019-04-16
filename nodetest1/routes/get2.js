@@ -17,12 +17,12 @@ router.get('/register',isntLoggedIn,function(req,res,next){
 
 //5 attendee register
 router.get('/attendeeregister',isntLoggedIn,function(req,res,next){
-    res.render('');
+    res.render('./register/atdregister');
 });
 
 //6 eventorg register
 router.get('/eventorgregister',isntLoggedIn,function(req,res,next){
-    res.render('');
+    res.render('./register/evoregister');
 });
 
 //Special

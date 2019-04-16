@@ -1,18 +1,14 @@
-doctype html
-html
-  head
-    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
-    //link(rel='stylesheet', href='/stylesheets/style.css')
-    include mixins  
-  body(style='font-family:Helvetica')
-    .nav.navbar.navbar-light(style='background-color: #ffda56')
-      a.navbar-brand(href='/eventslist')
-        img.d-inline-block.align-top(src='/images/logo.png', width='20', height='30', alt='')
+extends ../layout.jade
+
+block head
+    title Result
+
+block body
     .container
       .d-flex.justify-content-center.nav.navbar-dark.bg-dark(style='margin: 10vh 0 0 0;color:#ffffff;border-radius:10px;padding:15px;')
-        form.formcenter.d-flex.justify-content-between(name="searching",method="post",action="/searching",novalidate='')
+        form.formcenter.d-flex.justify-content-between(name="searching",method="post",action="/search",novalidate='')
           .col.col-lg-2
-            p.text-center KEYWORD
+            p.text-center Serach
             .row    
               input.form-control(type='text', aria-label='',name='keyword')
           .col.col-lg-2.align-self-end(style="margin-bottom:14px;")
@@ -39,6 +35,8 @@ html
        - if(userlist.length==0){
          p.text-center No Results
        - } 
+    p Result of
+      | keyword = #{request.key} + categories  = #{request.cat} + Price Range from #{request.pstart} to #{request.pend}  
     .container.flex-warp
       .row(style='margin-left:3.5vw')
         each row in userlist

@@ -1,8 +1,9 @@
-doctype html
-html(lang="en")
-  head
-    link(href="stylesheets/style.css", rel='stylesheet')
-  body
+extends ../layout.jade
+
+block head
+    title Login
+
+block body
     h1 Login 
     form(name="login",method="post",action="/login")
       p Username 

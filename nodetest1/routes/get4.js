@@ -5,8 +5,6 @@ var express               = require('express'),
 
 //9 EventOrg AddEvent
 router.get('/addevent',EVO_Login,function(req,res,next){
-    console.log("kuy");
-
     //res.render('');
 });
 

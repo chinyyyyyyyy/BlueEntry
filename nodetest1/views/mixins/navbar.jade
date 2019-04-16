@@ -1,0 +1,44 @@
+mixin navbar_guest()
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='/') BlueEntry
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/login')
+              | Login 
+              span.sr-only (current)
+          li.nav-item.active
+            a.nav-link(href='/register')
+              | Register
+              span.sr-only (current)    
+        form.form-inline.my-2.my-lg-0(name="searching",method="post",action="/search",novalidate='')
+          input.form-control.mr-sm-2(type='text',name='keyword',placeholder='Search')
+          button.btn.btn-outline-success.my-2.my-sm-0(role='button') Search  
+
+mixin navbar_member(username)
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='/') BlueEntry
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              | #{username}
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='/myprofile') My Profile
+              a.dropdown-item(href='#') My Event
+              .dropdown-divider
+              a.dropdown-item(href='/logout') Logout
+        form.form-inline.my-2.my-lg-0(name="searching",method="post",action="/search",novalidate='')
+          input.form-control.mr-sm-2(type='text',name='keyword',placeholder='Search')
+          button.btn.btn-outline-success.my-2.my-sm-0(role='button') Search  
+
+mixin navbar(currentUser)
+    - if(currentUser == null){
+      +navbar_guest()
+    - }else{
+      +navbar_member(currentUser.username)
+    -}

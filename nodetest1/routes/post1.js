@@ -5,7 +5,7 @@ var express               = require('express'),
 
 //12 Atyendee and Event Org login
 router.post('/login',passport.authenticate("local",{
-    successRedirect: "/myprofile",
+    successRedirect: "/",
     failureRedirect: "/login"
 }),function(req,res,next){
 });

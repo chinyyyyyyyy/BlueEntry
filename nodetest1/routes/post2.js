@@ -5,7 +5,12 @@ var express               = require('express'),
 
 //15 Anyone can search
 router.post('/search', function (req, res) {
-    res.redirect(`/results/q='${req.body.keyword}'&cat=${req.body.category}&pstart=${req.body.pstart}&pend=${req.body.pend}`);
+    console.log(req.body);
+    if(req.body.category == null){
+      res.redirect(`/results/q='${req.body.keyword}'&cat=allcat&pstart=0&pend=50000`);
+    }else{
+      res.redirect(`/results/q='${req.body.keyword}'&cat=${req.body.category}&pstart=${req.body.pstart}&pend=${req.body.pend}`);
+    }
 });
 
 //16 Only Attendee can search
