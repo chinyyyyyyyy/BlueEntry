@@ -5,7 +5,6 @@ var express               = require('express'),
 
 //15 Anyone can search
 router.post('/search', function (req, res) {
-    console.log(req.body);
     if(req.body.category == null){
       res.redirect(`/results/q='${req.body.keyword}'&cat=allcat&pstart=0&pend=50000`);
     }else{

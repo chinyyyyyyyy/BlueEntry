@@ -21,6 +21,7 @@ router.post('/register',function(req,res){
           if(req.body.type == 'attendee'){
             var atd = req.atd;
             var newatd = new atd({
+                username: req.body.username,
                 Fname: req.body.fname,
                 Lname: req.body.lname,
                 Tel: req.body.tel,
@@ -39,6 +40,7 @@ router.post('/register',function(req,res){
           }else{
             var evo = req.evo;
             var newevo = new evo({
+                username: req.body.username,
                 Name: req.body.name,
                 Tel: req.body.tel,
                 Email: req.body.email,

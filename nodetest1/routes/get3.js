@@ -5,20 +5,18 @@ var express               = require('express'),
 
 //7 myprofile
 router.get('/myprofile',isLoggedIn,function(req,res,next){
-    /*
+
     if (req.user.type == "attendee"){
-        var atdprofile = req.atdprofile
+        var atdprofile = req.atd
         atdprofile.findOne({username : req.user.username}, function(e,docs){
-            res.render('atdprofile',{currentUser:req.user ,profile:docs});
+            res.render('./attendeestuff/atdprofile',{currentUser:req.user ,profile:docs});
         })
-    } else {
-        var evoprofile = req.evoprofile
+    }else {
+        var evoprofile = req.evo
         evoprofile.findOne({username : req.user.username}, function(e,docs){
-            res.render('evoprofile',{currentUser:req.user ,profile:docs});
+            res.render('./eventorgstuff/evoprofile',{currentUser:req.user ,profile:docs});
         }) ;
     }
-    */
-    res.render('myprofile',{currentUser:req.user});
 });
 
 //8 myevent

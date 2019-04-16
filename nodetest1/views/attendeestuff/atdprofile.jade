@@ -4,3 +4,14 @@ block head
   title My Profile
 
 block body
+  img(src=profile.ImgLink,height="300",width="400")
+  P First Name = #{profile.Fname} 
+  p Last Name = #{profile.Lname} 
+  p Tel = #{profile.Tel} 
+  p Email = #{profile.Email} 
+  p Date of Birth = #{profile.Email} 
+  p Gender = #{profile.Gender}
+  form(name="regis",method="post",action="/editattendeepic")
+      input(type='text', name='link',placeholder='Picture Link')
+      button(type='submit') Update Profile Picture
+  

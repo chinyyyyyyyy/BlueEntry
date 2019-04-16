@@ -18,15 +18,15 @@ block body
       P Telephone  
       input(type='text', name='tel',placeholder='ex 0xx-xxxxxxx')
       P Email 
-      input(type='text', name='email',placeholder='ex 0xx-xxxxxxx')
+      input(type='text', name='email',placeholder='example@example.com')
       P Birthday
       input(type='text', name='dob',placeholder='ex 20/02/1998')
       P Gender
-      label.radio-inline
-        input(type='radio', name='gender', checked='')
-        | Male
-      label.radio-inline
-        input(type='radio', name='gender')
-        | Female
+      .form-check.form-check-inline
+        input#inlineRadio1.form-check-input(type='radio', name='gender', value='male')
+        label.form-check-label(for='inlineRadio1') Male
+      .form-check.form-check-inline
+        input#inlineRadio2.form-check-input(type='radio', name='gender', value='female')
+        label.form-check-label(for='inlineRadio2') Female
       p
       button(type='submit') Register

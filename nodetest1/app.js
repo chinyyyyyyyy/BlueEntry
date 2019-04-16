@@ -40,6 +40,7 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
   });
 
   var Atd = new db.Schema({
+    username: String,
     Fname: String,
     Lname: String,
     Tel: String,
@@ -51,6 +52,7 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
     ImgLink: String
   });
   var Evo = new db.Schema({
+    username: String,
     Name: String,
     Tel: String,
     Email: String,

@@ -5,11 +5,15 @@ var express               = require('express'),
 
 //17 Attendee Edit profile
 router.post('/editattendeeprofile',function(req,res){
-
+    
 });
 
 //18 Attendee Edit profile pic
 router.post('/editattendeepic',function(req,res){
+    var atdprofile = req.atd
+    atdprofile.findOneAndUpdate({username : req.user.username},{ImgLink:req.body.link} ,function(e,docs){
+        res.redirect("/myprofile");
+    });
 
 });
 
