@@ -18,12 +18,39 @@ router.post('/register',function(req,res){
           return res.redirect('/register');
       }
       passport.authenticate("local")(req,res,function(){
-          if(req.body.type == 'att'){
-
+          if(req.body.type == 'attendee'){
+            var atd = req.atd;
+            var newatd = new atd({
+                Fname: req.body.fname,
+                Lname: req.body.lname,
+                Tel: req.body.tel,
+                Email: req.body.email,
+                DOB: req.body.dob,
+                Gender: req.body.gender,
+                Credit: [],
+                MyReserve: [],
+                ImgLink: ""
+            });
+            newatd.save(function(e){
+                if (e) {
+                    console.log(e)
+                }
+            });
           }else{
-              
+            var evo = req.evo;
+            var newevo = new evo({
+                Name: req.body.name,
+                Tel: req.body.tel,
+                Email: req.body.email,
+                MyEvent: []
+            });
+            newevo.save(function(e){
+                if (e) {
+                    console.log(e)
+                }
+            });
           }
-          res.redirect('/register');
+          res.redirect('/');
       });
     });
 });
