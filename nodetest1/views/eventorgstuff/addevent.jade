@@ -4,3 +4,19 @@ block head
   title Add New Event
 
 block body
+    h1 Add New Event
+    form(name="regis",method="post",action="/addevent")
+      p Event Name
+      input(type='text', name='name',placeholder='Event Name')
+      P detail  
+      input(type='text', name='detail',placeholder='Detail')
+      P Max seat 
+      input(type='text', name='seat',placeholder='Max seat')
+      P Location
+      input(type='text', name='locatione',placeholder='Last Name')
+      P Last Date Reservable 
+      input(type='text', name='exp',placeholder='Last Date Reservable ')
+      P Contact 
+      input(type='text', name='contact',placeholder='ex mail or tel ')
+      p
+      button(type='submit') Add Event

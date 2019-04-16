@@ -32,13 +32,6 @@ passport.deserializeUser(User.deserializeUser());
 //Database Part//
 var db = require('mongoose');
 db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/BlueEntry?retryWrites=true',{ useNewUrlParser: true });
-  var Regis = new db.Schema({
-    Fname: String,
-    Lname: String,
-    Age: String,
-    Email: String,
-    Address: String,
-  });
   var reservation_shcema = new db.Schema({
     Fname: String,
     Lname: String,
@@ -67,7 +60,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req,res,next){
   req.db = db;
-  req.reg = db.model('registration1',Regis);
   req.eve = db.model('events',Event);
   req.reserve = db.model('reservation',reservation_shcema)
   next();
