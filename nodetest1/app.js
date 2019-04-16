@@ -32,18 +32,41 @@ passport.deserializeUser(User.deserializeUser());
 //Database Part//
 var db = require('mongoose');
 db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/BlueEntry?retryWrites=true',{ useNewUrlParser: true });
-  var Regis = new db.Schema({
+  var Credit_schema = new db.Schema({
+    CNO: String,
+    CName: String,
+    CVV: String,
+    EXP: String
+  });
+
+  var Atd = new db.Schema({
     Fname: String,
     Lname: String,
-    Age: String,
+    Tel: String,
     Email: String,
-    Address: String,
+    DOB: String,
+    Gender: String,
+    Credit: [Credit_schema],
+    MyReserve: [db.Schema.Types.ObjectId],
+    ImgLink: String
   });
+  var Evo = new db.Schema({
+    Name: String,
+    Tel: String,
+    Email: String,
+    MyEvent: [db.Schema.Types.ObjectId]
+  });
+
   var reservation_shcema = new db.Schema({
     Fname: String,
     Lname: String,
     Email: String,
-    Address: String
+    Address: String,
+    Tel: String,
+    Payment: String,
+    Valid: Boolean,
+    Amount: Number,
+    ImgLink: String
   })
 
   var Event = new db.Schema({
@@ -67,7 +90,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req,res,next){
   req.db = db;
-  req.reg = db.model('registration1',Regis);
+  req.atd = db.model('attendee',Atd);
+  req.evo = db.model('eventorg',Evo);
   req.eve = db.model('events',Event);
   req.reserve = db.model('reservation',reservation_shcema)
   next();
