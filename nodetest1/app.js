@@ -63,9 +63,10 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
   var reservation_shcema = new db.Schema({
     Fname: String,
     Lname: String,
-    Email: String,
     Address: String,
     Tel: String,
+    Event: db.Schema.Types.ObjectId,
+    Reserver: String,
     Payment: String,
     Valid: Boolean,
     Amount: Number,

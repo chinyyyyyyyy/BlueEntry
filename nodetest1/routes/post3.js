@@ -71,7 +71,9 @@ router.post('/addcard',function(req,res){
 
 //22 Attendee add receipt
 router.post('/addreceipt',function(req,res){
-
+    req.reserve.findOneAndUpdate({"_id": req.body.id},{ImgLink: req.body.link}, function(e){
+        res.redirect("/myevent");
+    });
 });
 
 module.exports = router;

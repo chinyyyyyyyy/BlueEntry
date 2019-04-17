@@ -19,9 +19,11 @@ router.post('/reserve', function (req, res) {
     if (req.body.payment=="credit"){
       reservedData = new req.reserve({
         "Fname": req.body.fname, 
-        "Lname": req.body.lname, 
-        "Email": req.body.email, 
+        "Lname": req.body.lname,  
         "Address": req.body.address,
+        "Tel": req.body.tel,
+        "Event": req.body.id,
+        "Reserver": req.user.username,
         "Payment": req.body.payment,
         "Valid": true,
         "Amount": req.body.amount,
@@ -32,8 +34,10 @@ router.post('/reserve', function (req, res) {
       reservedData = new req.reserve({
         "Fname": req.body.fname, 
         "Lname": req.body.lname, 
-        "Email": req.body.email, 
         "Address": req.body.address,
+        "Tel": req.body.tel,
+        "Event": req.body.id,
+        "Reserver": req.user.username,
         "Payment": req.body.payment,
         "Valid": false,
         "Amount": req.body.amount,
@@ -41,23 +45,25 @@ router.post('/reserve', function (req, res) {
         "ReserveTimestamp" : new Date()
       });
     }
-    req.event.findOneAndUpdate(
-      { _id: req.body.id },
-      { $push: { reservation:reservedData}},
-      function (error, success) {
-          if (error) {
-              res.send("There was a problem adding the information to the database.");
-          } else {
-              setTimeout(function () {
-                res.redirect("/");
-              }, 1500);
-          }
-      });
+    // req.event.findOneAndUpdate(
+    //   { _id: req.body.id },
+    //   { $push: { reservation:reservedData}},
+    //   function (error, success) {
+    //       if (error) {
+    //           res.send("There was a problem adding the information to the database.");
+    //       } else {
+    //           setTimeout(function () {
+    //             res.redirect("/");
+    //           }, 1500);
+    //       }
+    //   });
+    reservedData.save()
     req.atd.findOneAndUpdate(
       { username: req.user.username },
       { $push: { MyReserve: reservedData._id } },function(e){
         if (e) console.log(e);
     });
+    res.redirect("/");
 });
 
 module.exports = router;

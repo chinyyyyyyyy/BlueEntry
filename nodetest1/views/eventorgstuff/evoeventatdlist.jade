@@ -4,3 +4,10 @@ block head
   title Attendee List of ...
 
 block body
+  each row in reserve
+    p #{row} 
+    img(src=row.ImgLink,height="300",width="400")
+    form(name="regis",method="post",action="/validreceipt")
+      input(type='hidden', name='id',value=row._id)
+      input(type='hidden', name='eid',value=row.Event)
+      button(type='submit') Valid

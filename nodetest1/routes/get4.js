@@ -17,12 +17,9 @@ router.get('/eventdetail/:id',EVO_Login,function(req,res,next){
 
 //11 EventOrg want to see 
 router.get('/attendeelist/:id',EVO_Login,function(req,res,next){
-    /*
-    req.event.findOne({_id :req.params.id}, 'reservation' ,function(e,docs){
-        res.render('',{currentUser : req.user,event: docs})
+    req.reserve.find({"Event": req.params.id}, function(e,docs){
+        res.render('./eventorgstuff/evoeventatdlist',{currentUser : req.user,reserve: docs});
     })
-    */
-    res.render('');
 });
 
 function EVO_Login(req, res, next) {
