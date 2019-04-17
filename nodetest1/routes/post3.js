@@ -28,18 +28,45 @@ router.post('/editattendeepic',function(req,res){
 });
 
 //19 Attendee Edit card
-router.post('/editcard',function(req,res){
-
-});
+// router.post('/editcard',function(req,res){
+//     req.atd.findOneAndUpdate({username : req.user.username},
+//         {
+//             Fname: req.body.fname,
+//             Lname: req.body.lname,
+//             Tel: req.body.tel,
+//             Email: req.body.email,
+//             DOB: req.body.dob,
+//             Gender: req.body.gender
+        
+//         } ,function(e,docs){
+//         res.redirect("/myprofile");
+//     });
+// });
 
 //20 Attendee delete card
 router.post('/deletecard',function(req,res){
-
+    req.atd.findOneAndUpdate(
+        { username: req.user.username },
+        { $pull: { Credit:{_id:[req.body.id]}} },function(e){
+          if (e) console.log(e);
+        res.redirect('/myprofile');
+      });
 });
 
 //21 Attendee add card
 router.post('/addcard',function(req,res){
-
+    var newcard = new req.credit({
+        CNO: req.body.cno,
+        CName: req.body.cname,
+        CVV: req.body.cvv,
+        EXP: req.body.exp
+    })
+    req.atd.findOneAndUpdate(
+        { username: req.user.username },
+        { $push: { Credit: newcard} },function(e){
+          if (e) console.log(e);
+        res.redirect('/myprofile');
+      });
 });
 
 //22 Attendee add receipt
