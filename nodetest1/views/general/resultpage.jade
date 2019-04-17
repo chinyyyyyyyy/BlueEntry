@@ -5,14 +5,22 @@ block head
 
 block body
     .container
-      .d-flex.justify-content-center.nav.navbar-dark.bg-dark(style='margin: 10vh 0 0 0;color:#ffffff;border-radius:10px;padding:15px;')
-        form.formcenter.d-flex.justify-content-between(name="searching",method="post",action="/search",novalidate='')
-          .col.col-lg-2
-            p.text-center Serach
-            .row    
-              input.form-control(type='text', aria-label='',name='keyword')
-          .col.col-lg-2.align-self-end(style="margin-bottom:14px;")
-            select#inputGroupSelect01(class='custom-select',name='category')
+      #filter.container.mt-4.bg-w
+        .row
+          h1.pl-4
+            u Search
+        .ml-5.mt-3
+          form.form-inline(name="searching",method="post",action="/search",novalidate='')
+            label.mb-1(for='kwInput') Keyword :
+            input#kwInput.form-control.mb-2.mr-sm-2(type='text', name='keyword' placeholder='Search Keyword', required='')
+            label.mb-1 Price :
+            .input-group.mb-2.mr-sm-2
+              input#przInputMin.form-control(type='text', name='pstart', value=0,placeholder='Min Price', required='')
+              .input-group-prepend
+                .input-group-text to
+              input#przInputMax.form-control(type='text', name='pend', value=50000,placeholder='Max Price', required='')
+            label.sr-only.mr-2(for='inlineFormCustomSelectPref') Category
+            select#inlineFormCustomSelectPref.custom-select.mb-2.mr-sm-2(name='category')
               option(value='allcat', selected='') All catagories
               option(value='ComSci') Computer Science
               option(value='Finance') Finance
@@ -20,42 +28,82 @@ block body
               option(value='HomeEcon') House Economics
               option(value='Culture') Culture
               option(value='others') Others
-          .col.col-lg-5
-            p.text-center PRICE
-            .row
-              .col
-                input.form-control(type='text', aria-label='',name='pstart',value=0)
-              .col.col-lg-2
-                p.text-center TO 
-              .col
-                input.form-control(type='text', aria-label='',name='pend',value=50000)
-          .col.col-lg-1.align-self-center
-            button.btn.btn-dark(role='button',style="padding:0;")
+            button.btn.btn-primary.mb-2(role='button')
               img.img-fluid(src="/images/search.png",width='61.921345px')
+
+      //- .d-flex.justify-content-center.nav.navbar-dark.bg-dark(style='margin: 10vh 0 0 0;color:#ffffff;border-radius:10px;padding:15px;')
+      //-   form.formcenter.d-flex.justify-content-between(name="searching",method="post",action="/search",novalidate='')
+      //-     .col.col-lg-2
+      //-       p.text-center Serach
+      //-       .row    
+      //-         input.form-control(type='text', aria-label='',name='keyword')
+      //-     .col.col-lg-2.align-self-end(style="margin-bottom:14px;")
+      //-       select#inputGroupSelect01(class='custom-select',name='category')
+      //-         option(value='allcat', selected='') All catagories
+      //-         option(value='ComSci') Computer Science
+      //-         option(value='Finance') Finance
+      //-         option(value='Life') Life
+      //-         option(value='HomeEcon') House Economics
+      //-         option(value='Culture') Culture
+      //-         option(value='others') Others
+      //-     .col.col-lg-5
+      //-       p.text-center PRICE
+      //-       .row
+      //-         .col
+      //-           input.form-control(type='text', aria-label='',name='pstart',value=0)
+      //-         .col.col-lg-2
+      //-           p.text-center TO 
+      //-         .col
+      //-           input.form-control(type='text', aria-label='',name='pend',value=50000)
+      //-     .col.col-lg-1.align-self-center
+      //-       button.btn.btn-dark(role='button',style="padding:0;")
+      //-         img.img-fluid(src="/images/search.png",width='61.921345px')
        - if(userlist.length==0){
          p.text-center No Results
        - } 
-    p Result of
-      | keyword = #{request.key} + categories  = #{request.cat} + Price Range from #{request.pstart} to #{request.pend}  
-    .container.flex-warp
-      .row(style='margin-left:3.5vw')
+    #result.container.mt-4.bg-w
+      .row
+        h1.pl-4 Result
+      .blackline.mb-4
+      p#textResult.font-weight-normal.h3.pl-4.mb-4 Result of
+        | keyword = #{request.key} + categories  = #{request.cat} + Price Range from #{request.pstart} to #{request.pend}  
+      .row
         each row in userlist
-          .col-lg-4.d-flex.flex-column
-            .row
-              .media                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-              img.img-fluid.align-self-center(src='/images/defaultimage.jpg', alt='Generic placeholder image',style="width:300px;height: 300px;")
-            .row
-              .media-body(style='max-width:78%')
-                  a.h5.mt-0(class = 'text-primary' href=`/events/${row._id}`)= row.Ename
-                  h6
-                    b Category : 
-                    | #{row.Category}
+          .col-md-3.mb-4
+            .card
+              .card-head
+                img.card-img-top(src='images/pictest.jpg', style='min-height: 250px; padding:10px', alt='Generic placeholder image')
+              .card-body
+                a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename 
+                p.card-text Category :
+                  | #{row.Category}
                   -  var price = Number(row.Price)
                   -  if(price == 0 || price == ''){
                   -  price = 'Free'
                   -  }
-                  h6
-                    b Price : 
-                    | #{price} 
+                p.card-text Price:
+                  | #{price}                               
+    //- p Result of
+    //-   | keyword = #{request.key} + categories  = #{request.cat} + Price Range from #{request.pstart} to #{request.pend}  
+    //- .container.flex-warp
+    //-   .row(style='margin-left:3.5vw')
+    //-     each row in userlist
+    //-       .col-lg-4.d-flex.flex-column
+    //-         .row
+    //-           .media                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+    //-           img.img-fluid.align-self-center(src='/images/defaultimage.jpg', alt='Generic placeholder image',style="width:300px;height: 300px;")
+    //-         .row
+    //-           .media-body(style='max-width:78%')
+    //-               a.h5.mt-0(class = 'text-primary' href=`/events/${row._id}`)= row.Ename
+    //-               h6
+    //-                 b Category : 
+    //-                 | #{row.Category}
+    //-               -  var price = Number(row.Price)
+    //-               -  if(price == 0 || price == ''){
+    //-               -  price = 'Free'
+    //-               -  }
+    //-               h6
+    //-                 b Price : 
+    //-                 | #{price} 
   
 

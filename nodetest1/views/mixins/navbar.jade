@@ -1,23 +1,87 @@
 mixin navbar_guest()
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      a.navbar-brand(href='/') BlueEntry
-      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-        span.navbar-toggler-icon
-      #navbarSupportedContent.collapse.navbar-collapse
-        ul.navbar-nav.mr-auto
-          li.nav-item.active
-            a.nav-link(href='/login')
-              | Login 
-              span.sr-only (current)
-          li.nav-item.active
-            a.nav-link(href='/register')
-              | Register
-              span.sr-only (current)    
-        form.form-inline.my-2.my-lg-0(name="searching",method="post",action="/search",novalidate='')
-          input.form-control.mr-sm-2(type='text',name='keyword',placeholder='Search')
-          button.btn.btn-outline-success.my-2.my-sm-0(role='button') Search  
+    //- nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    //-   a.navbar-brand(href='/') BlueEntry
+    //-   button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+    //-     span.navbar-toggler-icon
+    //-   #navbarSupportedContent.collapse.navbar-collapse
+    //-     ul.navbar-nav.mr-auto
+    //-       li.nav-item.active
+    //-         a.nav-link(href='/login')
+    //-           | Login 
+    //-           span.sr-only (current)
+    //-       li.nav-item.active
+    //-         a.nav-link(href='/register')
+    //-           | Register
+    //-           span.sr-only (current)    
+    //-     form.form-inline.my-2.my-lg-0(name="searching",method="post",action="/search",novalidate='')
+    //-       input.form-control.mr-sm-2(type='text',name='keyword',placeholder='Search')
+    //-       button.btn.btn-outline-success.my-2.my-sm-0(role='button') Search
+    nav.navbar.navbar-dark.bg-dark.d-flex.justify-content-between
+      a.navbar-brand.ml-4.mt-1(href='#')
+        img.d-inline-block.align-top(src='images/BlueEntry - logo.png', width='90', height='45', alt='')
+      .btn-group(role='group')
+        form.d-flex(name='searching', method='post', action='/search', novalidate='')
+          input.form-control.mr-3(type='text', name='keyword', placeholder='Search')
+          button.btn.navbar-brand(role='button')
+            img.d-inline-block.align-top(src='images/magnifying-glass-white.png', width='30', height='30', alt='')
+        //
+          <a class="navbar-brand" href="#">
+          <img src="pic/notification (1).png" width="30" height="30" class="d-inline-block align-top" alt="">
+          </a>
+          <a class="navbar-brand" href="#">
+          <img src="pic/history-clock-button.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          </a>
+        button#loginbtn.btn.btn-primary(type='button', data-toggle='modal', data-target='#exampleModal')
+          | Login / Sign Up
+        // Modal
+        #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+          .modal-dialog(role='document')
+            .modal-content
+              .modal-header
+                h5#exampleModalLabel.modal-title.text-center Login
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                  span(aria-hidden='true') ×
+              .modal-body
+                form(name="login",method="post",action="/login")
+                  p Username 
+                  input(type='text', name='username',placeholder='Username')
+                  P Password  
+                  input(type='text', name='password',placeholder='Password')
+                  p
+                  button(type='submit') Login
+                a#registerbtn.btn.btn-primary(role='button' href='/register') Register
+              //
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+    
 
 mixin navbar_member(username)
+    
+      nav.navbar.navbar-dark.bg-dark.d-flex.justify-content-between
+        a.navbar-brand.ml-4.mt-1(href='#')
+          img.d-inline-block.align-top(src='images/BlueEntry - logo.png', width='90', height='45', alt='')
+        .btn-group(role='group')
+          form.d-flex(name='searching', method='post', action='/search', novalidate='')
+            input.form-control.mr-3(type='text', name='keyword', placeholder='Search')
+            button.btn.navbar-brand(role='button')
+              img.d-inline-block.align-top(src='images/magnifying-glass-white.png', width='30', height='30', alt='')
+          //
+            <a class="navbar-brand" href="#">
+            <img src="pic/notification (1).png" width="30" height="30" class="d-inline-block align-top" alt="">
+            </a>
+            <a class="navbar-brand" href="#">
+            <img src="pic/history-clock-button.png" width="30" height="30" class="d-inline-block align-top" alt="">
+          .btn-group
+            button#profilebtn.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', data-display='static', aria-haspopup='true', aria-expanded='false')
+              | #{username}
+            .dropdown-menu.dropdown-menu-lg-right
+              a.dropdown-item(href='/myprofile') My Profile
+              a.dropdown-item(href='#') My Event
+              .dropdown-divider
+              a.dropdown-item(href='/logout') Log Out
+  //
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       a.navbar-brand(href='/') BlueEntry
       button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
