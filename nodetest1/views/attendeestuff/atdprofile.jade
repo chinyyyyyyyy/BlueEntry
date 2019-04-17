@@ -11,10 +11,10 @@ block body
   p Email = #{profile.Email} 
   p Date of Birth = #{profile.DOB} 
   p Gender = #{profile.Gender}
-  form(name="regis",method="post",action="/editattendeepic")
+  form(name="updateprofilepic",method="post",action="/editattendeepic")
       input(type='text', name='link',placeholder='Picture Link')
       button(type='submit') Update Profile Picture
-  form(name="regis",method="post",action="/editattendeeprofile")
+  form(name="updateprofile",method="post",action="/editattendeeprofile")
       input(type='text', name='fname',value=profile.Fname)
       input(type='text', name='lname',value=profile.Lname)
       input(type='text', name='tel',value=profile.Tel)
@@ -22,3 +22,16 @@ block body
       input(type='text', name='dob',value=profile.DOB)
       input(type='text', name='gender',value=profile.Gender)
       button(type='submit') Update Profile
+  each row in profile.Credit
+    p #{row}
+    form(name='delcard',method='post',action='/deletecard')
+        input(type='hidden',name='id',value=row._id)
+        button(type='submit') Delete Card
+  h2 Add card
+  form(name="addcard",method="post",action="/addcard")
+      input(type='text', name='cno',placeholder='Card Number')
+      input(type='text', name='cname',placeholder='Card Name')
+      input(type='text', name='cvv',placeholder='cvv')
+      input(type='text', name='exp',placeholder='exp')
+      button(type='submit') Add card
+  

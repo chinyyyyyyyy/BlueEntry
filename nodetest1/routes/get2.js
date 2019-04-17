@@ -29,7 +29,7 @@ router.get('/eventorgregister',isntLoggedIn,function(req,res,next){
 router.get('/logout',isLoggedIn,function (req, res) {
     req.logout();
     setTimeout(function () {
-        res.redirect("/login");
+        res.redirect("/");
     }, 1500);
 });
 
