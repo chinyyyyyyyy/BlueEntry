@@ -23,8 +23,7 @@ router.get('/',function(req,res,next){
 
 //2 eventpage
 router.get('/events/:id', function (req, res) {
-  var eve = req.eve;
-  eve.findOne({_id:req.params.id}, function (e, docs) {
+  req.event.findOne({_id:req.params.id}, function (e, docs) {
   res.render('./general/eventpage', { currentUser:req.user ,"event": docs });
 });
 });
@@ -32,7 +31,6 @@ router.get('/events/:id', function (req, res) {
 //3 serch result
 router.get('/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend', function (req, res) {
     var listcat = ['ComSci', 'Finance', 'HomeEcon', 'Life', 'Culture'];
-    var eve = req.eve;
     var pstart = Number(req.params.pstart);
     var pend = Number(req.params.pend);
     var key = req.params.key;
@@ -40,11 +38,11 @@ router.get('/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend', function (req, 
       listcat = [req.params.cat];
     }
     if (key == "''") {
-      eve.find({ $and: [{ Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
+      req.event.find({ $and: [{ Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
         res.render('./general/resultpage', {currentUser:req.user ,"userlist": docs,request:{"key":key,"cat":listcat,"pstart":pstart,"pend":pend}});
       });
     } else {
-      eve.find({ $and: [{ $text: { $search: key } }, { Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
+      req.event.find({ $and: [{ $text: { $search: key } }, { Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
         res.render('./general/resultpage', {currentUser:req.user ,"userlist": docs,request:{key:key,cat:listcat,pstart:pstart,pend:pend}});
       });
   }

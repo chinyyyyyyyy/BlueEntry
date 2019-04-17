@@ -21,7 +21,7 @@ router.post('/reserve', function (req, res) {
       "Email": req.body.email, 
       "Address": req.body.address
     });
-    req.eve.findOneAndUpdate(
+    req.event.findOneAndUpdate(
       { _id: req.body.id },
       { $push: { reservation:reservedData}},
       function (error, success) {

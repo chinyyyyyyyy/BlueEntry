@@ -22,8 +22,7 @@ router.get('/myprofile',isLoggedIn,function(req,res,next){
 router.get('/myevent',isLoggedIn,function(req,res,next){
     /*
     if (req.user.type == "attendee"){
-        var eve = req.eve
-        eve.find({reservation : {$elemMatch{reserveBy : req.user.username}}}, function(e,docs){
+        req.reserve.find({reservation : {$elemMatch{reserveBy : req.user.username}}}, function(e,docs){
             res.render('atdevent',{currentUser:req.user ,myevent:docs});
         })
     } else {*/
