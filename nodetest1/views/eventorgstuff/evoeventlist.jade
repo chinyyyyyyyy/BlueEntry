@@ -4,3 +4,5 @@ block head
   title List of my Event
 
 block body
+  each row in myevent
+    p EventName = #{row.Ename}

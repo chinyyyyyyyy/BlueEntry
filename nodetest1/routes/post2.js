@@ -15,7 +15,12 @@ router.post('/search', function (req, res) {
 //16 Only Attendee can search
 router.post('/reserve', function (req, res) {
     //Set our internal DB variable
-    var reservedData = new req.reserve({"Fname": req.body.fname, "Lname": req.body.lname, "Email": req.body.email, "Address": req.body.address });
+    var reservedData = new req.reserve({
+      "Fname": req.body.fname, 
+      "Lname": req.body.lname, 
+      "Email": req.body.email, 
+      "Address": req.body.address
+    });
     req.eve.findOneAndUpdate(
       { _id: req.body.id },
       { $push: { reservation:reservedData}},

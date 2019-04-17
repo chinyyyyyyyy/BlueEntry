@@ -68,14 +68,19 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
     Payment: String,
     Valid: Boolean,
     Amount: Number,
-    ImgLink: String
+    ImgLink: String,
+    ReserveTimestamp : db.Schema.Types.Date
   })
 
   var Event = new db.Schema({
     Ename: String,
     Category: String,
+    Detail: String,
     Price: Number,
-    AvaiSeat: Number,
+    MaxSeat: Number,
+    Location: String,
+    Exp: String,
+    Contact: String,
     reservation: [reservation_shcema]
   });
 
@@ -94,8 +99,9 @@ app.use(function(req,res,next){
   req.db = db;
   req.atd = db.model('attendee',Atd);
   req.evo = db.model('eventorg',Evo);
-  req.eve = db.model('events',Event);
-  req.reserve = db.model('reservation',reservation_shcema)
+  req.event = db.model('events',Event);
+  req.reserve = db.model('reservation',reservation_shcema);
+  req.credit = db.model('credit',Credit_schema);
   next();
  }); 
  

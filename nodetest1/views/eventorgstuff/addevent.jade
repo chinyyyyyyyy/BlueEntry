@@ -8,12 +8,21 @@ block body
     form(name="regis",method="post",action="/addevent")
       p Event Name
       input(type='text', name='name',placeholder='Event Name')
+      select#inputGroupSelect01(class='custom-select',name='category')
+              option(value='ComSci') Computer Science
+              option(value='Finance') Finance
+              option(value='Life') Life
+              option(value='HomeEcon') House Economics
+              option(value='Culture') Culture
+              option(value='others') Others
       P detail  
       input(type='text', name='detail',placeholder='Detail')
+      P Price  
+      input(type='text', name='price',placeholder='Price')
       P Max seat 
       input(type='text', name='seat',placeholder='Max seat')
       P Location
-      input(type='text', name='locatione',placeholder='Last Name')
+      input(type='text', name='location',placeholder='Last Name')
       P Last Date Reservable 
       input(type='text', name='exp',placeholder='Last Date Reservable ')
       P Contact 
