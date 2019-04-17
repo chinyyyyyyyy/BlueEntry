@@ -55,7 +55,19 @@ router.post('/boost',function(req,res){
 
 //27 Event Org edit event
 router.post('/editevent',function(req,res){
-
+    req.event.findOneAndUpdate({_id : req.body.id},
+        {
+            Ename: req.body.name,
+            Category: req.body.category,
+            Detail: req.body.detail,
+            Price: req.body.price,
+            MaxSeat: req.body.seat,
+            Location: req.body.location,
+            Exp: req.body.exp,
+            Contact: req.body.contact
+        } ,function(e,docs){
+        res.redirect("/eventdetail/"+req.body.id);
+    });
 });
 
 //28 Event Org valid Attendee's receipt
