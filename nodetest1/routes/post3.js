@@ -5,13 +5,23 @@ var express               = require('express'),
 
 //17 Attendee Edit profile
 router.post('/editattendeeprofile',function(req,res){
-    
+    req.atd.findOneAndUpdate({username : req.user.username},
+        {
+            Fname: req.body.fname,
+            Lname: req.body.lname,
+            Tel: req.body.tel,
+            Email: req.body.email,
+            DOB: req.body.dob,
+            Gender: req.body.gender
+        
+        } ,function(e,docs){
+        res.redirect("/myprofile");
+    });
 });
 
 //18 Attendee Edit profile pic
 router.post('/editattendeepic',function(req,res){
-    var atdprofile = req.atd
-    atdprofile.findOneAndUpdate({username : req.user.username},{ImgLink:req.body.link} ,function(e,docs){
+    req.atd.findOneAndUpdate({username : req.user.username},{ImgLink:req.body.link} ,function(e,docs){
         res.redirect("/myprofile");
     });
 

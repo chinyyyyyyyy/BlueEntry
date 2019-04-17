@@ -6,10 +6,25 @@ var express               = require('express'),
 
 //23 Event Org Edit profile
 router.post('/editeventorgprofile',function(req,res){
+    req.evo.findOneAndUpdate({username : req.user.username},
+        {
+            Name: req.body.name,
+            Tel: req.body.tel,
+            Email: req.body.email,
+        } ,function(e,docs){
+        res.redirect("/myprofile");
+    });
+});
+
+//24 Event Org Edit profile pic
+router.post('/editeventorgpic',function(req,res){
+    req.evo.findOneAndUpdate({username : req.user.username},{ImgLink:req.body.link} ,function(e,docs){
+        res.redirect("/myprofile");
+    });
 
 });
 
-//24 Event Org add event
+//25 Event Org add event
 router.post('/addevent',function(req,res){
     var newEvent = new req.event({
         Ename: req.body.name,
@@ -29,21 +44,21 @@ router.post('/addevent',function(req,res){
         { username: req.user.username },
         { $push: { MyEvent: newEvent._id } },function(e){
             if (e) console.log(e);
-        });
+    });
     res.redirect('/');
 });
 
-//25 Event Org boost event
+//26 Event Org boost event
 router.post('/boost',function(req,res){
 
 });
 
-//26 Event Org edit event
+//27 Event Org edit event
 router.post('/editevent',function(req,res){
 
 });
 
-//27 Event Org valid Attendee's receipt
+//28 Event Org valid Attendee's receipt
 router.post('/validreceipt',function(req,res){
 
 });

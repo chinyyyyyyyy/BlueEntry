@@ -44,7 +44,8 @@ router.post('/register',function(req,res){
                 Name: req.body.name,
                 Tel: req.body.tel,
                 Email: req.body.email,
-                MyEvent: []
+                MyEvent: [],
+                ImgLink: ""
             });
             newevo.save(function(e){
                 if (e) {

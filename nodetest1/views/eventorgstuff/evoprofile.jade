@@ -4,8 +4,17 @@ block head
   title My Profile
 
 block body
+  img(src=profile.ImgLink,height="300",width="400")
   P Name = #{profile.Name} 
   p Tel = #{profile.Tel} 
   p Email = #{profile.Email}  
+  form(name="regis",method="post",action="/editeventorgpic")
+      input(type='text', name='link',placeholder='Picture Link')
+      button(type='submit') Update Profile Picture
+  form(name="regis",method="post",action="/editeventorgprofile")
+      input(type='text', name='name',value=profile.Name)
+      input(type='text', name='tel',value=profile.Tel)
+      input(type='text', name='email',value=profile.Email)
+      button(type='submit') Update Profile
   
   
