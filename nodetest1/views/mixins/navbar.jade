@@ -12,11 +12,11 @@ mixin navbar_guest()
           .modal-body
             form(name="login",method="post",action="/login")
               p Username 
-              input(type='text', name='username',placeholder='Username')
+              input.form-control(type='text', name='username',placeholder='Username')
               P Password  
-              input(type='text', name='password',placeholder='Password')
+              input.form-control(type='password', name='password',placeholder='Password')
               p
-              button(type='submit') Login
+              button.btn.btn-primary(type='submit') Login
             a#registerbtn.btn.btn-primary(role='button' href='/register') Register
 
 mixin navbar_member(username)
@@ -31,7 +31,7 @@ mixin navbar_member(username)
 
 mixin navbar(currentUser)
     nav.navbar.navbar-dark.bg-dark.d-flex.justify-content-between
-      a.navbar-brand.ml-4.mt-1(href='#')
+      a.navbar-brand.ml-4.mt-1(href='/')
         img.d-inline-block.align-top(src='/images/BlueEntry - logo.png', width='60', height='30', alt='')
       .btn-group(role='group')
         form.d-flex(name='searching', method='post', action='/search', novalidate='')
