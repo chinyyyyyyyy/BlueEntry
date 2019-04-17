@@ -38,11 +38,13 @@ router.get('/myevent',isLoggedIn,function(req,res,next){
 
 router.get('/reservedetail/:id',isLoggedIn,function(req,res,next){
     req.reserve.findOne({"_id": req.params.id},function(e,docs){
-        req.event.findOne({"_id": docs.Event},function(e,docs2){
-            
-            res.render('./attendeestuff/atdreserveedit',{currentUser:req.user ,reserve:docs,event:docs2})
-        })
-        
+        if(docs.Reserver == req.user.username){
+            req.event.findOne({"_id": docs.Event},function(e,docs2){
+                res.render('./attendeestuff/atdreserveedit',{currentUser:req.user ,reserve:docs,event:docs2})
+            });
+        }else{
+            res.render("denied")
+        }
     });
 })
 

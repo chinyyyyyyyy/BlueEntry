@@ -75,6 +75,7 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
   })
 
   var Event = new db.Schema({
+    username:String,
     Ename: String,
     Category: String,
     Detail: String,

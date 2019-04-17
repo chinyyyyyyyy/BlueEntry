@@ -27,6 +27,7 @@ router.post('/editeventorgpic',function(req,res){
 //25 Event Org add event
 router.post('/addevent',function(req,res){
     var newEvent = new req.event({
+        username: req.user.username,
         Ename: req.body.name,
         Category: req.body.category,
         Detail: req.body.detail,
