@@ -1,0 +1,13 @@
+extends ../layout.jade
+
+block head
+  title My Reserved Event
+
+block body
+    p Reserve = #{reserve}
+    P Event = #{event}
+    img(src=reserve.ImgLink,height="300",width="400")
+    form(name="updateprofilepic",method="post",action='/addreceipt')
+      input(type='hidden', name='id',value=reserve._id)
+      input(type='text', name='link',placeholder='Picture Link')
+      button(type='submit') Update Receipt Picture

@@ -13,20 +13,17 @@ block body
   p Exp = #{event.Exp}
   p Contact = #{event.Contact}
 
-  -if(event.reservation.length==0){
-    form(name="regis",method="post",action="/editevent")
-        input(type='hidden', name='id',value=event._id)
-        input(type='text', name='ename',value=event.Ename,placeholder='name')
-        input(type='text', name='category',value=event.Category)
-        input(type='text', name='detail',value=event.Detail,placeholder='detail')
-        input(type='text', name='price',value=event.Price)
-        input(type='text', name='maxseat',value=event.MaxSeat)
-        input(type='text', name='location',value=event.Location)
-        input(type='text', name='exp',value=event.Exp)
-        input(type='text', name='contact',value=event.Contact)
-        button(type='submit') Update Profile
-  -}
-  h3(class='text-primary') My Attendee
-  each row in event.reservation
-    p #{row}
+
+  form(name="regis",method="post",action="/editevent")
+      input(type='hidden', name='id',value=event._id)
+      input(type='text', name='ename',value=event.Ename,placeholder='name')
+      input(type='text', name='category',value=event.Category)
+      input(type='text', name='detail',value=event.Detail,placeholder='detail')
+      input(type='text', name='price',value=event.Price)
+      input(type='text', name='maxseat',value=event.MaxSeat)
+      input(type='text', name='location',value=event.Location)
+      input(type='text', name='exp',value=event.Exp)
+      input(type='text', name='contact',value=event.Contact)
+      button(type='submit') Update Profile
+  a.btn-primary(role='button' href=`/attendeelist/${event._id}`) My Attendee
     

@@ -72,7 +72,9 @@ router.post('/editevent',function(req,res){
 
 //28 Event Org valid Attendee's receipt
 router.post('/validreceipt',function(req,res){
-
+    req.reserve.findOneAndUpdate({_id : req.body.id}, {Valid: true} ,function(e,docs){
+        res.redirect("/eventdetail/"+req.body.eid);
+    });
 });
 
 module.exports = router;
