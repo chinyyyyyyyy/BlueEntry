@@ -9,9 +9,16 @@ block body
   p Last Name = #{profile.Lname} 
   p Tel = #{profile.Tel} 
   p Email = #{profile.Email} 
-  p Date of Birth = #{profile.Email} 
+  p Date of Birth = #{profile.DOB} 
   p Gender = #{profile.Gender}
   form(name="regis",method="post",action="/editattendeepic")
       input(type='text', name='link',placeholder='Picture Link')
       button(type='submit') Update Profile Picture
-  
+  form(name="regis",method="post",action="/editattendeeprofile")
+      input(type='text', name='fname',value=profile.Fname)
+      input(type='text', name='lname',value=profile.Lname)
+      input(type='text', name='tel',value=profile.Tel)
+      input(type='text', name='email',value=profile.Email)
+      input(type='text', name='dob',value=profile.DOB)
+      input(type='text', name='gender',value=profile.Gender)
+      button(type='submit') Update Profile

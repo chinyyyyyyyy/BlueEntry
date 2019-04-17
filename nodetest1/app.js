@@ -56,7 +56,8 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
     Name: String,
     Tel: String,
     Email: String,
-    MyEvent: [db.Schema.Types.ObjectId]
+    MyEvent: [db.Schema.Types.ObjectId],
+    ImgLink: String
   });
 
   var reservation_shcema = new db.Schema({

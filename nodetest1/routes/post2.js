@@ -33,6 +33,11 @@ router.post('/reserve', function (req, res) {
               }, 1500);
           }
       });
+    req.atd.findOneAndUpdate(
+      { username: req.user.username },
+      { $push: { MyReserve: reservedData._id } },function(e){
+        if (e) console.log(e);
+    });
 });
 
 module.exports = router;
