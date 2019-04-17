@@ -11,7 +11,26 @@ router.post('/editeventorgprofile',function(req,res){
 
 //24 Event Org add event
 router.post('/addevent',function(req,res){
-
+    var newEvent = new req.event({
+        Ename: req.body.name,
+        Category: req.body.category,
+        Detail: req.body.detail,
+        Price: req.body.price,
+        MaxSeat: req.body.seat,
+        Location: req.body.location,
+        Exp: req.body.exp,
+        Contact: req.body.contact,
+        reservation: []
+    });
+    newEvent.save(function(e){
+        if (e) console.log(e);
+    })
+    req.evo.findOneAndUpdate(
+        { username: req.user.username },
+        { $push: { MyEvent: newEvent._id } },function(e){
+            if (e) console.log(e);
+        });
+    res.redirect('/');
 });
 
 //25 Event Org boost event

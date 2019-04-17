@@ -7,13 +7,12 @@ var express               = require('express'),
 router.get('/myprofile',isLoggedIn,function(req,res,next){
 
     if (req.user.type == "attendee"){
-        var atdprofile = req.atd
-        atdprofile.findOne({username : req.user.username}, function(e,docs){
+        req.atd.findOne({username : req.user.username}, function(e,docs){
             res.render('./attendeestuff/atdprofile',{currentUser:req.user ,profile:docs});
         })
     }else {
-        var evoprofile = req.evo
-        evoprofile.findOne({username : req.user.username}, function(e,docs){
+        req.evo.findOne({username : req.user.username}, function(e,docs){
+            
             res.render('./eventorgstuff/evoprofile',{currentUser:req.user ,profile:docs});
         }) ;
     }
@@ -27,14 +26,15 @@ router.get('/myevent',isLoggedIn,function(req,res,next){
         eve.find({reservation : {$elemMatch{reserveBy : req.user.username}}}, function(e,docs){
             res.render('atdevent',{currentUser:req.user ,myevent:docs});
         })
-    } else {
-        var eve = req.eve
-        evำ.find({owner : req.user.username}, function(e,docs){
-            res.render('evoevent',{currentUser:req.user ,myevent:docs});
+    } else {*/
+        req.evo.findOne({username : req.user.username}, function(e,docs){
+            console.log(docs.MyEvent)
+            req.event.find({_id: {$in: docs.MyEvent}},function(e,docs2){
+                console.log(docs2);
+                res.render('./eventorgstuff/evoeventlist',{currentUser:req.user ,myevent:docs2});
+            });
         }) ;
-    }
-    */
-    res.render('');
+    //}
 });
 
 
