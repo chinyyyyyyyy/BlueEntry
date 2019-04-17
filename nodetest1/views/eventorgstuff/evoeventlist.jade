@@ -7,3 +7,6 @@ block body
   each row in myevent
     p EventName = #{row.Ename}
     a.btn-primary(role='button' href=`/eventdetail/${row._id}`) Event Detail
+  p
+  a(role='button' href=`/addevent`) 
+    button.btn-warning New Event
