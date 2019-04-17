@@ -10,12 +10,9 @@ router.get('/addevent',EVO_Login,function(req,res,next){
 
 //10 EventOrg edit event add see attendee list
 router.get('/eventdetail/:id',EVO_Login,function(req,res,next){
-    /*
     req.event.findOne({_id :req.params.id} ,function(e,docs){
-        res.render('',{currentUser : req.user,event: docs})
+        res.render('./eventorgstuff/evoeventedit',{currentUser : req.user,event: docs})
     })
-    */
-    res.render('');
 });
 
 //11 EventOrg want to see 
