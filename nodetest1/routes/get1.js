@@ -21,7 +21,12 @@ router.get('/',function(req,res,next){
 //2 eventpage
 router.get('/events/:id', function (req, res) {
   req.event.findOne({_id:req.params.id}, function (e, docs) {
-  res.render('./general/eventpage', { currentUser:req.user ,"event": docs });
+    var hihi = "";
+    if (req.user!=null){
+    req.atd.findOne({username: req.user.username},'Credit',function(e,docs2){
+      res.render('./general/eventpage', { currentUser:req.user ,"event": docs ,"credit": docs2.Credit});
+    })
+  }
 });
 });
 

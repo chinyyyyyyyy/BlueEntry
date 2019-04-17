@@ -20,43 +20,45 @@ block body
     p Location = #{event.Location}
     p Exp = #{event.Exp}
     p Contact = #{event.Contact}
-
-    form#formAddUser(name="adduser",method="post",action="/reserve",class ="needs-validation",novalidate='')
-        .container(class='formcenter')
-            P Amount
-            label.radio-inline
-                input(type='radio', name='seat', checked='')
-                | 1
-            label.radio-inline
-                input(type='radio', name='seat')
-                | 2    
-            h4(class='text-primary') Personal Information
-            .form-row
-                +textinput('6','First Name','fname')
-                +textinput('6','Last Name','lname')
-            .form-row
-                +textinput('12','Telephone','tel')
-            .form-row
-                +textinput('12','Address','address')
-        .container(class='formcenter')
-            .h4(class='text-primary') Payment
-            .form-row
-                +textinput('6','Card Name','cardname')
-                +textinput('6','Card Number','cardnumber')
-            .form-row
-                +textinput('4','CVV','cvv','ex 123')
-                +textinput('4','EXP month','expmonth','MM')
-                +textinput('4','EXP year','expyear','YYYY')
-            .form-row
-                .col-md-3
-                    input(type="hidden", name='id',value=event._id)
-                    button.form-control.btn.btn-primary.submit-button(type='submit') Submit
-            // Modal
-            #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-                .modal-dialog(role='document')
-                    .modal-content
-                        .modal-body
-                            h4(align='center',class="text-success") Reservation Successful!
-                            h6(align='center',class='text-secondary') (please wait for redirecting...)
-                                    
-                    
+    -if (currentUser!=null) {
+        -if (currentUser.type=='attendee'){
+            form#formAddUser(name="adduser",method="post",action="/reserve",class ="needs-validation",novalidate='')
+                .container(class='formcenter')
+                    P Amount
+                    .form-check.form-check-inline
+                        input#inlineRadio1.form-check-input(type='radio', name='amount', value=1)
+                        label.form-check-label(for='inlineRadio1') 1
+                    .form-check.form-check-inline
+                        input#inlineRadio2.form-check-input(type='radio', name='amount', value=2)
+                        label.form-check-label(for='inlineRadio2') 2
+                    h4(class='text-primary') Personal Information
+                    .form-row
+                        +textinput('6','First Name','fname')
+                        +textinput('6','Last Name','lname')
+                    .form-row
+                        +textinput('12','Telephone','tel')
+                    .form-row
+                        +textinput('12','Address','address')
+                .container(class='formcenter')
+                    each row in credit
+                        .form-check.form-check-inline
+                            input#inlineRadio1.form-check-input(type='radio', name='payment', value="credit")
+                            label.form-check-label(for='inlineRadio1') #{row.CNO}
+                    .form-check.form-check-inline
+                        input#inlineRadio1.form-check-input(type='radio', name='payment', value="transfer")
+                        label.form-check-label(for='inlineRadio1') Bank Transfer       
+                    .form-row
+                        .col-md-3
+                            input(type="hidden", name='id',value=event._id)
+                            button.form-control.btn.btn-primary.submit-button(type='submit') Submit
+                    // Modal
+                    #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                        .modal-dialog(role='document')
+                            .modal-content
+                                .modal-body
+                                    h4(align='center',class="text-success") Reservation Successful!
+                                    h6(align='center',class='text-secondary') (please wait for redirecting...)
+        -}
+    -}
+                                        
+                        
