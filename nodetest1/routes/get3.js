@@ -20,12 +20,7 @@ router.get('/myprofile',isLoggedIn,function(req,res,next){
 
 //8 myevent
 router.get('/myevent',isLoggedIn,function(req,res,next){
-    /*
-    if (req.user.type == "attendee"){
-        req.reserve.find({reservation : {$elemMatch{reserveBy : req.user.username}}}, function(e,docs){
-            res.render('atdevent',{currentUser:req.user ,myevent:docs});
-        })
-    } else {*/
+    
         req.evo.findOne({username : req.user.username}, function(e,docs){
             console.log(docs.MyEvent)
             req.event.find({_id: {$in: docs.MyEvent}},function(e,docs2){
@@ -33,7 +28,6 @@ router.get('/myevent',isLoggedIn,function(req,res,next){
                 res.render('./eventorgstuff/evoeventlist',{currentUser:req.user ,myevent:docs2});
             });
         }) ;
-    //}
 });
 
 
