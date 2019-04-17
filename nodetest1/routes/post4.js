@@ -57,7 +57,7 @@ router.post('/boost',function(req,res){
 router.post('/editevent',function(req,res){
     req.event.findOneAndUpdate({_id : req.body.id},
         {
-            Ename: req.body.name,
+            Ename: req.body.ename,
             Category: req.body.category,
             Detail: req.body.detail,
             Price: req.body.price,
