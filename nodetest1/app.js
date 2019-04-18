@@ -84,7 +84,8 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
     Location: String,
     Exp: String,
     Contact: String,
-    reservation: [reservation_shcema]
+    Boost : Boolean,
+    reservation: [db.Schema.Types.ObjectId]
   });
 
 

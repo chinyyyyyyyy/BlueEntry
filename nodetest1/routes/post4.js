@@ -36,6 +36,7 @@ router.post('/addevent',function(req,res){
         Location: req.body.location,
         Exp: req.body.exp,
         Contact: req.body.contact,
+        Boost: false,
         reservation: []
     });
     newEvent.save(function(e){
@@ -51,7 +52,10 @@ router.post('/addevent',function(req,res){
 
 //26 Event Org boost event
 router.post('/boost',function(req,res){
-
+    req.event.findOneAndUpdate({_id: req.body.id},{Boost: true}, function(e){
+        if(e) console.log(e)
+        res.redirect("/myevent");
+    });
 });
 
 //27 Event Org edit event

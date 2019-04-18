@@ -63,6 +63,11 @@ router.post('/reserve', function (req, res) {
       { $push: { MyReserve: reservedData._id } },function(e){
         if (e) console.log(e);
     });
+    req.event.findOneAndUpdate(
+      { _id: req.body.id },
+      { $push: { reservation: reservedData._id } },function(e){
+        if (e) console.log(e);
+    });
     res.redirect("/");
 });
 
