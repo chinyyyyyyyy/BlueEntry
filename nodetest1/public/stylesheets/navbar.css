@@ -50,18 +50,40 @@ div.card {
 .blackline{
     height: 3px;
     background: black;
-    width: 100%;
+    width: 35vw;
 }
-#profileInfo{
+.divider{
+    height: 1px;
+    background: rgb(204, 204, 204);
+    width: 95%;
+}
+#result{
+    width: 75vw;
+}
+#profileInfo,#cardinfo,#newcard{
     width: 40vw;
-}
+ }
 .bg-w{
     background-color: white;
     padding: 30px;
     margin-bottom: 3vh;
     border-radius: 10px;
 }
+
+
+ .vl {
+     border-left: 4px solid rgb(0, 0, 0);
+     height: 15vh;
+   }
 .card-head img{
     min-height: 220px;
     padding:10px;
+}
+#info .row{
+    height: 7vh;
+}
+#info .row #myInput{
+    width: 10vw;
+    height: 3.1vh;
+    margin-left: 0.71vw;
 }

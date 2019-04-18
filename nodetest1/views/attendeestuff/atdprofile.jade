@@ -4,34 +4,137 @@ block head
   title My Profile
 
 block body
-  img(src=profile.ImgLink,height="300",width="400")
-  P First Name = #{profile.Fname} 
-  p Last Name = #{profile.Lname} 
-  p Tel = #{profile.Tel} 
-  p Email = #{profile.Email} 
-  p Date of Birth = #{profile.DOB} 
-  p Gender = #{profile.Gender}
-  form(name="updateprofilepic",method="post",action="/editattendeepic")
-      input(type='text', name='link',placeholder='Picture Link')
-      button(type='submit') Update Profile Picture
-  form(name="updateprofile",method="post",action="/editattendeeprofile")
-      input(type='text', name='fname',value=profile.Fname)
-      input(type='text', name='lname',value=profile.Lname)
-      input(type='text', name='tel',value=profile.Tel)
-      input(type='text', name='email',value=profile.Email)
-      input(type='text', name='dob',value=profile.DOB)
-      input(type='text', name='gender',value=profile.Gender)
-      button(type='submit') Update Profile
-  each row in profile.Credit
-    p #{row}
-    form(name='delcard',method='post',action='/deletecard')
-        input(type='hidden',name='id',value=row._id)
-        button(type='submit') Delete Card
-  h2 Add card
-  form(name="addcard",method="post",action="/addcard")
-      input(type='text', name='cno',placeholder='Card Number')
-      input(type='text', name='cname',placeholder='Card Name')
-      input(type='text', name='cvv',placeholder='cvv')
-      input(type='text', name='exp',placeholder='exp')
-      button(type='submit') Add card
-  
+    //- img(src=profile.ImgLink,height="300",width="400")
+    //- P First Name = #{profile.Fname} 
+    //- p Last Name = #{profile.Lname} 
+    //- p Tel = #{profile.Tel} 
+    //- p Email = #{profile.Email} 
+    //- p Date of Birth = #{profile.DOB} 
+    //- p Gender = #{profile.Gender}
+    //- form(name="updateprofilepic",method="post",action="/editattendeepic")
+    //-     input(type='text', name='link',placeholder='Picture Link')
+    //-     button(type='submit') Update Profile Picture
+    //- form(name="updateprofile",method="post",action="/editattendeeprofile")
+    //-     input(type='text', name='fname',value=profile.Fname)
+    //-     input(type='text', name='lname',value=profile.Lname)
+    //-     input(type='text', name='tel',value=profile.Tel)
+    //-     input(type='text', name='email',value=profile.Email)
+    //-     input(type='text', name='dob',value=profile.DOB)
+    //-     input(type='text', name='gender',value=profile.Gender)
+    //-     button(type='submit') Update Profile
+    each row in profile.Credit
+        p #{row} ,#{row.CNO},#{row.CName},#{row.CVV},#{row.EXP}
+        form(name='delcard',method='post',action='/deletecard')
+            input(type='hidden',name='id',value=row._id)
+            button(type='submit') Delete Card
+    h2 Add card
+    form(name="addcard",method="post",action="/addcard")
+        input(type='text', name='cno',placeholder='Card Number')
+        input(type='text', name='cname',placeholder='Card Name')
+        input(type='text', name='cvv',placeholder='cvv')
+        input(type='text', name='exp',placeholder='exp')
+        button(type='submit') Add card
+    .container
+        h1
+            u Attendee's Profile
+        .row
+            #profilePic.col-3
+                img(src=profile.ImgLink, width='250px')
+                form.d-flex.align-items-center(name='updateprofilepic', method='post', action='/editattendeepic')
+                    input(type='text', ,name='link', ,placeholder='Picture Link')
+                    button.btn.btn-secondary(type='submit') Upload
+            .col
+                #profileInfo.row.bg-w
+                    .col.d-flex.justify-content-between
+                        p.h3 Profile
+                        button#editbtn.btn.btn-white(onclick='toInput()')
+                            img.img-fluid(src='/images/edit.png', width='25')
+                    .blackline
+                    form.row(name="updateprofile",method="post",action="/editattendeeprofile")
+                        #info.d-flex.align-items-start.flex-column.ml-4.mt-4(style='min-width: 18vw;')
+                            .row
+                                b FirstName :
+                                p#tf.ml-4  #{profile.Fname}
+                                input#myInput.form-control(type='text',name='fname', value=profile.Fname, style='display: none;')
+                            .row
+                                b Telephone :
+                                p#tf.ml-4 #{profile.Tel} 
+                                input#myInput.form-control(type='tel',name='tel', value=profile.Tel, style='display: none;')
+                            .row
+                                b Email :
+                                p#tf.ml-4 #{profile.Email}
+                                input#myInput.form-control(type='email',name='email', value=profile.Email, style='display: none;')
+                            .row
+                                b Birthday :
+                                p#tf.ml-4 #{profile.DOB} 
+                                input#myInput.form-control(type='text',name='dob', value=profile.DOB, style='display: none;')
+                            .row
+                                b Gender :
+                                p#tf.ml-4 #{profile.Gender}
+                                input#myInput.form-control(type='text',name='gender', value=profile.Gender, style='display: none;')
+                        #info.d-flex.flex-column.mt-4
+                            .row
+                                b LastName :
+                                p#tf.ml-4 #{profile.Lname} 
+                                input#myInput.form-control(type='text',name='lname', value=profile.Lname, style='display: none;')
+                            .row.mt-auto(style='margin-left: 12vw')
+                                button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;') Save
+                #cardinfo.row.bg-w
+                    .col.d-flex.justify-content-between
+                        p.h3 Credit Card Information
+                        button.btn.btn-white(type='submit', onclick='nwcard(1)')
+                            img.img-fluid(src='/images/edit.png', width='25')
+                    .blackline
+                    -  var i = 1;
+                    each row in profile.Credit
+                        -  if(i != 1){
+                        .divider.mt-4
+                        -  }
+                        .d-flex.align-items-center.mt-2.ml-4
+                            h1 #{i}
+                            .vl.ml-4
+                            .d-flex.flex-column(style='margin-left: 4vw;width: 25vw')
+                                .row
+                                    b Card Number :
+                                    p.ml-4 #{row.CNO}
+                                .row
+                                    b Card Name :
+                                    p.ml-4 #{row.CName}
+                                .row
+                                    b CVV :
+                                    p.ml-4 #{row.CVV}
+                                .row.d-flex.justify-content-between.ml-1
+                                    .row
+                                        b EXP :
+                                        p.ml-4 #{row.EXP}
+                                    form(name='delcard',method='post',action='/deletecard')
+                                        input(type='hidden',name='id',value=row._id)
+                                        button.btn.btn-danger(type='submit') Delete Card
+                        - i+=1;
+                // - card information
+                // - add card
+                #newcard.row.bg-w(style='display: none;')
+                    .col.d-flex.justify-content-between(style='max-width: 40vw;')
+                        p.h3 Add Card
+                        button.btn.btn-white(type='submit', disabled='')
+                            img(src='/images/edit.png', width='25')
+                    .blackline
+                    .d-flex.align-items-center.mt-2.ml-4
+                        h1
+                        .vl.ml-4
+                        form.d-flex.flex-column(name="addcard",method="post",action="/addcard",style='margin-left: 4vw')
+                            .row
+                                b Card Number :
+                                input.ml-4(type='text', name='cno', placeholder='Card Number')
+                            .row
+                                b Card Name :
+                                input.ml-4(type='text', name='cname', placeholder='Card Name')
+                            .row
+                                b CVV :
+                                input.ml-4(type='text', name='cvv', placeholder='cvv')
+                            .row.d-flex
+                                b EXP :
+                                input.ml-4(type='text', name='exp', placeholder='exp')
+                                button.btn.btn-success(type='submit', style='margin-left: 8vw', onclick='nwcard(2)') Add Card
+                    // - add card
+                                            
