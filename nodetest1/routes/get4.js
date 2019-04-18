@@ -5,7 +5,7 @@ var express               = require('express'),
 
 //9 EventOrg AddEvent
 router.get('/addevent',EVO_Login,function(req,res,next){
-    res.render('./eventorgstuff/addevent');
+    res.render('./eventorgstuff/addevent',{currentUser : req.user});
 });
 
 //10 EventOrg edit event add see attendee list
