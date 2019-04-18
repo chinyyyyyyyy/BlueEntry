@@ -4,4 +4,186 @@ block head
   title   Welcome to BlueEntry
 
 block body
-  h1 Welcome to BlueEntry
+  #banner
+    #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+      ol.carousel-indicators
+        li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+        li(data-target='#carouselExampleIndicators', data-slide-to='1')
+        li(data-target='#carouselExampleIndicators', data-slide-to='2')
+      .carousel-inner
+        .carousel-item.active
+          img.d-block.w-100(src='/images/pictest.jpg', alt='...', height='200px')
+        .carousel-item
+          img.d-block.w-100(src='/images/pictest.jpg', alt='...', height='200px')
+        .carousel-item
+          img.d-block.w-100(src='/images/pictest.jpg', alt='...', height='200px')
+      a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.sr-only Previous
+      a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.sr-only Next
+  #content
+    #selectType.mt-4.offset-md-1
+      ul#pills-tab.nav.mb-3(role='tablist')
+        li.nav-item
+          a#pills-allevent-tab.nav-link.active(onclick='changeto(1)', data-toggle='pill', href='#pills-allevent', role='tab', aria-controls='pills-allevent', aria-selected='true') All Event
+        li.nav-item
+          a#pills-comsci-tab.nav-link(onclick='changeto(2)', data-toggle='pill', href='#pills-comsci', role='tab', aria-controls='pills-comsci', aria-selected='false') ComSci
+        li.nav-item
+          a#pills-finance-tab.nav-link(onclick='changeto(3)', data-toggle='pill', href='#pills-finance', role='tab', aria-controls='pills-finance', aria-selected='false') Finance
+        li.nav-item
+          a#pills-life-tab.nav-link(onclick='changeto(4)', data-toggle='pill', href='#pills-life', role='tab', aria-controls='pills-life', aria-selected='false') Life
+        li.nav-item
+          a#pills-homeecon-tab.nav-link(onclick='changeto(5)', data-toggle='pill', href='#pills-homeecon', role='tab', aria-controls='pills-homeecon', aria-selected='false') HomeEcon
+        li.nav-item
+          a#pills-culture-tab.nav-link(onclick='changeto(6)', data-toggle='pill', href='#pills-culture', role='tab', aria-controls='pills-culture', aria-selected='false') Culture
+        li.nav-item
+          a#pills-others-tab.nav-link(onclick='changeto(7)', data-toggle='pill', href='#pills-others', role='tab', aria-controls='pills-others', aria-selected='false') Others
+      .colorbar
+        .pbar
+    #pills-tabContent.tab-content
+      #pills-allevent.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='pills-allevent-tab')
+        .container.mt-4
+          .row
+            each row in allevent
+              .col-md-3.mb-4
+                .card
+                  .card-head
+                    img.card-img-top(src='/images/pictest.jpg', alt='Generic placeholder image')
+                  .card-body
+                    a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename
+                    p.card-text Category :
+                      | #{row.Category}
+                      -  var price = Number(row.Price)
+                      -  if(price == 0 || price == ''){
+                      -  price = 'Free'
+                      -  }
+                    p.card-text Price:
+                      | #{price}
+      #pills-comsci.tab-pane.fade(role='tabpanel', aria-labelledby='pills-comsci-tab')
+        .container.mt-4
+          .row
+            each row in allevent
+              - if(row.Category != 'ComSci'){
+              -    continue;
+              - }
+              .col-md-3.mb-4
+                .card
+                  .card-head
+                    img.card-img-top(src='/images/pictest.jpg', alt='Generic placeholder image')
+                  .card-body
+                    a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename
+                    p.card-text Category :
+                      | #{row.Category}
+                      -  var price = Number(row.Price)
+                      -  if(price == 0 || price == ''){
+                      -  price = 'Free'
+                      -  }
+                    p.card-text Price:
+                      | #{price}
+      #pills-finance.tab-pane.fade(role='tabpanel', aria-labelledby='pills-finance-tab')
+        .container.mt-4
+          .row
+            each row in allevent
+              - if(row.Category != 'Finance'){
+              -    continue;
+              - }
+              .col-md-3.mb-4
+                .card
+                  .card-head
+                    img.card-img-top(src='/images/pictest.jpg', alt='Generic placeholder image')
+                  .card-body
+                    a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename
+                    p.card-text Category :
+                      | #{row.Category}
+                      -  var price = Number(row.Price)
+                      -  if(price == 0 || price == ''){
+                      -  price = 'Free'
+                      -  }
+                    p.card-text Price:
+                      | #{price}
+      #pills-life.tab-pane.fade(role='tabpanel', aria-labelledby='pills-life-tab')
+        .container.mt-4
+          .row
+            each row in allevent
+              - if(row.Category != 'Life'){
+              -    continue;
+              - }
+              .col-md-3.mb-4
+                .card
+                  .card-head
+                    img.card-img-top(src='/images/pictest.jpg', alt='Generic placeholder image')
+                  .card-body
+                    a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename
+                    p.card-text Category :
+                      | #{row.Category}
+                      -  var price = Number(row.Price)
+                      -  if(price == 0 || price == ''){
+                      -  price = 'Free'
+                      -  }
+                    p.card-text Price:
+                      | #{price}
+      #pills-homeecon.tab-pane.fade(role='tabpanel', aria-labelledby='pills-homeecon-tab')
+        .container.mt-4
+          .row
+            each row in allevent
+              - if(row.Category != 'HomeEcon'){
+              -    continue;
+              - }
+              .col-md-3.mb-4
+                .card
+                  .card-head
+                    img.card-img-top(src='/images/pictest.jpg', alt='Generic placeholder image')
+                  .card-body
+                    a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename
+                    p.card-text Category :
+                      | #{row.Category}
+                      -  var price = Number(row.Price)
+                      -  if(price == 0 || price == ''){
+                      -  price = 'Free'
+                      -  }
+                    p.card-text Price:
+                      | #{price}
+      #pills-culture.tab-pane.fade(role='tabpanel', aria-labelledby='pills-culture-tab')
+        .container.mt-4
+          .row
+            each row in allevent
+              - if(row.Category != 'Culture'){
+              -    continue;
+              - }
+              .col-md-3.mb-4
+                .card
+                  .card-head
+                    img.card-img-top(src='/images/pictest.jpg', alt='Generic placeholder image')
+                  .card-body
+                    a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename
+                    p.card-text Category :
+                      | #{row.Category}
+                      -  var price = Number(row.Price)
+                      -  if(price == 0 || price == ''){
+                      -  price = 'Free'
+                      -  }
+                    p.card-text Price:
+                      | #{price}
+      #pills-others.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='pills-others-tab')
+        .container.mt-4
+          .row
+            each row in allevent
+              - if(row.Category != 'Others'){
+              -    continue;
+              - }
+              .col-md-3.mb-4
+                .card
+                  .card-head
+                    img.card-img-top(src='/images/pictest.jpg', alt='Generic placeholder image')
+                  .card-body
+                    a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename
+                    p.card-text Category :
+                      | #{row.Category}
+                      -  var price = Number(row.Price)
+                      -  if(price == 0 || price == ''){
+                      -  price = 'Free'
+                      -  }
+                    p.card-text Price:
+                      | #{price}                                                                                        

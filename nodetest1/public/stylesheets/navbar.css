@@ -27,7 +27,6 @@ a.nav-link{
 .nav-link.active{
     color: #006FB9;
 }
-
 .carousel-item{
     height: 200px;
 }
@@ -36,18 +35,17 @@ a.nav-link{
     height: 5px;
     background-color: #d6d8da;
     border-radius: .25rem;
-    width: 32.5vw;
+    width: 45.5vw;
 }
 .pbar{
     background-color: #006FB9;
-    width: 20%;
+    width: 14.5%;
     margin-left: 0;
     box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.2);
 }
 div.card {
     width: 250px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 .blackline{
     height: 3px;
@@ -62,4 +60,8 @@ div.card {
     padding: 30px;
     margin-bottom: 3vh;
     border-radius: 10px;
+}
+.card-head img{
+    min-height: 220px;
+    padding:10px;
 }
