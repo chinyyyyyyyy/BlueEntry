@@ -4,6 +4,22 @@ block head
   title My Reserved Event
 
 block body
-  each row in myevent
-    p Reserve = #{row}
-    a.btn-primary(role='button' href=`/reservedetail/${row._id}`) Reserve Detail
+  .container
+  p 
+  h2(align='center') My reserved events
+  p
+  table.table
+    thead
+      tr
+        th Firstname
+        th Lastname
+        th Payment
+        th
+    tbody
+      each row in myevent
+        tr
+          td #{row.Fname} 
+          td #{row.Lname}
+          td #{row.Payment}
+          td 
+            a.btn.btn-primary.btn-sm(role='button') Reserve Detail
