@@ -4,28 +4,36 @@ block head
   title Add New Event
 
 block body
-    h1 Add New Event
-    form(name="regis",method="post",action="/addevent")
-      p Event Name
-      input(type='text', name='name',placeholder='Event Name')
-      select#inputGroupSelect01(class='custom-select',name='category')
-              option(value='ComSci') Computer Science
-              option(value='Finance') Finance
-              option(value='Life') Life
-              option(value='HomeEcon') House Economics
-              option(value='Culture') Culture
-              option(value='others') Others
-      P detail  
-      input(type='text', name='detail',placeholder='Detail')
-      P Price  
-      input(type='text', name='price',placeholder='Price')
-      P Max seat 
-      input(type='text', name='seat',placeholder='Max seat')
-      P Location
-      input(type='text', name='location',placeholder='Last Name')
-      P Last Date Reservable 
-      input(type='text', name='exp',placeholder='Last Date Reservable ')
-      P Contact 
-      input(type='text', name='contact',placeholder='ex mail or tel ')
-      p
-      button(type='submit') Add Event
+  h1 Add New Event
+  .container.bg-w
+    form.row.d-flex.flex-column(name="regis",method="post",action="/addevent")
+        .row.form-inline
+          p Event Name
+          input.form-control(type='text', name='name',placeholder='Event Name')
+          select#inputGroupSelect01(class='custom-select',name='category')
+                  option(value='ComSci') Computer Science
+                  option(value='Finance') Finance
+                  option(value='Life') Life
+                  option(value='HomeEcon') House Economics
+                  option(value='Culture') Culture
+                  option(value='others') Others
+        .row          
+          P detail  
+          input(type='text', name='detail',placeholder='Detail')
+        .row  
+          P Price  
+          input(type='text', name='price',placeholder='Price')
+        .row  
+          P Max seat 
+          input(type='text', name='seat',placeholder='Max seat')
+        .row  
+          P Location
+          input(type='text', name='location',placeholder='Last Name')
+        .row  
+          P Last Date Reservable
+          input(type='text', name='exp',placeholder='Last Date Reservable ')
+        .row  
+          P Contact 
+          input(type='text', name='contact',placeholder='ex mail or tel ')
+        button.btn.btn-success(type='submit') Add Event
+      
