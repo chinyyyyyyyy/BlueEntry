@@ -26,7 +26,7 @@ block body
                 .container(class='formcenter')
                     P Amount
                     .form-check.form-check-inline
-                        input#inlineRadio1.form-check-input(type='radio', name='amount', value=1)
+                        input#inlineRadio1.form-check-input(type='radio', name='amount', value=1,checked="checked")
                         label.form-check-label(for='inlineRadio1') 1
                     .form-check.form-check-inline
                         input#inlineRadio2.form-check-input(type='radio', name='amount', value=2)
@@ -46,7 +46,7 @@ block body
                             input#inlineRadio1.form-check-input(type='radio', name='payment', value="credit")
                             label.form-check-label(for='inlineRadio1') #{row.CNO}
                     .form-check.form-check-inline
-                        input#inlineRadio1.form-check-input(type='radio', name='payment', value="transfer")
+                        input#inlineRadio1.form-check-input(type='radio', name='payment', value="transfer",checked="checked" )
                         label.form-check-label(for='inlineRadio1') Bank Transfer       
                     .form-row
                         .col-md-3

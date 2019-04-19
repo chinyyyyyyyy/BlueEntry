@@ -2,12 +2,31 @@ extends ../layout.jade
 
 block head
   title My Reserved Event
+  include ../mixins/table.jade
 
 block body
-    p Reserve = #{reserve}
-    P Event = #{event}
-    img(src=reserve.ImgLink,height="300",width="400")
-    form(name="updateprofilepic",method="post",action='/addreceipt')
-      input(type='hidden', name='id',value=reserve._id)
-      input(type='text', name='link',placeholder='Picture Link')
-      button(type='submit') Update Receipt Picture
+    .container(style="background-color:white")
+      table.table
+        +table("Firstname :", reserve.Fname )
+        +table("Lastname :", reserve.Lname )
+        +table("Address :", reserve.Address )
+        +table("Tel :", reserve.Tel )
+        +table("Reserver Name :", reserve.Reserver )
+        +table("Payment :", reserve.Payment )
+        +table("Amount :", reserve.Amount )
+        +table("Reserve time :", reserve.ReserveTimestamp )
+    .container(style="background-color:white")
+      table.table
+        +table("Eventname :", event.Ename )
+        +table("Category :", event.Category )
+        +table("Detail :", event.Detail )
+        +table("Price :", event.Price )
+        +table("Max Seat :", event.MaxSeat )
+        +table("Location :", event.Location )
+        +table("Contact :", event.Contact )
+    .container(style="background-color:white")
+      img(src=reserve.ImgLink,height="300",width="400")
+      form(name="updateprofilepic",method="post",action='/addreceipt')
+        input(type='hidden', name='id',value=reserve._id)
+        input(type='text', name='link',placeholder='Picture Link')
+        button(type='submit') Upload Receipt Picture
