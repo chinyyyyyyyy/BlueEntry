@@ -4,22 +4,26 @@ block head
   title List of my Event
 
 block body
-  .container
-  p
-  h2(align='center') My Events
-  p
-  table.table
-    thead
-      tr
-        th Event Name
-        th Exp date
-        th
-    tbody
-      each row in myevent
+  .container(style="background-color:white")
+    p
+    h2(align='center') My Events
+    p
+    table.table
+      thead(class="thead-dark")
         tr
-          td #{row.Ename} 
-          td #{row.Exp}
-          td 
-            a.btn.btn-primary.btn-sm(role='button' href=`/eventdetail/${row._id}`) Event Detail
-  p
-  a.btn.btn-warning(role='button' href=`/addevent`) New Event
+          th Event Name
+          th Exp date
+          th
+      tbody
+        each row in myevent
+          tr
+            td #{row.Ename} 
+            td #{row.Exp}
+            td 
+              a.btn.btn-primary.btn-sm(role='button' href=`/eventdetail/${row._id}`) Event Detail
+        tr
+          td
+          td
+          td
+            a.btn.btn-warning.float-right(align="right" role='button' href=`/addevent`) New Event
+    
