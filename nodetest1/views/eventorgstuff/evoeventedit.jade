@@ -2,16 +2,20 @@ extends ../layout.jade
 
 block head
   title My Event ...
+  include ../mixins/table.jade
 
 block body
-  p EventName = #{event.Ename}
-  p Category = #{event.Category}
-  p Detail = #{event.Detail}
-  p Price = #{event.Price}
-  p MaxSeat = #{event.MaxSeat}
-  p Location = #{event.Location}
-  p Exp = #{event.Exp}
-  p Contact = #{event.Contact}
+  .container(style="background-color:white")
+      table.table
+        +table("EventName :", event.Ename )
+        +table("Category :", event.Category )
+        +table("Detail :", event.Detail )
+        +table("Price :", event.Price )
+        +table("Max Seat :", event.MaxSeat )
+        +table("Location:", event.Location )
+        +table("Exp :", event.Exp )
+        +table("Contact :", event.Contact )
+
 
   form(name="boost",method="post",action="/boost")
     input(type='hidden', name='id', value=event._id)
