@@ -24,9 +24,10 @@ block body
         +table("Max Seat :", event.MaxSeat )
         +table("Location :", event.Location )
         +table("Contact :", event.Contact )
-    .container(style="background-color:white")
-      img(src=reserve.ImgLink,height="300",width="400")
-      form(name="updateprofilepic",method="post",action='/addreceipt')
-        input(type='hidden', name='id',value=reserve._id)
-        input(type='text', name='link',placeholder='Picture Link')
-        button(type='submit') Upload Receipt Picture
+    .container(style="background-color:white; padding-bottom:20px")
+      div.text-center
+        img(align="center" src=reserve.ImgLink,height="300",width="400")
+        form(align="center" name="updateprofilepic",method="post",action='/addreceipt')
+          input(type='hidden', name='id',value=reserve._id)
+          input(type='text', name='link',placeholder='Picture Link')
+          button(type='submit') Upload Receipt Picture
