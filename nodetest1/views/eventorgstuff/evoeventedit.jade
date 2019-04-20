@@ -16,23 +16,29 @@ block body
         +table("Exp :", event.Exp )
         +table("Contact :", event.Contact )
 
+  .container(style="background-color:white; padding-bottom:20px; padding-top:20px")
+    form(name="boost",method="post",action="/boost")
+      input(type='hidden', name='id', value=event._id)
+      button(type='submit') Boost
+      p
 
-  form(name="boost",method="post",action="/boost")
-    input(type='hidden', name='id', value=event._id)
-    button(type='submit') Boost
-
-  -if(event.reservation.length==0){
-    form(name="regis",method="post",action="/editevent")
-        input(type='hidden', name='id',value=event._id)
-        input(type='text', name='ename',value=event.Ename,placeholder='name')
-        input(type='text', name='category',value=event.Category)
-        input(type='text', name='detail',value=event.Detail,placeholder='detail')
-        input(type='text', name='price',value=event.Price)
-        input(type='text', name='maxseat',value=event.MaxSeat)
-        input(type='text', name='location',value=event.Location)
-        input(type='text', name='exp',value=event.Exp)
-        input(type='text', name='contact',value=event.Contact)
-        button(type='submit') Update Profile
-    a.btn-primary(role='button' href=`/attendeelist/${event._id}`) My Attendee
-  -}
+    -if(event.reservation.length==0){
+      h3
+        b Edit Event
+      form(name="regis",method="post",action="/editevent")
+        table.table
+            input(type='hidden', name='id',value=event._id)
+            label Event name:
+            input(type='text', name='ename',value=event.Ename,placeholder='name')
+            label Category:
+            input(type='text', name='category',value=event.Category)
+          input(type='text', name='detail',value=event.Detail,placeholder='detail')
+          input(type='text', name='price',value=event.Price)
+          input(type='text', name='maxseat',value=event.MaxSeat)
+          input(type='text', name='location',value=event.Location)
+          input(type='text', name='exp',value=event.Exp)
+          input(type='text', name='contact',value=event.Contact)
+          button(type='submit') Update Profile
+      a.btn-primary(role='button' href=`/attendeelist/${event._id}`) My Attendee
+    -}
     
