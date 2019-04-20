@@ -5,11 +5,12 @@ block head
 
 block body
   h1 Add New Event
-  .container.bg-w
-    form.row.d-flex.flex-column(name="regis",method="post",action="/addevent")
+  .container.bg-w.d-flex.justify-content-center
+    form.row.flex-column#nevent(name="regis",method="post",action="/addevent")
         .row.form-inline
-          p Event Name
+          label Event Name
           input.form-control(type='text', name='name',placeholder='Event Name')
+          label(for="inputGroupSelect01") Category
           select#inputGroupSelect01(class='custom-select',name='category')
                   option(value='ComSci') Computer Science
                   option(value='Finance') Finance
@@ -17,23 +18,23 @@ block body
                   option(value='HomeEcon') House Economics
                   option(value='Culture') Culture
                   option(value='others') Others
-        .row          
-          P detail  
-          input(type='text', name='detail',placeholder='Detail')
-        .row  
-          P Price  
-          input(type='text', name='price',placeholder='Price')
-        .row  
-          P Max seat 
-          input(type='text', name='seat',placeholder='Max seat')
-        .row  
-          P Location
-          input(type='text', name='location',placeholder='Last Name')
-        .row  
-          P Last Date Reservable
-          input(type='text', name='exp',placeholder='Last Date Reservable ')
-        .row  
-          P Contact 
-          input(type='text', name='contact',placeholder='ex mail or tel ')
+        .row.form-inline          
+          label detail  
+          input.form-control(type='text', name='detail',placeholder='Detail')
+        .row.form-inline  
+          label Price  
+          input.form-control(type='text', name='price',placeholder='Price')
+        .row.form-inline  
+          label Max seat 
+          input.form-control(type='text', name='seat',placeholder='Max seat')
+        .row.form-inline  
+          label Location
+          input.form-control(type='text', name='location',placeholder='Last Name')
+        .row.form-inline  
+          label Last Date Reservable
+          input.form-control(type='text', name='exp',placeholder='Last Date Reservable ')
+        .row.form-inline  
+          label Contact 
+          input.form-control(type='text', name='contact',placeholder='ex mail or tel ')
         button.btn.btn-success(type='submit') Add Event
       

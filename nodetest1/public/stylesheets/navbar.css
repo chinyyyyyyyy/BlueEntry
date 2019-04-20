@@ -87,3 +87,9 @@ div.card {
     height: 3.1vh;
     margin-left: 0.71vw;
 }
+#nevent label{
+    min-width: 10vw;
+}
+#nevent div{
+    margin-bottom: 20px;
+}
