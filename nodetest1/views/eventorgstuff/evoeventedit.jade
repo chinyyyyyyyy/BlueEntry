@@ -5,7 +5,9 @@ block head
   include ../mixins/table.jade
 
 block body
-  .container(style="background-color:white")
+  .container(style="background-color:white; padding-bottom:30px;padding-top:20px")
+      h3
+        b My Event
       table.table
         +table("EventName :", event.Ename )
         +table("Category :", event.Category )
@@ -15,30 +17,50 @@ block body
         +table("Location:", event.Location )
         +table("Exp :", event.Exp )
         +table("Contact :", event.Contact )
+      button.btn.btn-primary(type='submit') Boost
 
-  .container(style="background-color:white; padding-bottom:20px; padding-top:20px")
+  .container(style="background-color:white; padding-bottom:30px; padding-top:20px")
     form(name="boost",method="post",action="/boost")
       input(type='hidden', name='id', value=event._id)
-      button(type='submit') Boost
+      
       p
 
     -if(event.reservation.length==0){
       h3
         b Edit Event
       form(name="regis",method="post",action="/editevent")
+        input(type='hidden', name='id',value=event._id)
         table.table
-            input(type='hidden', name='id',value=event._id)
-            label Event name:
-            input(type='text', name='ename',value=event.Ename,placeholder='name')
-            label Category:
-            input(type='text', name='category',value=event.Category)
-          input(type='text', name='detail',value=event.Detail,placeholder='detail')
-          input(type='text', name='price',value=event.Price)
-          input(type='text', name='maxseat',value=event.MaxSeat)
-          input(type='text', name='location',value=event.Location)
-          input(type='text', name='exp',value=event.Exp)
-          input(type='text', name='contact',value=event.Contact)
-          button(type='submit') Update Profile
-      a.btn-primary(role='button' href=`/attendeelist/${event._id}`) My Attendee
-    -}
+          tr
+            td
+              label Event name :
+              input(type='text', name='ename',value=event.Ename,placeholder='name')
+            td
+              label Category :
+              input(type='text', name='category',value=event.Category)
+          tr
+            td
+              label Detail :
+              textarea.form-control(rows='5',type='text', name='detail',placeholder='detail') #{event.Detail}
+            td
+              label Lacation :
+              textarea.form-control(rows='5',type='text', name='location') #{event.Location}
+          tr
+            td
+              label Price :
+              input(type='text', name='price',value=event.Price)
+            td
+              label Max Seat :
+              input(type='text', name='maxseat',value=event.MaxSeat)
+          tr
+            td
+              label Exp :
+              input(type='text', name='exp',value=event.Exp)
+            td
+              label Contact :
+              input(type='text', name='contact',value=event.Contact)   
+        a.btn.btn-primary(role='button' href=`/attendeelist/${event._id}`) My Attendee
+        p
+          button.btn.btn-warning.float-right(type='submit') Update Profile
+      -}
     
