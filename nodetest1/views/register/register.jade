@@ -2,9 +2,21 @@ extends ../layout.jade
 
 block head
     title register
+    include ../mixins/table.jade
 
 block body
-    h1 Attendee or Event Organizer ? 
-    a(class="btn btn-primary" href="/attendeeregister" role="button") Attendee
-    p
-    a(class="btn btn-primary" href="/eventorgregister" role="button") Event Organizer
+    h1(align="center") Attendee or Event Organizer ? 
+    table.table.borderless
+        tr
+            td(align="center", style="border-top:0")
+                img.img-responsive(width='300',height='300',src='/images/teamwork.png')
+            td(align="center", style="border-top:0")
+                img.img-responsive(width='300',height='300',src='/images/strategy.png')
+                
+        tr
+            td(align="center", style="border-top:0")
+                a(class="btn btn-primary" href="/attendeeregister" role="button") Attendee
+            td(align="center", style="border-top:0")
+                a(class="btn btn-primary" href="/eventorgregister" role="button") Event Organizer
+
+    
