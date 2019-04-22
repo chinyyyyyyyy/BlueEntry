@@ -53,6 +53,12 @@ router.post('/register',function(req,res){
                 }
             });
           }
+          req.transport.sendMail({
+              from: 'blueentry.se@gmail.com',
+              to: req.body.email,
+              subject: 'Welcome to BlueEntry',
+              text: 'Registration completed.'
+          });
           res.redirect('/');
       });
     });

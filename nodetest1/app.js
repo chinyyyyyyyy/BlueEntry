@@ -13,7 +13,8 @@ var createError           = require('http-errors'),
     router_post4          = require('./routes/post4'),
     passport              = require('passport'),
     LocalStrategy         = require('passport-local'),
-    User                  = require('./routes/users');
+    User                  = require('./routes/users'),
+    nodemailer            = require('nodemailer');
 var app = express();
 
 app.use(require('express-session')({
@@ -28,6 +29,13 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+var transport = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'blueentry.se@gmail.com',
+    pass: 'blue.entry2019'
+  }
+});
 
 //Database Part//
 var db = require('mongoose');
@@ -106,6 +114,7 @@ app.use(function(req,res,next){
   req.event = db.model('events',Event);
   req.reserve = db.model('reservation',reservation_shcema);
   req.credit = db.model('credit',Credit_schema);
+  req.transport = transport;
   next();
  }); 
  

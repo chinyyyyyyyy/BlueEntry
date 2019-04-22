@@ -14,12 +14,15 @@ block body
           th Firstname
           th Lastname
           th Payment
+          th Event Name
           th
       tbody
-        each row in myevent
+        -for (i in myevent){
           tr
-            td #{row.Fname} 
-            td #{row.Lname}
-            td #{row.Payment}
+            td #{myevent[i].Fname} 
+            td #{myevent[i].Lname}
+            td #{myevent[i].Payment}
+            td #{ename[i].Ename}
             td 
-              a.btn.btn-primary.btn-sm(role='button' href=`/reservedetail/${row._id}`) Reserve Detail
+              a.btn.btn-primary.btn-sm(role='button' href=`/reservedetail/${myevent[i]._id}`) Reserve Detail
+        -}
