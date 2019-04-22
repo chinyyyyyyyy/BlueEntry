@@ -19,6 +19,7 @@ block body
         +table("Exp :", event.Exp )
         +table("Contact :", event.Contact )
       button.btn.btn-primary(type='submit') Boost
+      a.btn.btn-primary(role='button' href=`/attendeelist/${event._id}`) My Attendee
 
   .container(style="background-color:white; padding-bottom:30px; padding-top:20px")
     form(name="boost",method="post",action="/boost")
@@ -59,14 +60,9 @@ block body
               input(type='text', name='exp',value=event.Exp)
             td
               label Contact :
-              input(type='text', name='contact',value=event.Contact)
-
           tr
             td 
               label Image Link :  
               input(type='text',name='link',value=event.ImgLink)
         a.btn.btn-primary(role='button' href=`/attendeelist/${event._id}`) My Attendee
-        p
-          button.btn.btn-warning.float-right(type='submit') Update Profile
-      -}
-    
+
