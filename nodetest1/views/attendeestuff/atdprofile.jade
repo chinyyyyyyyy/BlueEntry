@@ -10,8 +10,8 @@ block body
         .row
             #profilePic.col-3
                 img(src=profile.ImgLink, width='250px')
-                form.d-flex.align-items-center(name='updateprofilepic', method='post', action='/editattendeepic')
-                    input(type='text', ,name='link', ,placeholder='Picture Link',required)
+                form.d-flex.align-items-center(name='updateprofilepic',method='post', action='/editattendeepic')
+                    input(type='text',name='link',placeholder='Picture Link',required)
                     button.btn.btn-secondary(type='submit') Upload
             .col
                 #profileInfo.row.bg-w
