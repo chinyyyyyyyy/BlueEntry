@@ -3,4 +3,11 @@ mixin table(att,value)
         td(width="40%")
             b #{att}
         td #{value}
-        
+
+mixin table1(att,ty,name,value,ph)
+    tr
+        td(width="40%")
+            b #{att}
+        td#tf #{value}
+        td
+            input#myInput.form-control(type='#{ty}', name= '#{name}',value='#{value}',placeholder='#{ph}',style='display: none;')        

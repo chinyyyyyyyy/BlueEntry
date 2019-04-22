@@ -67,7 +67,7 @@ router.post('/editevent',function(req,res){
             Category: req.body.category,
             Detail: req.body.detail,
             Price: req.body.price,
-            MaxSeat: req.body.seat,
+            MaxSeat: req.body.maxseat,
             Location: req.body.location,
             Exp: req.body.exp,
             Contact: req.body.contact,
