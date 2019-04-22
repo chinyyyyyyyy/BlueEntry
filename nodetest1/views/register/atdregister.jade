@@ -4,29 +4,37 @@ block head
     title Attendee Register
 
 block body
-    h1 Attendee Register
-    form(name="regis",method="post",action="/register")
-      p Username 
-      input(type='text', name='username',placeholder='Username')
-      P Password  
-      input(type='text', name='password',placeholder='Password')
-      input(type='hidden',value='attendee', name='type')
-      P First Name  
-      input(type='text', name='fname',placeholder='First Name')
-      P Last Name  
-      input(type='text', name='lname',placeholder='Last Name')
-      P Telephone  
-      input(type='text', name='tel',placeholder='ex 0xx-xxxxxxx')
-      P Email 
-      input(type='text', name='email',placeholder='example@example.com')
-      P Birthday
-      input(type='text', name='dob',placeholder='ex 20/02/1998')
-      P Gender
-      .form-check.form-check-inline
-        input#inlineRadio1.form-check-input(type='radio', name='gender', value='male',checked="checked")
-        label.form-check-label(for='inlineRadio1') Male
-      .form-check.form-check-inline
-        input#inlineRadio2.form-check-input(type='radio', name='gender', value='female')
-        label.form-check-label(for='inlineRadio2') Female
-      p
-      button(type='submit') Register
+    h1(align="center") Attendee Register
+    .container.bg-w.d-flex.justify-content-center
+      form.row.flex-column#nevent(name="regis",method="post",action="/register")
+          input(type='hidden',value='attendee', name='type')
+          .row.form-inline
+            label Username
+            input.form-control(type='text', name='username',placeholder='Username')
+          .row.form-inline          
+            label Password 
+            input.form-control(type='password', name='password',placeholder='Password')
+          .row.form-inline  
+            label First Name  
+            input.form-control(type='text', name='fname',placeholder='First Name')
+          .row.form-inline  
+            label Last Name
+            input.form-control(type='text', name='lname',placeholder='Last Name')
+          .row.form-inline  
+            label Telephone
+            input.form-control(type='text', name='tel',placeholder='ex 0xx-xxxxxxx')
+          .row.form-inline  
+            label Email
+            input.form-control(type='email', name='email',placeholder='example@example.com')
+          .row.form-inline  
+            label Birthday
+            input.form-control(type='text', name='dob',placeholder='ex 20/02/1998')
+          
+          
+          P Gender
+          .form-check.form-check-inline
+            input#inlineRadio1.form-check-input(type='radio', name='gender', value='male',checked="checked")
+            label.form-check-label(for='inlineRadio1') Male
+            input#inlineRadio2.form-check-input(type='radio', name='gender', value='female')
+            label.form-check-label(for='inlineRadio2') Female
+          button.btn.btn-success(type='submit') Register
