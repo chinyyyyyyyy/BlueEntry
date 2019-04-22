@@ -4,18 +4,23 @@ block head
     title Event Organizer Register
 
 block body
-    h1 Event Organizer Register
-    form(name="regis",method="post",action="/register")
-      p Username 
-      input(type='text', name='username',placeholder='Username')
-      P Password  
-      input(type='text', name='password',placeholder='Password')
-      input(type='hidden',value='eventorg', name='type')
-      P Name  
-      input(type='text', name='name',placeholder='Name')
-      P Telephone  
-      input(type='text', name='tel',placeholder='ex 0xx-xxxxxxx')
-      P Email 
-      input(type='text', name='email',placeholder='ex 0xx-xxxxxxx')
-      p
-      button(type='submit') Register
+    h1(align="center") Event Organizer Register
+    .container.bg-w.d-flex.justify-content-center
+      form.row.flex-column#nevent(name="regis",method="post",action="/register")
+          input(type='hidden',value='eventorg', name='type')
+          .row.form-inline
+            label Username
+            input.form-control(type='text', name='username',placeholder='Username')
+          .row.form-inline          
+            label Password 
+            input.form-control(type='password', name='password',placeholder='Password')
+          .row.form-inline  
+            label Name  
+            input.form-control(type='text', name='name',placeholder='Name')
+          .row.form-inline  
+            label Telephone
+            input.form-control(type='text', name='tel',placeholder='ex 0xx-xxxxxxx')
+          .row.form-inline  
+            label Email
+            input.form-control(type='email', name='email',placeholder='example@example.com')
+          button.btn.btn-success(type='submit') Register

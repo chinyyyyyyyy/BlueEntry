@@ -93,6 +93,7 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
     Exp: String,
     Contact: String,
     Boost : Boolean,
+    ImgLink: String,
     reservation: [db.Schema.Types.ObjectId]
   });
 
