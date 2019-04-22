@@ -16,6 +16,7 @@ router.post('/search', function (req, res) {
 router.post('/reserve', function (req, res) {
     //Set our internal DB variable
     var reservedData;
+    var mailData = "";
     if (req.body.payment=="credit"){
       reservedData = new req.reserve({
         "Fname": req.body.fname, 
@@ -30,6 +31,7 @@ router.post('/reserve', function (req, res) {
         "ImgLink": "",
         "ReserveTimestamp" : new Date()
       });
+      mailData = "Reservation complete!"
     } else {
       reservedData = new req.reserve({
         "Fname": req.body.fname, 
@@ -44,6 +46,7 @@ router.post('/reserve', function (req, res) {
         "ImgLink": "",
         "ReserveTimestamp" : new Date()
       });
+      mailData = "Your reservation is pending for transfer receipt.\nPlease upload the evidence to confirm your reservation in time.\nOtherwise, Your reservation will be cancelled."
     }
     // req.event.findOneAndUpdate(
     //   { _id: req.body.id },
@@ -60,8 +63,14 @@ router.post('/reserve', function (req, res) {
     reservedData.save()
     req.atd.findOneAndUpdate(
       { username: req.user.username },
-      { $push: { MyReserve: reservedData._id } },function(e){
+      { $push: { MyReserve: reservedData._id } },function(e,docs){
         if (e) console.log(e);
+        req.transport.sendMail({
+          from: 'blueentry.se@gmail.com',
+          to: docs.Email,
+          subject: 'Event reservation',
+          text: mailData
+        });
     });
     req.event.findOneAndUpdate(
       { _id: req.body.id },

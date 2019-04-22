@@ -23,9 +23,14 @@ router.get('/myevent',isLoggedIn,function(req,res,next){
     
     if (req.user.type == "attendee"){
         req.reserve.find({Reserver : req.user.username}, function(e,docs){
-            //req.event.find({"reservation._id": {$in: docs.MyReserve}},function(e,docs2){
-            res.render('./attendeestuff/atdevent',{currentUser:req.user ,myevent:docs});
-            //});
+            var eid = []
+            for (i in docs){
+                eid.push(docs[i].Event)
+            }
+            console.log(eid)
+            req.event.find({"_id": {$in: eid}},function(e,docs2){
+                res.render('./attendeestuff/atdevent',{currentUser:req.user ,myevent:docs , ename: docs2});
+            });
         });
     } else {
         req.evo.findOne({username : req.user.username}, function(e,docs){
