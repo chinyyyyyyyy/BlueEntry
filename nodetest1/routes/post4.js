@@ -37,6 +37,7 @@ router.post('/addevent',function(req,res){
         Exp: req.body.exp,
         Contact: req.body.contact,
         Boost: false,
+        ImgLink: req.body.link,
         reservation: []
     });
     newEvent.save(function(e){
@@ -69,7 +70,8 @@ router.post('/editevent',function(req,res){
             MaxSeat: req.body.seat,
             Location: req.body.location,
             Exp: req.body.exp,
-            Contact: req.body.contact
+            Contact: req.body.contact,
+            ImgLink: req.body.link
         } ,function(e,docs){
         res.redirect("/eventdetail/"+req.body.id);
     });

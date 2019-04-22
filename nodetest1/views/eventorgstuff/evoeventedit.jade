@@ -8,6 +8,7 @@ block body
   .container(style="background-color:white; padding-bottom:30px;padding-top:20px")
       h3
         b My Event
+      img(src=event.ImgLink)
       table.table
         +table("EventName :", event.Ename )
         +table("Category :", event.Category )
@@ -58,7 +59,12 @@ block body
               input(type='text', name='exp',value=event.Exp)
             td
               label Contact :
-              input(type='text', name='contact',value=event.Contact)   
+              input(type='text', name='contact',value=event.Contact)
+
+          tr
+            td 
+              label Image Link :  
+              input(type='text',name='link',value=event.ImgLink)
         a.btn.btn-primary(role='button' href=`/attendeelist/${event._id}`) My Attendee
         p
           button.btn.btn-warning.float-right(type='submit') Update Profile
