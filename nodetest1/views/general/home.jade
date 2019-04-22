@@ -4,19 +4,19 @@ block head
   title   Welcome to BlueEntry
 
 block body
-  #banner
-    #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+  #banner.d-flex.justify-content-center.p-4
+    #carouselExampleIndicators.carousel.slide(data-ride='carousel')(style="width:1000px")
       ol.carousel-indicators
         li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
         li(data-target='#carouselExampleIndicators', data-slide-to='1')
         li(data-target='#carouselExampleIndicators', data-slide-to='2')
       .carousel-inner
         .carousel-item.active
-          img.d-block.w-100(src='/images/pictest.jpg', alt='...', height='200px')
+          img.d-block.w-100(src='/images/pictest.jpg', alt='...')
         .carousel-item
-          img.d-block.w-100(src='/images/pictest.jpg', alt='...', height='200px')
+          img.d-block.w-100(src='/images/pictest.jpg', alt='...')
         .carousel-item
-          img.d-block.w-100(src='/images/pictest.jpg', alt='...', height='200px')
+          img.d-block.w-100(src='/images/pictest.jpg', alt='...')
       a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
         span.carousel-control-prev-icon(aria-hidden='true')
         span.sr-only Previous

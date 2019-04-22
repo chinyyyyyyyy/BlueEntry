@@ -27,8 +27,14 @@ a.nav-link{
 .nav-link.active{
     color: #006FB9;
 }
+#banner{
+    background-color: #d3d3d3
+}
 .carousel-item{
-    height: 200px;
+    height: 300px;
+}
+.carousel-item img{
+    height: 300px;
 }
 .colorbar{
     display: flex;
