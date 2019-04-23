@@ -31,7 +31,7 @@ router.post('/reserve', function (req, res) {
         "ImgLink": "",
         "ReserveTimestamp" : new Date()
       });
-      mailData = "Reservation complete!"
+      mailData = "Reservation complete!\nThank you for joining our event."
     } else {
       reservedData = new req.reserve({
         "Fname": req.body.fname, 

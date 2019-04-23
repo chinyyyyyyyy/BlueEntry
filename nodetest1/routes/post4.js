@@ -80,6 +80,14 @@ router.post('/editevent',function(req,res){
 //28 Event Org valid Attendee's receipt
 router.post('/validreceipt',function(req,res){
     req.reserve.findOneAndUpdate({_id : req.body.id}, {Valid: true} ,function(e,docs){
+        req.atd.findOne({_id: docs.username}, function(e,docs2){
+            req.transport.sendMail({
+                from: 'blueentry.se@gmail.com',
+                to: docs2.Email,
+                subject: 'Reservation success',
+                text: 'Your evidence has been confirmed by Event Organizer.\nThank you for joining our event.'
+              });
+        });
         res.redirect("/eventdetail/"+req.body.eid);
     });
 });
