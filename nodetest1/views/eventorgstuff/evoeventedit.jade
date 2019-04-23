@@ -2,8 +2,8 @@ extends ../layout.jade
 
 block head
   title My Event ...
-  include ../mixins/table.jade
-
+  include ../mixins/table.jade 
+    
 block body
   .container(style="background-color:white; padding-bottom:30px;padding-top:20px")
       h3
@@ -18,17 +18,30 @@ block body
         input(type='hidden', name='id',value=event._id)
         table.table
           +table1("EventName :",'text','ename',event.Ename,'name' )
-          +table1("Category :",'text','category', event.Category )
+          //- +table1("Category :",'text','category', event.Category )
+          tr
+            td(width="40%")
+              b Category :
+            td#tf #{event.Category}
+            td#myInput(style='display: none;')
+              label.sr-only.mr-2(for='inlineFormCustomSelectPref') Category            
+              select.custom-select.mb-2.mr-sm-2(name='category')
+                option(value='ComSci',selected='ComSci'==event.Category) Computer Science
+                option(value='Finance',selected='Finance'==event.Category) Finance
+                option(value='Life',selected='Life'==event.Category) Life
+                option(value='HomeEcon',selected='HomEcon'==event.Category) Home Economics
+                option(value='Culture',selected='Culture'==event.Category) Culture
+                option(value='others',selected='others'==event.Category) Others
           +table1("Detail :",'text','detail', event.Detail,'detail' )
           +table1("Price :",'text','price', event.Price,'' )
           +table1("Max Seat :",'text','maxseat', event.MaxSeat,'')
           +table1("Location:",'text','location', event.Location, '')
           +table1("Exp :",'text','exp', event.Exp,'' )
-          +table1("Contact :",'text','contact', event.Contact,'' )
+          +table1("Contact :",'text','contact', event.Contact,'' ) 
           button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;') Save
+         
       button.btn.btn-primary(type='submit') Boost
       a.btn.btn-primary.ml-4(role='button',href=`/attendeelist/${event._id}`) My Attendee
-
   .container(style="background-color:white; padding-bottom:30px; padding-top:20px")
     form(name="boost",method="post",action="/boost")
       //- input(type='hidden', name='id', value=event._id)

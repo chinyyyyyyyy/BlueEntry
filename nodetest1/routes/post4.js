@@ -48,6 +48,16 @@ router.post('/addevent',function(req,res){
         { $push: { MyEvent: newEvent._id } },function(e){
             if (e) console.log(e);
     });
+    req.atd.find({},function(e,docs){
+        for (i in docs){
+            req.transport.sendMail({
+                from: 'blueentry.se@gmail.com',
+                to: docs[i].Email,
+                subject: 'New Event: '+newEvent.Ename,
+                text: 'Event Name: '+newEvent.Ename+'\nDetail: '+newEvent.Detail+'\nPrice: '+newEvent.Price
+              });
+        }
+    })
     res.redirect('/');
 });
 
@@ -80,6 +90,14 @@ router.post('/editevent',function(req,res){
 //28 Event Org valid Attendee's receipt
 router.post('/validreceipt',function(req,res){
     req.reserve.findOneAndUpdate({_id : req.body.id}, {Valid: true} ,function(e,docs){
+        req.atd.findOne({username: docs.Reserver}, function(e,docs2){
+            req.transport.sendMail({
+                from: 'blueentry.se@gmail.com',
+                to: docs2.Email,
+                subject: 'Reservation success',
+                text: 'Your evidence has been confirmed by Event Organizer.\nThank you for joining our event.'
+              });
+        });
         res.redirect("/eventdetail/"+req.body.eid);
     });
 });

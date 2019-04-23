@@ -3,11 +3,65 @@ extends ../layout.jade
 block head
   title Attendee List of ...
 
+//- block body
+//-   each row in reserve
+//-     p #{row} 
+//-     img(src=row.ImgLink,height="300",width="400")
+//-     form(name="regis",method="post",action="/validreceipt")
+//-       input(type='hidden', name='id',value=row._id)
+//-       input(type='hidden', name='eid',value=row.Event)
+//-       button(type='submit') Valid
+
 block body
-  each row in reserve
-    p #{row} 
-    img(src=row.ImgLink,height="300",width="400")
-    form(name="regis",method="post",action="/validreceipt")
-      input(type='hidden', name='id',value=row._id)
-      input(type='hidden', name='eid',value=row.Event)
-      button(type='submit') Valid
+  .container(style="background-color:white")
+    p
+    h2(align='center') My Events
+    p
+    table.table
+      thead(class="thead-dark")
+        tr
+          th Firstname
+          th Lastname
+          th Tel
+          th Amount
+          th Payment
+          th Receipt
+          th Valid
+          
+      tbody
+        each row in reserve
+          tr
+            td #{row.Fname}
+            td #{row.Lname}
+            td #{row.Tel}
+            td #{row.Amount}
+            td #{row.Payment}
+            -if(row.Payment=="credit"){
+            td
+            -}else{
+            - if(row.ImgLink==""){
+            td
+                p Not Uploaded
+            -}else{
+            td 
+              a.btn.btn-primary.btn-sm(role='button' href=row.ImgLink) View Reciept
+            -}
+            -}
+            
+            -if (row.Valid==true){
+            td
+                p(style="color:green") Valided
+            -}else{
+            - if(row.ImgLink==""){
+            td
+              button.btn.btn-warning.btn-sm(type='submit',disabled) Valid
+            -}else{
+            td
+                form(name="regis",method="post",action="/validreceipt")
+                  input(type='hidden', name='id',value=row._id)
+                  input(type='hidden', name='eid',value=row.Event)
+                  button.btn.btn-warning.btn-sm(type='submit') Valid
+            -}
+            -}
+            
+            
