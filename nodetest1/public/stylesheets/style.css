@@ -75,9 +75,7 @@ div.card {
     margin-bottom: 3vh;
     border-radius: 10px;
 }
-
-
- .vl {
+.vl {
      border-left: 4px solid rgb(0, 0, 0);
      height: 15vh;
    }
@@ -99,6 +97,13 @@ div.card {
 #nevent div{
     margin-bottom: 20px;
 }
-.table{
-    width: 700px;
+.devent{
+    background-color: white;
+    margin-top: 5vh;
+    padding: 20px;
+}
+.devent img{
+    display: block;
+    max-width: 100%;
+    height: 60vh;
 }

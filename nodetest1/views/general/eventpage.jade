@@ -5,61 +5,81 @@ block head
     include ../mixins/textinput.jade
 
 block body
-    nav.navbar.navbar-light(style='background-color: #fffefe')
-        a.navbar-brand(href='/eventslist')
-            img(src='/images/logo.png', width='25', height='30',class="d-inline-block align-top", alt='') 
-            |   BlueEntry
-    h2(align='center',class="text-danger") #{event.Ename}
-    img(src='/images/defaultimage.jpg', width='200', height='500',class='center')
-
-    p EventName = #{event.Ename}
-    p Category = #{event.Category}
-    p Detail = #{event.Detail}
-    p Price = #{event.Price}
-    p MaxSeat = #{event.MaxSeat}
-    p Location = #{event.Location}
-    p Exp = #{event.Exp}
-    p Contact = #{event.Contact}
-    -if (currentUser!=null) {
-        -if (currentUser.type=='attendee'){
-            form#formAddUser(name="adduser",method="post",action="/reserve",class ="needs-validation",novalidate='')
-                .container(class='formcenter')
-                    P Amount
-                    .form-check.form-check-inline
-                        input#inlineRadio1.form-check-input(type='radio', name='amount', value=1,checked="checked")
-                        label.form-check-label(for='inlineRadio1') 1
-                    .form-check.form-check-inline
-                        input#inlineRadio2.form-check-input(type='radio', name='amount', value=2)
-                        label.form-check-label(for='inlineRadio2') 2
-                    h4(class='text-primary') Personal Information
-                    .form-row
-                        +textinput('6','First Name','fname')
-                        +textinput('6','Last Name','lname')
-                    .form-row
-                        +textinput('12','Telephone','tel')
-                    .form-row
-                        +textinput('12','Address','address')
-                .container(class='formcenter')
-                    h4(class='text-primary') Choose Payment Method     
-                    each row in credit
+    .container.devent.d-column.mb-4
+        .row
+            .col-md-8.offset-md-2
+                h2(align='center',class="text-danger") #{event.Ename}
+        .row
+            .col-md-8.offset-md-2
+                img(src=event.ImgLink,width='700',class='center')
+        .row
+            .offset-md-2.p-4
+                p EventName = #{event.Ename}
+                p Category = #{event.Category}
+                p Detail = #{event.Detail}
+                p Price = #{event.Price}
+                p MaxSeat = #{event.MaxSeat}
+                p Location = #{event.Location}
+                p Exp = #{event.Exp}
+                p Contact = #{event.Contact}
+        
+        -if (currentUser!=null) {
+            
+            -if (currentUser.type=='attendee'){
+                hr
+                form#formAddUser.col-md-8.offset-md-2(name="adduser",method="post",action="/reserve",class ="needs-validation",novalidate='')
+                    .container(class='formcenter')                         
+                        P Amount Seat
+                        -var amseat = event.MaxSeat - event.reservation.length;        
+                                  
+                        -if(amseat > 0){ 
+                        -   if(amseat >=1){
                         .form-check.form-check-inline
-                            input#inlineRadio1.form-check-input(type='radio', name='payment', value="credit")
-                            label.form-check-label(for='inlineRadio1') #{row.CNO}
-                    .form-check.form-check-inline
-                        input#inlineRadio1.form-check-input(type='radio', name='payment', value="transfer",checked="checked" )
-                        label.form-check-label(for='inlineRadio1') Bank Transfer       
-                    .form-row
-                        .col-md-3
-                            input(type="hidden", name='id',value=event._id)
-                            button.form-control.btn.btn-primary.submit-button(type='submit') Submit
-                    // Modal
-                    #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-                        .modal-dialog(role='document')
-                            .modal-content
-                                .modal-body
-                                    h4(align='center',class="text-success") Reservation Successful!
-                                    h6(align='center',class='text-secondary') (please wait for redirecting...)
+                            input#inlineRadio1.form-check-input(type='radio', name='amount', value=1,checked="checked")
+                            label.form-check-label(for='inlineRadio1') 1
+                        -   }
+                        -   if(amseat >=2){    
+                        .form-check.form-check-inline
+                            input#inlineRadio2.form-check-input.custom-radio-input(type='radio', name='amount', value=2)
+                            label.form-check-label(for='inlineRadio2') 2
+                        -   }         
+                        -}else{
+                        P.ml-4 No seat to reserve  
+                        -}
+                        h4(class='text-primary') Personal Information
+                        .form-row
+                            +textinput('6','First Name','fname')
+                            +textinput('6','Last Name','lname')
+                        .form-row
+                            +textinput('12','Telephone','tel')
+                        .form-row
+                            +textinput('12','Address','address')
+                    .container(class='formcenter')
+                        h4(class='text-primary') Choose Payment Method   
+                        .row 
+                            u.ml-4.col-2 Credit Card
+                            each row in credit
+                                .form-check.form-check-inline.offset-1
+                                    input#inlineRadio1.form-check-input(type='radio', name='payment', value="credit")
+                                    label.form-check-label(for='inlineRadio1') #{row.CNO}           
+                        .row
+                            u.ml-4.col-3 Bank Transfer                            
+                            .form-check.form-check-inline
+                                input#inlineRadio1.form-check-input(type='radio', name='payment', value="transfer",checked="checked" )
+                                label.form-check-label(for='inlineRadio1') Bank Transfer       
+                        .form-row
+                            .col-md-3
+                                input(type="hidden", name='id',value=event._id)
+                    .col-4.mt-4    
+                        button.form-control.btn.btn-primary.submit-button(type='submit') Submit
+                        // Modal
+                        #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                            .modal-dialog(role='document')
+                                .modal-content
+                                    .modal-body
+                                        h4(align='center',class="text-success") Reservation Successful!
+                                        h6(align='center',class='text-secondary') (please wait for redirecting...)
+            -}
         -}
-    -}
-                                        
+                                            
                         
