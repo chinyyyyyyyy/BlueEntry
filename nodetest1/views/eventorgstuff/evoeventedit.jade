@@ -26,13 +26,12 @@ block body
             td#myInput(style='display: none;')
               label.sr-only.mr-2(for='inlineFormCustomSelectPref') Category            
               select.custom-select.mb-2.mr-sm-2(name='category')
-                option(value='allcat') All catagories
-                option(value='ComSci') Computer Science
-                option(value='Finance') Finance
-                option(value='Life') Life
-                option(value='HomeEcon') House Economics
-                option(value='Culture') Culture
-                option(value='others') Others
+                option(value='ComSci',selected='ComSci'==event.Category) Computer Science
+                option(value='Finance',selected='Finance'==event.Category) Finance
+                option(value='Life',selected='Life'==event.Category) Life
+                option(value='HomeEcon',selected='HomEcon'==event.Category) Home Economics
+                option(value='Culture',selected='Culture'==event.Category) Culture
+                option(value='others',selected='others'==event.Category) Others
           +table1("Detail :",'text','detail', event.Detail,'detail' )
           +table1("Price :",'text','price', event.Price,'' )
           +table1("Max Seat :",'text','maxseat', event.MaxSeat,'')
