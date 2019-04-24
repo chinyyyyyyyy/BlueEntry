@@ -61,6 +61,7 @@ router.post('/addcard',function(req,res){
         CVV: req.body.cvv,
         EXP: req.body.exp
     })
+    // console.log(newcard);
     req.atd.findOneAndUpdate(
         { username: req.user.username },
         { $push: { Credit: newcard} },function(e){

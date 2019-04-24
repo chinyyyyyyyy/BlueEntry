@@ -95,16 +95,16 @@ block body
                         form.d-flex.flex-column(name="addcard",method="post",action="/addcard",style='margin-left: 4vw')
                             .row
                                 b Card Number :
-                                input.ml-4(type='text', name='cno', placeholder='Card Number')
+                                input.ml-4(type='number', name='cno', placeholder='Card Number' min='1000000000000' max='9999999999999' required)
                             .row
                                 b Card Name :
-                                input.ml-4(type='text', name='cname', placeholder='Card Name')
+                                input.ml-4(type='text', name='cname', placeholder='Card Name' required)
                             .row
                                 b CVV :
-                                input.ml-4(type='text', name='cvv', placeholder='cvv')
+                                input.ml-4(type='number', name='cvv', placeholder='cvv' min='0' max='999' required)
                             .row.d-flex
                                 b EXP :
-                                input.ml-4(type='text', name='exp', placeholder='exp')
-                                button.btn.btn-success(type='submit', style='margin-left: 8vw', onclick='nwcard(2)') Add Card
+                                input.ml-4(type='month', name='exp', placeholder='exp' required)
+                                button.btn.btn-success(type='submit', style='margin-left: 8vw', onsubmit='nwcard(2)') Add Card
                     // - add card
                                             
