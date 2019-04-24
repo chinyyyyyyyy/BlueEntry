@@ -44,7 +44,7 @@ block body
         - if(event.Boost){
           button.btn.btn-warning(type='submit' disabled) Boosted
         -}else{
+          input(type='hidden', name='id',value=event._id)
           button.btn.btn-primary(type='submit') Boost
-        -}
-        
+        -}        
         a.btn.btn-primary.ml-4(role='button',href=`/attendeelist/${event._id}`) My Attendee
