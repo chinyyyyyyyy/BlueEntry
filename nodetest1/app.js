@@ -90,7 +90,7 @@ db.connect('mongodb+srv://userkiki:kiki@gettingstarted-oxpeq.gcp.mongodb.net/Blu
     Price: Number,
     MaxSeat: Number,
     Location: String,
-    Exp: String,
+    Exp: db.Schema.Types.Date,
     Contact: String,
     Boost : Boolean,
     ImgLink: String,

@@ -6,35 +6,37 @@ block head
 block body
     h1(align="center") Attendee Register
     .container.bg-w.d-flex.justify-content-center
-      form.row.flex-column#nevent(name="regis",method="post",action="/register")
+      form(name="regis",method="post",action="/register")
           input(type='hidden',value='attendee', name='type')
-          .row.form-inline
-            label Username
-            input.form-control(type='text', name='username',placeholder='Username', required)
-          .row.form-inline          
-            label Password 
-            input.form-control(type='password', name='password',placeholder='Password', required)
-          .row.form-inline  
-            label First Name  
-            input.form-control(type='text', name='fname',placeholder='First Name', required)
-          .row.form-inline  
-            label Last Name
-            input.form-control(type='text', name='lname',placeholder='Last Name', required)
-          .row.form-inline  
-            label Telephone
-            input.form-control(type='text', name='tel',placeholder='ex 0xx-xxxxxxx', required)
-          .row.form-inline  
-            label Email
-            input.form-control(type='email', name='email',placeholder='example@example.com', required)
-          .row.form-inline  
-            label Birthday
-            input.form-control(type='date', name='dob',placeholder='ex 20/02/1998', required)
-          
-          
-          P Gender
-          .form-check.form-check-inline
-            input#inlineRadio1.form-check-input(type='radio', name='gender', value='male',checked="checked")
-            label.form-check-label(for='inlineRadio1') Male
-            input#inlineRadio2.form-check-input(type='radio', name='gender', value='female')
-            label.form-check-label(for='inlineRadio2') Female
-          button.btn.btn-success(type='submit') Register
+          .row.flex-column#nevent
+            .row.form-inline
+              label Username
+              input.form-control(type='text', name='username',placeholder='Username', required)
+            .row.form-inline          
+              label Password 
+              input.form-control(type='password', name='password',placeholder='Password', required)
+            .row.form-inline  
+              label First Name  
+              input.form-control(type='text', name='fname',placeholder='First Name', required)
+            .row.form-inline  
+              label Last Name
+              input.form-control(type='text', name='lname',placeholder='Last Name', required)
+            .row.form-inline  
+              label Telephone
+              input.form-control(type='text', name='tel',placeholder='ex 0xx-xxxxxxx', required)
+            .row.form-inline  
+              label Email
+              input.form-control(type='email', name='email',placeholder='example@example.com', required)
+            .row.form-inline  
+              label Birthday
+              input.form-control(type='date', name='dob',placeholder='ex 20/02/1998', required)
+          .row.ml-4                   
+            label.mr-5 Gender
+            .custom-control.custom-radio.custom-control-inline
+              input#customRadioInline1.custom-control-input(type='radio', name='customRadioInline1')
+              label.custom-control-label(for='customRadioInline1') Male
+            .custom-control.custom-radio.custom-control-inline.ml-2
+              input#customRadioInline2.custom-control-input(type='radio', name='customRadioInline1')
+              label.custom-control-label(for='customRadioInline2') Female
+          .col-md-10.offset-md-2
+            button.btn.btn-success.btn-block(type='submit') Register
