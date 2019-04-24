@@ -5,7 +5,8 @@ block head
   include ../mixins/table.jade
 
 block body
-    .container(style="background-color:white")
+    h3.mt-4(align='center') My Reserved Event
+    .container(style="background-color:white;width:960px" )
       table.table
         +table("Firstname :", reserve.Fname )
         +table("Lastname :", reserve.Lname )
@@ -15,7 +16,7 @@ block body
         +table("Payment :", reserve.Payment )
         +table("Amount :", reserve.Amount )
         +table("Reserve time :", reserve.ReserveTimestamp )
-    .container(style="background-color:white")
+    .container(style="background-color:white;width:960px")
       table.table
         +table("Eventname :", event.Ename )
         +table("Category :", event.Category )
@@ -25,7 +26,7 @@ block body
         +table("Location :", event.Location )
         +table("Contact :", event.Contact )
     -if(reserve.Payment=="transfer"){
-    .container(style="background-color:white; padding-bottom:20px")
+    .container(style="background-color:white; padding-bottom:20px;width:960px")
       div.text-center
         img(align="center" src=reserve.ImgLink,height="300",width="400")
         form(align="center" name="updateprofilepic",method="post",action='/addreceipt')

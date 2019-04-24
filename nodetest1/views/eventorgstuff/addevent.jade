@@ -4,7 +4,7 @@ block head
   title Add New Event
 
 block body
-  h1 Add New Event
+  h1(align='center') Add New Event
   .container.bg-w.d-flex.justify-content-center
     form.row.flex-column#nevent(name="regis",method="post",action="/addevent")
         .row.form-inline
@@ -29,15 +29,15 @@ block body
           input.form-control(type='text', name='seat',placeholder='Max seat')
         .row.form-inline  
           label Location
-          input.form-control(type='text', name='location',placeholder='Last Name')
+          input.form-control(type='text', name='location',placeholder='Location')
         .row.form-inline  
           label Last Date Reservable
-          input.form-control(type='text', name='exp',placeholder='Last Date Reservable ')
+          input.form-control(type='date', name='exp',placeholder='Last Date Reservable ')
         .row.form-inline  
           label Contact 
           input.form-control(type='text', name='contact',placeholder='ex mail or tel ')
         .row.form-inline  
           label Image Link 
-          input.form-control(type='text', name='link',placeholder='image link')
+          input.form-control(type='text', name='link',placeholder='Image Link')
         button.btn.btn-success(type='submit') Add Event
       
