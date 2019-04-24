@@ -78,7 +78,7 @@ router.post('/editevent',function(req,res){
             Price: req.body.price,
             MaxSeat: req.body.maxseat,
             Location: req.body.location,
-            Exp: req.body.exp,
+            Exp: new Date(req.body.exp),
             Contact: req.body.contact,
             ImgLink: req.body.link
         } ,function(e,docs){
