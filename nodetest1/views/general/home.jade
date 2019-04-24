@@ -4,6 +4,7 @@ block head
   title   Welcome to BlueEntry
 
 block body
+  p #{boosted_event}
   #banner.d-flex.justify-content-center.p-4
     #carouselExampleIndicators.carousel.slide(data-ride='carousel')(style="width:1000px")
       ol.carousel-indicators
@@ -14,7 +15,7 @@ block body
           - count = count+1;
       .carousel-inner
         .carousel-item.active
-          img.d-block.w-100(src='/images/pictest.jpg', alt='...')
+          img.d-block.w-100(src='/images/home_banner.png', alt='...')
         each row in boosted_event
           .carousel-item
             img.d-block.w-100(src=row.ImgLink, alt='...')

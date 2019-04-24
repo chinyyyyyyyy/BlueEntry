@@ -40,6 +40,7 @@ block body
           +table1("Contact :",'text','contact', event.Contact,'' ) 
           button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;') Save
       form.btn-group.ml-4(name="boost",method="post",action="/boost")
+        input(type='hidden', name='id',value=event._id)
         button.btn.btn-primary(type='submit') Boost
-        a.btn.btn-primary.ml-4(role='button',href=`/attendeelist/${event._id}`) My Attendee
+      a.btn.btn-primary.ml-4(role='button',href=`/attendeelist/${event._id}`) My Attendee
       
