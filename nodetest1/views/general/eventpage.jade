@@ -3,6 +3,7 @@ extends ../layout.jade
 block head
     title #{event.Ename}
     include ../mixins/textinput.jade
+    include ../mixins/table.jade
 
 block body
     .container.devent.d-column.mb-4
@@ -12,21 +13,20 @@ block body
         .row
             .col-md-8.offset-md-2
                 img(src=event.ImgLink,width='700',class='center')
-        .row
-            .offset-md-2.p-4
-                p EventName = #{event.Ename}
-                p Category = #{event.Category}
-                p Detail = #{event.Detail}
-                p Price = #{event.Price}
-                p MaxSeat = #{event.MaxSeat}
-                p Location = #{event.Location}
-                p Exp = #{event.Exp}
-                p Contact = #{event.Contact}
-        
+        .container.mt-4.col-md-10
+            table.table.table-responsive-md
+                +table("EventName :", event.Ename )
+                +table("Category :", event.Category )
+                +table("Detail :", event.Detail )
+                +table("Price :", event.Price )
+                +table("MaxSeat :", event.MaxSeat )
+                +table("Location :", event.Location )
+                +table("Exp :", event.Exp )
+                +table("Contact :", event.Contact )               
         -if (currentUser!=null) {
             
             -if (currentUser.type=='attendee'){
-                hr
+                
                 form#formAddUser.col-md-8.offset-md-2(name="adduser",method="post",action="/reserve",class ="needs-validation",novalidate='')
                     .container(class='formcenter')                         
                         P Amount Seat

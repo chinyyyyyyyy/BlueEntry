@@ -1,12 +1,12 @@
 mixin navbar_guest()
     button#loginbtn.btn.btn-primary(type='button', data-toggle='modal', data-target='#Modal')
-      | Login / Sign Up
+      | Sign In / Sign Up
     // Modal
     #Modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='ModalLabel', aria-hidden='true')
       .modal-dialog(role='document')
         .modal-content
           .modal-header
-            h5#ModalLabel.modal-title.text-center Login
+            h5#ModalLabel.modal-title.text-center Sign In
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
           .modal-body.col-md-8.offset-md-2
@@ -15,7 +15,7 @@ mixin navbar_guest()
               input.form-control(type='text', name='username',placeholder='Username',required)  
               label(for="password") Password                   
               input.form-control(type='password', name='password',placeholder='Password',required)
-              button.btn.btn-primary.btn-block.mt-2(type='submit',style='') Login
+              button.btn.btn-primary.btn-block.mt-2(type='submit',style='') Sign In
             .form-inline
               p Don't have an account ? Please
                 a#register.ml-1(role='button' href='/register') sign up

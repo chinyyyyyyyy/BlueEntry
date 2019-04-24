@@ -5,10 +5,22 @@ var express               = require('express'),
 
 //15 Anyone can search
 router.post('/search', function (req, res) {
+    var pstart = 0;
+    var pend = 50000;
+    var key ="";
+    if(req.body.pstart != ""){
+      pstart = req.body.pstart;
+    }
+    if(req.body.pend != ""){
+      pend = req.body.pend;
+    }
+    if(req.body.keyword !=""){
+      key= req.body.keyword;
+    }
     if(req.body.category == null){
-      res.redirect(`/results/q='${req.body.keyword}'&cat=allcat&pstart=0&pend=50000`);
+      res.redirect(`/results/q=${key}&cat=allcat&pstart=0&pend=50000`);
     }else{
-      res.redirect(`/results/q='${req.body.keyword}'&cat=${req.body.category}&pstart=${req.body.pstart}&pend=${req.body.pend}`);
+      res.redirect(`/results/q=${key}&cat=${req.body.category}&pstart=`+pstart+`&pend=${pend}`);
     }
 });
 

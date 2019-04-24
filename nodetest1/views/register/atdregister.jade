@@ -10,25 +10,25 @@ block body
           input(type='hidden',value='attendee', name='type')
           .row.form-inline
             label Username
-            input.form-control(type='text', name='username',placeholder='Username')
+            input.form-control(type='text', name='username',placeholder='Username', required)
           .row.form-inline          
             label Password 
-            input.form-control(type='password', name='password',placeholder='Password')
+            input.form-control(type='password', name='password',placeholder='Password', required)
           .row.form-inline  
             label First Name  
-            input.form-control(type='text', name='fname',placeholder='First Name')
+            input.form-control(type='text', name='fname',placeholder='First Name', required)
           .row.form-inline  
             label Last Name
-            input.form-control(type='text', name='lname',placeholder='Last Name')
+            input.form-control(type='text', name='lname',placeholder='Last Name', required)
           .row.form-inline  
             label Telephone
-            input.form-control(type='text', name='tel',placeholder='ex 0xx-xxxxxxx')
+            input.form-control(type='text', name='tel',placeholder='ex 0xx-xxxxxxx', required)
           .row.form-inline  
             label Email
-            input.form-control(type='email', name='email',placeholder='example@example.com')
+            input.form-control(type='email', name='email',placeholder='example@example.com', required)
           .row.form-inline  
             label Birthday
-            input.form-control(type='date', name='dob',placeholder='ex 20/02/1998')
+            input.form-control(type='date', name='dob',placeholder='ex 20/02/1998', required)
           
           
           P Gender

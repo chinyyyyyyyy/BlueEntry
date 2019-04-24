@@ -36,15 +36,18 @@ router.get('/events/:id', function (req, res) {
 });
 
 //3 serch result
-router.get('/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend', function (req, res) {
+router.get(['/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend','/results/q=&cat=:cat&pstart=:pstart&pend=:pend'], function (req, res) {
     var listcat = ['ComSci', 'Finance', 'HomeEcon', 'Life', 'Culture'];
     var pstart = Number(req.params.pstart);
     var pend = Number(req.params.pend);
-    var key = req.params.key;
+    var key = "";
+    if(req.params.key!=null){
+      key = req.params.key;
+    }
     if (req.params.cat != 'allcat') {
       listcat = [req.params.cat];
     }
-    if (key == "''") {
+    if (key == "") {
       req.event.find({ $and: [{ Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
         res.render('./general/resultpage', {currentUser:req.user ,"userlist": docs,request:{"key":key,"cat":listcat,"pstart":pstart,"pend":pend}});
       });

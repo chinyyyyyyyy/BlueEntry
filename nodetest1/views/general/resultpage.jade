@@ -11,30 +11,28 @@ block body
       .ml-5.mt-3
         form.form-inline(name="searching",method="post",action="/search",novalidate='')
           label.mb-1(for='kwInput') Keyword :
-          input#kwInput.form-control.mb-2.mr-sm-2(type='text', name='keyword' placeholder='Search Keyword', required='')
+          input#kwInput.form-control.mb-2.mr-sm-2(type='text', name='keyword', value=request.key,  placeholder='Search Keyword')
           label.mb-1 Price :
           .input-group.mb-2.mr-sm-2
-            input#przInputMin.form-control(type='text', name='pstart', value=0,placeholder='Min Price', required='')
+            input#przInputMin.form-control(type='number', name='pstart', value=request.pstart,placeholder='Min Price',required)
             .input-group-prepend
               .input-group-text to
-            input#przInputMax.form-control(type='text', name='pend', value=50000,placeholder='Max Price', required='')
+            input#przInputMax.form-control(type='number', name='pend', value=request.pend,placeholder='Max Price', required)
           label.sr-only.mr-2(for='inlineFormCustomSelectPref') Category
           select#inlineFormCustomSelectPref.custom-select.mb-2.mr-sm-2(name='category')
-            option(value='allcat', selected='') All catagories
-            option(value='ComSci') Computer Science
-            option(value='Finance') Finance
-            option(value='Life') Life
-            option(value='HomeEcon') House Economics
-            option(value='Culture') Culture
-            option(value='others') Others
+            option(value='allcat',selected='allcat'==request.cat) All catagories
+            option(value='ComSci',selected='ComSci'==request.cat) Computer Science
+            option(value='Finance',selected='Finance'==request.cat) Finance
+            option(value='Life',selected='Life'==request.cat) Life
+            option(value='HomeEcon',selected='HomEcon'==request.cat) House Economics
+            option(value='Culture',selected='Culture'==request.cat) Culture
+            option(value='others',selected='others'==request.cat) Others
           button.btn.btn-primary.mb-2(role='button')
             img.img-fluid(src="/images/search.png",width='25vw')
     #result.container.mt-4.bg-w
       .row
         h1.pl-4 Result
-      .blackline.mb-4
-      p#textResult.font-weight-normal.h5.pl-4.mb-4.text-break Result of
-        | keyword = #{request.key} + categories  = #{request.cat} + Price Range from #{request.pstart} to #{request.pend}  
+      .blackline.mb-4 
       .row
         each row in userlist
           .col-lg-3.col-md-6.col-sm-auto.mb-lg-4

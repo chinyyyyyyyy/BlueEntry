@@ -25,23 +25,26 @@ block body
         span.sr-only Next
   #content
     #selectType.mt-4.col.offset-md-1
-      ul#pills-tab.nav.mb-3(role='tablist')
-        li.nav-item
-          a#pills-allevent-tab.nav-link.active(onclick='changeto(1)', data-toggle='pill', href='#pills-allevent', role='tab', aria-controls='pills-allevent', aria-selected='true') All Event
-        li.nav-item
-          a#pills-comsci-tab.nav-link(onclick='changeto(2)', data-toggle='pill', href='#pills-comsci', role='tab', aria-controls='pills-comsci', aria-selected='false') ComSci
-        li.nav-item
-          a#pills-finance-tab.nav-link(onclick='changeto(3)', data-toggle='pill', href='#pills-finance', role='tab', aria-controls='pills-finance', aria-selected='false') Finance
-        li.nav-item
-          a#pills-life-tab.nav-link(onclick='changeto(4)', data-toggle='pill', href='#pills-life', role='tab', aria-controls='pills-life', aria-selected='false') Life
-        li.nav-item
-          a#pills-homeecon-tab.nav-link(onclick='changeto(5)', data-toggle='pill', href='#pills-homeecon', role='tab', aria-controls='pills-homeecon', aria-selected='false') HomeEcon
-        li.nav-item
-          a#pills-culture-tab.nav-link(onclick='changeto(6)', data-toggle='pill', href='#pills-culture', role='tab', aria-controls='pills-culture', aria-selected='false') Culture
-        li.nav-item
-          a#pills-others-tab.nav-link(onclick='changeto(7)', data-toggle='pill', href='#pills-others', role='tab', aria-controls='pills-others', aria-selected='false') Others
-      .colorbar
-        .pbar
+      .row
+        ul#pills-tab.nav.mb-3.col-md-12(role='tablist')
+          li.nav-item
+            a#pills-allevent-tab.nav-link.active(onclick='changeto(1)', data-toggle='pill', href='#pills-allevent', role='tab', aria-controls='pills-allevent', aria-selected='true') All Event
+          li.nav-item
+            a#pills-comsci-tab.nav-link(onclick='changeto(2)', data-toggle='pill', href='#pills-comsci', role='tab', aria-controls='pills-comsci', aria-selected='false') ComSci
+          li.nav-item
+            a#pills-finance-tab.nav-link(onclick='changeto(3)', data-toggle='pill', href='#pills-finance', role='tab', aria-controls='pills-finance', aria-selected='false') Finance
+          li.nav-item
+            a#pills-life-tab.nav-link(onclick='changeto(4)', data-toggle='pill', href='#pills-life', role='tab', aria-controls='pills-life', aria-selected='false') Life
+          li.nav-item
+            a#pills-homeecon-tab.nav-link(onclick='changeto(5)', data-toggle='pill', href='#pills-homeecon', role='tab', aria-controls='pills-homeecon', aria-selected='false') HomeEcon
+          li.nav-item
+            a#pills-culture-tab.nav-link(onclick='changeto(6)', data-toggle='pill', href='#pills-culture', role='tab', aria-controls='pills-culture', aria-selected='false') Culture
+          li.nav-item
+            a#pills-others-tab.nav-link(onclick='changeto(7)', data-toggle='pill', href='#pills-others', role='tab', aria-controls='pills-others', aria-selected='false') Others
+      .row
+        .col-md-12
+          .colorbar
+            .pbar
     #pills-tabContent.tab-content
       #pills-allevent.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='pills-allevent-tab')
         .container.mt-4
@@ -166,7 +169,7 @@ block body
                       -  }
                     p.card-text Price:
                       | #{price}
-      #pills-others.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='pills-others-tab')
+      #pills-others.tab-pane.fade(role='tabpanel', aria-labelledby='pills-others-tab')
         .container.mt-4
           .row
             each row in allevent
@@ -178,7 +181,7 @@ block body
                   .card-head
                     img.card-img-top(src='/images/pictest.jpg', alt='Generic placeholder image')
                   .card-body
-                    a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename
+                    a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;" alt='x')= row.Ename
                     p.card-text Category :
                       | #{row.Category}
                       -  var price = Number(row.Price)
