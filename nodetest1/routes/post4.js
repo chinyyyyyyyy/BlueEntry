@@ -82,7 +82,7 @@ router.post('/editevent',function(req,res){
             Contact: req.body.contact,
             ImgLink: req.body.link
         } ,function(e,docs){
-        res.redirect("/eventdetail/"+req.body.id);
+            res.redirect("/eventdetail/"+req.body.id);
     });
 });
 
