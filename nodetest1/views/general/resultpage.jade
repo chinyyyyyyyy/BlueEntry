@@ -33,11 +33,11 @@ block body
       .row
         h1.pl-4 Result
       .blackline.mb-4
-      p#textResult.font-weight-normal.h5.pl-4.mb-4 Result of
+      p#textResult.font-weight-normal.h5.pl-4.mb-4.text-break Result of
         | keyword = #{request.key} + categories  = #{request.cat} + Price Range from #{request.pstart} to #{request.pend}  
       .row
         each row in userlist
-          .col-md-3.mb-4
+          .col-lg-3.col-md-6.col-sm-auto.mb-lg-4
             .card
               .card-head
                 img.card-img-top(src='/images/pictest.jpg', style='min-height: 250px; padding:10px', alt='Generic placeholder image')

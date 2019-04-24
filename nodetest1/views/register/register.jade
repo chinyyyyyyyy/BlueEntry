@@ -5,20 +5,31 @@ block head
     include ../mixins/table.jade
 
 block body
-    p
-    h1(align="center") Attendee or Event Organizer ?
-    .container(style="margin-top:30px") 
-        table.table.borderless
-            tr
-                td(align="center", style="border-top:0 ;width:450px")
+    
+    h1.mt-5(align="center") Attendee or Event Organizer ?
+    .container.mt-5
+        .row
+            .col-md-5.offset-md-1.d-flex.flex-column
+                a(align="center", style="")
                     img.img-responsive(width='300',height='300',src='/images/teamwork.png')
-                td(align="center", style="border-top:0 ;width:450px")
+                .col-6.offset-3.mt-5             
+                    a.d-block(class="btn btn-primary",href="/attendeeregister",role="button") Attendee
+            .col-md-5.offset-md-1.d-flex.flex-column
+                a(align="center", style="")
                     img.img-responsive(width='300',height='300',src='/images/strategy.png')
+                .col-6.offset-3.mt-5                  
+                    a.d-block(class="btn btn-primary",href="/eventorgregister",role="button") Event Organizer
+        //- table.table.borderless
+        //-     tr
+        //-         td(align="center", style="border-top:0 ;width:450px")
+        //-             img.img-responsive(width='300',height='300',src='/images/teamwork.png')
+        //-         td(align="center", style="border-top:0 ;width:450px")
+        //-             img.img-responsive(width='300',height='300',src='/images/strategy.png')
                     
-            tr
-                td(align="center", style="border-top:0 ;width:450px")
-                    a(class="btn btn-primary" href="/attendeeregister" role="button") Attendee
-                td(align="center", style="border-top:0 ;width:450px")
-                    a(class="btn btn-primary" href="/eventorgregister" role="button") Event Organizer
+        //-     tr
+        //-         td(align="center", style="border-top:0 ;width:450px")
+        //-             a(class="btn btn-primary" href="/attendeeregister" role="button") Attendee
+        //-         td(align="center", style="border-top:0 ;width:450px")
+        //-             a(class="btn btn-primary" href="/eventorgregister" role="button") Event Organizer
 
         

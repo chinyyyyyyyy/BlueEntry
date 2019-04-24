@@ -20,33 +20,34 @@ block body
       h1
           u Organizer's Profile
       .row
-          #profilePic.col-3
+          #profilePic.col-lg-4.col-sm-6
               img(src=profile.ImgLink, width='250px')
               form.d-flex.align-items-center(name='regis', method='post', action='/editeventorgpic')
                   input(type='text', ,name='link', ,placeholder='Picture Link',required)
                   button.btn.btn-secondary(type='submit') Upload
-          .col
-              #profileInfo.row.bg-w
-                  .col.d-flex.justify-content-between
+          .col.lg-8.col-sm-6
+              #profileInfo.row.bg-w                
+                .col-md-12.d-flex.justify-content-between
                       p.h3 Profile
                       button#editbtn.btn.btn-white(onclick='toInput()')
                           img.img-fluid(src='/images/edit.png', width='25')
-                  .blackline
-                  form.row(name="regis",method="post",action="/editeventorgprofile")
-                      #info.d-flex.align-items-start.flex-column.ml-4.mt-4(style='min-width: 18vw;')
-                          .row
-                              b Name :
-                              p#tf.ml-4 #{profile.Name}
-                              input#myInput.form-control(type='text',name='name', value=profile.Name, style='display: none;',required)
-                          .row
-                              b Telephone :
-                              p#tf.ml-4 #{profile.Tel} 
-                              input#myInput.form-control(type='tel',name='tel', value=profile.Tel, style='display: none;',required)
-                          .row
-                              b Email :
-                              p#tf.ml-4 #{profile.Email}
-                              input#myInput.form-control(type='email',name='email', value=profile.Email, style='display: none;',required)    
-                      #info.d-flex.flex-column.mt-4                  
-                          .row.mt-auto(style='margin-left: 12vw')
-                              button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;') Save
+                hr.blackline
+               
+                form.row(name="regis",method="post",action="/editeventorgprofile")
+                    #info.d-flex.align-items-start.flex-column.ml-4.mt-4(style='min-width: 18vw;')
+                        .row
+                            b Name :
+                            p#tf.ml-4 #{profile.Name}
+                            input#myInput.form-control(type='text',name='name', value=profile.Name, style='display: none;',required)
+                        .row
+                            b Telephone :
+                            p#tf.ml-4 #{profile.Tel} 
+                            input#myInput.form-control(type='tel',name='tel', value=profile.Tel, style='display: none;',required)
+                        .row
+                            b Email :
+                            p#tf.ml-4 #{profile.Email}
+                            input#myInput.form-control(type='email',name='email', value=profile.Email, style='display: none;',required)    
+                    #info.d-flex.flex-column.mt-4                  
+                        .row.mt-auto(style='margin-left: 12vw')
+                            button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;') Save
 

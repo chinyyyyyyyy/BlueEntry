@@ -1,10 +1,6 @@
 body{
     background-color: #f0f0f0
 }
-.navbar{
-    height: 60px;
-    padding: 0;
-}
 #loginbtn{
    background-color:#FFCD24;
    width: 250px;
@@ -17,7 +13,7 @@ body{
     box-shadow: #FFCD24;
 }
 .nav-item{ 
-    width: 6.5vw;
+    min-width: 6.5vw;
     height: 3vh;
     text-align: center;
 }
@@ -41,11 +37,12 @@ a.nav-link{
     height: 5px;
     background-color: #d6d8da;
     border-radius: .25rem;
-    width: 45.5vw;
+    width: 46vw;
+
 }
 .pbar{
     background-color: #006FB9;
-    width: 14.5%;
+    width: 14%;
     margin-left: 0;
     box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.2);
 }
@@ -54,20 +51,21 @@ div.card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .blackline{
+    display: block;
     height: 3px;
     background: black;
-    width: 35vw;
+    width: 100%;
 }
 .divider{
     height: 1px;
     background: rgb(204, 204, 204);
     width: 95%;
 }
-#result{
+/* #result{
     width: 75vw;
-}
+} */
 #profileInfo,#cardinfo,#newcard{
-    width: 40vw;
+    
  }
 .bg-w{
     background-color: white;

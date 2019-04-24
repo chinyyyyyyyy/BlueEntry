@@ -9,15 +9,16 @@ mixin navbar_guest()
             h5#ModalLabel.modal-title.text-center Login
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
-          .modal-body
-            form(name="login",method="post",action="/login")
-              p Username 
-              input.form-control(type='text', name='username',placeholder='Username',required)
-              P Password  
+          .modal-body.col-md-8.offset-md-2
+            form.p-4(name="login",method="post",action="/login")
+              label(for="username") Username              
+              input.form-control(type='text', name='username',placeholder='Username',required)  
+              label(for="password") Password                   
               input.form-control(type='password', name='password',placeholder='Password',required)
-              p
-              button.btn.btn-primary(type='submit') Login
-            a#registerbtn.btn.btn-primary(role='button' href='/register') Register
+              button.btn.btn-primary.btn-block.mt-2(type='submit',style='') Login
+            .form-inline
+              p Don't have an account ? Please
+                a#register.ml-1(role='button' href='/register') sign up
 
 mixin navbar_member(username)
     .btn-group
@@ -30,14 +31,17 @@ mixin navbar_member(username)
         a.dropdown-item(href='/logout') Log Out
 
 mixin navbar(currentUser)
-    nav.navbar.navbar-dark.bg-dark.d-flex.justify-content-between
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
       a.navbar-brand.ml-4.mt-1(href='/')
         img.d-inline-block.align-top(src='/images/BlueEntry - logo.png', width='90', height='45', alt='')
-      .btn-group(role='group')
-        form.d-flex(name='searching', method='post', action='/search', novalidate='')
-          input.form-control.mr-3(type='text', name='keyword', placeholder='Search')
-          button.btn.navbar-brand(role='button')
-            img.d-inline-block.align-top(src='/images/magnifying-glass-white.png', width='30', height='30', alt='')
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo02', aria-controls='navbarTogglerDemo02', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbarTogglerDemo02
+        .btn-group.navbar-nav(role='group',style='margin-left:auto')
+          form.form-inline.my-2.my-lg-0(name='searching', method='post', action='/search', novalidate='')
+            input.form-control.mr-sm-3(type='text', name='keyword', placeholder='Search')
+            button.btn.navbar-brand(role='button')
+              img.d-inline-block.align-top(src='/images/magnifying-glass-white.png', width='30', height='30', alt='')
         - if(currentUser == null){
           +navbar_guest()
         - }else{
