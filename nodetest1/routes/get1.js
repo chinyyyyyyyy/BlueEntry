@@ -6,16 +6,12 @@ var express               = require('express'),
     
 //1 home
 router.get('/',function(req,res,next){
-  
   req.event.find({}, function(e,docs){
-    var boostlist = [];
-    for(var i in docs){
-      if(docs[i].boost == "1"){
-        boostlist.append(docs[i]);
-      }
-    }
-    res.render('./general/home',{currentUser:req.user ,allevent:docs ,boosted_event:boostlist});
-  });
+    req.event.find({Boost:true}, function(e,docs2){
+      console.log(docs2);
+      res.render('./general/home',{currentUser:req.user ,allevent:docs ,boosted_event:docs2});
+      });
+    });
 });
 
 //2 eventpage

@@ -7,16 +7,17 @@ block body
   #banner.d-flex.justify-content-center.p-4
     #carouselExampleIndicators.carousel.slide(data-ride='carousel')(style="width:1000px")
       ol.carousel-indicators
-        li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
-        li(data-target='#carouselExampleIndicators', data-slide-to='1')
-        li(data-target='#carouselExampleIndicators', data-slide-to='2')
+        - var count = 1; 
+        li.active(data-target='#carouselExampleIndicators', data-slide-to=0)
+        each row in boosted_event
+          li(data-target='#carouselExampleIndicators', data-slide-to=count)
+          - count = count+1;
       .carousel-inner
         .carousel-item.active
           img.d-block.w-100(src='/images/pictest.jpg', alt='...')
-        .carousel-item
-          img.d-block.w-100(src='/images/pictest.jpg', alt='...')
-        .carousel-item
-          img.d-block.w-100(src='/images/pictest.jpg', alt='...')
+        each row in boosted_event
+          .carousel-item
+            img.d-block.w-100(src=row.ImgLink, alt='...')
       a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
         span.carousel-control-prev-icon(aria-hidden='true')
         span.sr-only Previous

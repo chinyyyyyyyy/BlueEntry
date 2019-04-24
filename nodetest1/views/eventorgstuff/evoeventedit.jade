@@ -39,51 +39,7 @@ block body
           +table1("Exp :",'text','exp', event.Exp,'' )
           +table1("Contact :",'text','contact', event.Contact,'' ) 
           button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;') Save
-         
-      button.btn.btn-primary(type='submit') Boost
-      a.btn.btn-primary.ml-4(role='button',href=`/attendeelist/${event._id}`) My Attendee
-  .container(style="background-color:white; padding-bottom:30px; padding-top:20px")
-    form(name="boost",method="post",action="/boost")
-      //- input(type='hidden', name='id', value=event._id)
+      form(name="boost",method="post",action="/boost")
+        button.btn.btn-primary(type='submit') Boost
+        a.btn.btn-primary.ml-4(role='button',href=`/attendeelist/${event._id}`) My Attendee
       
-      //- p
-
-    //- -if(event.reservation.length==0){
-    //-   h3
-    //-     b Edit Event
-    //-   form(name="regis",method="post",action="/editevent")
-    //-     input(type='hidden', name='id',value=event._id)
-    //-     table.table
-    //-       tr
-    //-         td
-    //-           label Event name :
-    //-           input(type='text', name='ename',value=event.Ename,placeholder='name')
-    //-         td
-    //-           label Category :
-    //-           input(type='text', name='category',value=event.Category)
-    //-       tr
-    //-         td
-    //-           label Detail :
-    //-           textarea.form-control(rows='5',type='text', name='detail',placeholder='detail') #{event.Detail}
-    //-         td
-    //-           label Lacation :
-    //-           textarea.form-control(rows='5',type='text', name='location') #{event.Location}
-    //-       tr
-    //-         td
-    //-           label Price :
-    //-           input(type='text', name='price',value=event.Price)
-    //-         td
-    //-           label Max Seat :
-    //-           input(type='text', name='maxseat',value=event.MaxSeat)
-    //-       tr
-    //-         td
-    //-           label Exp :
-    //-           input(type='text', name='exp',value=event.Exp)
-    //-         td
-    //-           label Contact :
-    //-       tr
-    //-         td 
-    //-           label Image Link :  
-    //-           input(type='text',name='link',value=event.ImgLink)
-    //-     a.btn.btn-primary(role='button',href=`/attendeelist/${event._id}`) My Attendee
-    //- -}
