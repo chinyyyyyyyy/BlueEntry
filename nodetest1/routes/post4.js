@@ -34,7 +34,7 @@ router.post('/addevent',function(req,res){
         Price: req.body.price,
         MaxSeat: req.body.seat,
         Location: req.body.location,
-        Exp: req.body.exp,
+        Exp: new Date(req.body.exp),
         Contact: req.body.contact,
         Boost: false,
         ImgLink: req.body.link,
@@ -46,7 +46,6 @@ router.post('/addevent',function(req,res){
     req.evo.findOneAndUpdate(
         { username: req.user.username },
         { $push: { MyEvent: newEvent._id } },function(e){
-            if (e) console.log(e);
     });
     req.atd.find({},function(e,docs){
         for (i in docs){
