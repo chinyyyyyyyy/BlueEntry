@@ -20,16 +20,23 @@ router.get('/myprofile',isLoggedIn,function(req,res,next){
 
 //8 myevent
 router.get('/myevent',isLoggedIn,function(req,res,next){
-    
     if (req.user.type == "attendee"){
         req.reserve.find({Reserver : req.user.username}, function(e,docs){
             var eid = []
             for (i in docs){
                 eid.push(docs[i].Event)
             }
-            console.log(eid)
             req.event.find({"_id": {$in: eid}},function(e,docs2){
-                res.render('./attendeestuff/atdevent',{currentUser:req.user ,myevent:docs , ename: docs2});
+                eid2 = [];
+                for (j in docs){
+                    for(k in docs2){
+                        if(String(docs[j].Event) == String(docs2[k]._id)){
+                            eid2.push(docs2[k].Ename);
+                        }
+                    }
+                }
+                console.log(eid2);
+                res.render('./attendeestuff/atdevent',{currentUser:req.user ,myevent:docs , ename:eid2});
             });
         });
     } else {
