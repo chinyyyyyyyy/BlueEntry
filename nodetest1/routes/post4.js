@@ -80,7 +80,6 @@ router.post('/editevent',function(req,res){
             Location: req.body.location,
             Exp: new Date(req.body.exp + "GMT+07:00"),
             Contact: req.body.contact,
-            ImgLink: req.body.link
         } ,function(e,docs){
             res.redirect("/eventdetail/"+req.body.id);
     });
