@@ -32,7 +32,7 @@ block body
                             .row.mb-3
                                 b Telephone :
                                 p#tf.ml-4 #{profile.Tel} 
-                                input#myInput.form-control(onkeypress='isTel(event)', type='tel',name='tel', value=profile.Tel, style='display: none;',required)
+                                input#myInput.form-control(pattern="^(([0][0-9]{8,9}))$",onkeypress='isTel(event)', type='tel',name='tel', value=profile.Tel,placeholeder='0xxxxxxxxx' , style='display: none;',required)
                             .row.mb-3
                                 b Email :
                                 p#tf.ml-4 #{profile.Email}
