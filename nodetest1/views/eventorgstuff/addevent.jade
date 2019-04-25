@@ -20,7 +20,7 @@ block body
                   option(value='others') Others
         .row.form-inline          
           label detail  
-          input.form-control(type='text', name='detail',placeholder='Detail')
+          textarea.form-control(type='text', name='detail',placeholder='Detail')
         .row.form-inline  
           label Price  
           input.form-control(onkeypress='isNum(event)' type='text', name='price',placeholder='Price')
@@ -29,13 +29,13 @@ block body
           input.form-control(onkeypress='isNum(event)' type='text', name='seat',placeholder='Max seat')
         .row.form-inline  
           label Location
-          input.form-control(type='text', name='location',placeholder='Location')
+          textarea.form-control(type='text', name='location',placeholder='Location')
         .row.form-inline  
           label Last Date Reservable
           input.form-control(type='date', name='exp',placeholder='Last Date Reservable ')
         .row.form-inline  
           label Contact 
-          input.form-control(type='text', name='contact',placeholder='ex mail or tel ')
+          textarea.form-control(type='text', name='contact',placeholder='ex mail or tel ')
         .row.form-inline  
           label Image Link 
           input.form-control(type='text', name='link',placeholder='Image Link')
