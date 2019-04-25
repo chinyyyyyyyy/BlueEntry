@@ -80,13 +80,16 @@ div.card {
     min-height: 220px;
     padding:10px;
 }
-#info .row{
-    height: 7vh;
-}
 #info .row #myInput{
-    width: 10vw;
+    max-width: 200px;
     height: 3.1vh;
     margin-left: 0.71vw;
+}
+#info b{
+    min-width: 80px;
+}
+#info p{
+    min-width: 200px;
 }
 #nevent label{
     min-width: 10vw;

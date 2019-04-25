@@ -42,7 +42,7 @@ block body
                         .row
                             b Telephone :
                             p#tf.ml-4 #{profile.Tel} 
-                            input#myInput.form-control(type='tel',name='tel', value=profile.Tel, style='display: none;',required)
+                            input#myInput.form-control(pattern="0[89][0-9]{7}"  maxlength="10" type='tel',name='tel', value=profile.Tel, style='display: none;',required)
                         .row
                             b Email :
                             p#tf.ml-4 #{profile.Email}

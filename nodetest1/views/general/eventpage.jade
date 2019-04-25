@@ -48,12 +48,12 @@ block body
                             -}
                             h4(class='text-primary') Personal Information
                             .form-row
-                                +textinput('6','First Name','fname')
-                                +textinput('6','Last Name','lname')
+                                +textinput('6','First Name','fname','text')
+                                +textinput('6','Last Name','lname','text')
                             .form-row
-                                +textinput('12','Telephone','tel')
+                                +textinput('12','Telephone','tel','number')
                             .form-row
-                                +textinput('12','Address','address')
+                                +textinput('12','Address','address','text')
                         .container(class='formcenter')
                             h4(class='text-primary') Choose Payment Method   
                             .row 

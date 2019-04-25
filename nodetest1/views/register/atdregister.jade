@@ -23,7 +23,7 @@ block body
               input.form-control(type='text', name='lname',placeholder='Last Name', required)
             .row.form-inline  
               label Telephone
-              input.form-control(type='text', name='tel',placeholder='ex 0xx-xxxxxxx', required)
+              input.form-control#ip(type='text', name='tel',placeholder='ex 0xx-xxxxxxx', onkeypress='isTel(event)' required)
             .row.form-inline  
               label Email
               input.form-control(type='email', name='email',placeholder='example@example.com', required)
@@ -33,7 +33,7 @@ block body
           .row.ml-4                   
             label.mr-5 Gender
             .custom-control.custom-radio.custom-control-inline
-              input#customRadioInline1.custom-control-input(type='radio', name='customRadioInline1')
+              input#customRadioInline1.custom-control-input(type='radio', name='customRadioInline1' checked)
               label.custom-control-label(for='customRadioInline1') Male
             .custom-control.custom-radio.custom-control-inline.ml-2
               input#customRadioInline2.custom-control-input(type='radio', name='customRadioInline1')

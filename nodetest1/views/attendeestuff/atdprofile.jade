@@ -13,42 +13,46 @@ block body
                 form.d-flex.align-items-center(name='updateprofilepic',method='post', action='/editattendeepic')
                     input(type='text',name='link',placeholder='Picture Link',required)
                     button.btn.btn-secondary(type='submit') Upload
-            .col-md-9.col-sm-12
+            .col-md-8.col-sm-12
                 #profileInfo.row.bg-w
                     .col.d-flex.justify-content-between
                         p.h3 Profile
                         button#editbtn.btn.btn-white(onclick='toInput()')
                             img.img-fluid(src='/images/edit.png', width='25')
                     .blackline
-                    form.row(name="updateprofile",method="post",action="/editattendeeprofile")
-                        #info.d-flex.align-items-start.flex-column.ml-4.mt-4(style='min-width: 18vw;')
-                            .row
-                                b FirstName :
-                                p#tf.ml-4  #{profile.Fname}
-                                input#myInput.form-control(type='text',name='fname', value=profile.Fname, style='display: none;',required)
-                            .row
+                    form#info.ml-5(name="updateprofile",method="post",action="/editattendeeprofile")
+                            .row.mb-3                                                               
+                                    b FirstName :
+                                    p#tf.ml-4  #{profile.Fname}
+                                    input#myInput.form-control(type='text',name='fname', value=profile.Fname, style='display: none;',required)                                   
+                                    
+                                    b LastName :
+                                    p#tf.ml-4 #{profile.Lname} 
+                                    input#myInput.form-control(type='text',name='lname', value=profile.Lname, style='display: none;',required)
+                            .row.mb-3
                                 b Telephone :
                                 p#tf.ml-4 #{profile.Tel} 
-                                input#myInput.form-control(type='tel',name='tel', value=profile.Tel, style='display: none;',required)
-                            .row
+                                input#myInput.form-control(onkeypress='isTel(event)', type='tel',name='tel', value=profile.Tel, style='display: none;',required)
+                            .row.mb-3
                                 b Email :
                                 p#tf.ml-4 #{profile.Email}
                                 input#myInput.form-control(type='email',name='email', value=profile.Email, style='display: none;',required)
-                            .row
+                            .row.mb-3
                                 b Birthday :
                                 p#tf.ml-4 #{profile.DOB} 
                                 input#myInput.form-control(type='text',name='dob', value=profile.DOB, style='display: none;',required)
-                            .row
+                            .row.mb-3
                                 b Gender :
                                 p#tf.ml-4 #{profile.Gender}
-                                input#myInput.form-control(type='text',name='gender', value=profile.Gender, style='display: none;',required)
-                        #info.d-flex.flex-column.mt-4
-                            .row
-                                b LastName :
-                                p#tf.ml-4 #{profile.Lname} 
-                                input#myInput.form-control(type='text',name='lname', value=profile.Lname, style='display: none;',required)
-                            .row.mt-auto(style='margin-left: 12vw')
-                                button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;') Save
+                                //- input#myInput.form-control(type='text',name='gender', value=profile.Gender, style='display: none;',required)
+                                .form-inline.ml-4#myInput(style='display: none')
+                                    .custom-control.custom-radio.custom-control-inline
+                                        input#customRadioInline1.custom-control-input(type='radio', name='gender' value='Male' checked='Male'==profile.Gender)
+                                        label.custom-control-label(for='customRadioInline1') Male
+                                    .custom-control.custom-radio.custom-control-inline.ml-2
+                                        input#customRadioInline2.custom-control-input(type='radio', name='gender' value='Female' checked='Female'==profile.Gender)
+                                        label.custom-control-label(for='customRadioInline2') Female 
+                                button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;margin-left:40%;height:35px') Save
                 #cardinfo.row.bg-w
                     .col.d-flex.justify-content-between
                         p.h3 Credit Card Information
@@ -92,19 +96,20 @@ block body
                     .d-flex.align-items-center.mt-2.ml-4
                         h1
                         .vl.ml-4
-                        form.d-flex.flex-column(name="addcard",method="post",action="/addcard",style='margin-left: 4vw')
+                        form#myForm.d-flex.flex-column(name="addcard",method="post",action="/addcard",style='margin-left: 4vw')
                             .row
                                 b Card Number :
-                                input.ml-4(type='number', name='cno', placeholder='Card Number' min='1000000000000' max='9999999999999' required)
+                                input#ip.form-control.ml-4(onkeypress="isCardnumber(event)" type='text', name='cno', placeholder='Card Number' min='1000000000000' max='9999999999999' required)
                             .row
                                 b Card Name :
-                                input.ml-4(type='text', name='cname', placeholder='Card Name' required)
+                                input#ip.form-control.ml-4(onkeypress="" type='text', name='cname', placeholder='Card Name' required)
                             .row
                                 b CVV :
-                                input.ml-4(type='number', name='cvv', placeholder='cvv' min='0' max='999' required)
+                                input#ip.form-control.ml-4(onkeypress="isCvv(event)" type='text', name='cvv', placeholder='cvv' min="0" max="999" required)
+                              
                             .row.d-flex
                                 b EXP :
-                                input.ml-4(type='month', name='exp', placeholder='exp' required)
-                                button.btn.btn-success(type='submit', style='margin-left: 8vw', onsubmit='nwcard(2)') Add Card
+                                input#ip.form-control.ml-4(onkeypress="" type='month', name='exp', placeholder='exp'  required min='2017-01' max='2030-31' pattern="[0-9]{4}-[0-9]{2}")
+                                button#addc.btn.btn-success(type='submit', style='margcin-left: 8vw', onsubmit='nward(2)',onclick='chCvv()') Add Card
                     // - add card
                                             

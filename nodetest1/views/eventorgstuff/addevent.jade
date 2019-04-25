@@ -23,10 +23,10 @@ block body
           input.form-control(type='text', name='detail',placeholder='Detail')
         .row.form-inline  
           label Price  
-          input.form-control(type='text', name='price',placeholder='Price')
+          input.form-control(onkeypress='isNum(event)' type='text', name='price',placeholder='Price')
         .row.form-inline  
           label Max seat 
-          input.form-control(type='text', name='seat',placeholder='Max seat')
+          input.form-control(onkeypress='isNum(event)' type='text', name='seat',placeholder='Max seat')
         .row.form-inline  
           label Location
           input.form-control(type='text', name='location',placeholder='Location')
