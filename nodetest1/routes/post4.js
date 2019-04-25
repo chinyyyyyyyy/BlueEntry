@@ -34,7 +34,7 @@ router.post('/addevent',function(req,res){
         Price: req.body.price,
         MaxSeat: req.body.seat,
         Location: req.body.location,
-        Exp: new Date(req.body.exp),
+        Exp: new Date(req.body.exp + "GMT+07:00"),
         Contact: req.body.contact,
         Boost: false,
         ImgLink: req.body.link,
@@ -78,7 +78,7 @@ router.post('/editevent',function(req,res){
             Price: req.body.price,
             MaxSeat: req.body.maxseat,
             Location: req.body.location,
-            Exp: new Date(req.body.exp),
+            Exp: new Date(req.body.exp + "GMT+07:00"),
             Contact: req.body.contact,
             ImgLink: req.body.link
         } ,function(e,docs){
