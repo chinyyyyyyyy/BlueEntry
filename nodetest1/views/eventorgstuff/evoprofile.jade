@@ -34,20 +34,20 @@ block body
                 hr.blackline
                
                 form.row(name="regis",method="post",action="/editeventorgprofile")
-                    #info.d-flex.align-items-start.flex-column.ml-4.mt-4(style='min-width: 18vw;')
+                    #info.col-md-12.d-flex.align-items-start.flex-column.ml-4.mt-4(style="min-width: 30vw")
                         .row
                             b Name :
                             p#tf.ml-4 #{profile.Name}
-                            input#myInput.form-control(type='text',name='name', value=profile.Name, style='display: none;',required)
+                            input#myInput.form-control.mb-3(type='text',name='name', value=profile.Name, style='display: none;',required)
                         .row
                             b Telephone :
                             p#tf.ml-4 #{profile.Tel} 
-                            input#myInput.form-control(pattern="0[89][0-9]{7}"  maxlength="10" type='tel',name='tel', value=profile.Tel, style='display: none;',required)
+                            input#myInput.form-control.mb-3(pattern="^(([0][0-9]{8,9}))$" maxlength="10" type='tel',name='tel', value=profile.Tel, style='display: none;',required)
                         .row
                             b Email :
                             p#tf.ml-4 #{profile.Email}
-                            input#myInput.form-control(type='email',name='email', value=profile.Email, style='display: none;',required)    
-                    #info.d-flex.flex-column.mt-4                  
-                        .row.mt-auto(style='margin-left: 12vw')
-                            button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;') Save
+                            input#myInput.form-control.mb-3(type='email',name='email', value=profile.Email, style='display: none;',required)                
+                        .row.ml-auto
+                            button#cancelbtn.btn.btn-danger.ml-auto.mr-3(type='button', onclick='toCancel()', style='display: none;') Cancel 
+                            button#savebtn.btn.btn-primary(type='submit', onsubmit='toSubmit()', style='display: none;') Save
 

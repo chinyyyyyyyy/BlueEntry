@@ -6,38 +6,41 @@ block head
     
 block body
   .container(style="background-color:white; padding-bottom:30px;padding-top:20px")
-      .col.d-flex.justify-content-between  
+      .col.d-flex.justify-content-between 
         h4.form-inline
           b My Event
-          -if(event.reservation.length == 0){
-            button#editbtn.btn.btn-white.ml-2(onclick='toInput()')
-              img.img-fluid(src='/images/edit.png', width='25')
-          -}
+        -if(event.reservation.length == 0){
+          button#editbtn.btn.btn-white.ml-2(onclick='toInput()')
+            img.img-fluid(src='/images/edit.png', width='25')
+        -}
       img.mx-auto.d-block(src=event.ImgLink,style="width:1000px")
-      form.col-md-10(name="regis",method="post",action="/editevent")
+      form.col-md-12(name="regis",method="post",action="/editevent")
         input(type='hidden', name='id',value=event._id)
         table.table
           +table1("EventName :",'text','ename',event.Ename,'name' )
           tr
-            td(width="20%")
+            td
               b Category :
             td#tf #{event.Category}
-            td#myInput(style='display: none;')
-              label.sr-only.mr-2(for='inlineFormCustomSelectPref') Category            
-              select.custom-select.mb-2.mr-sm-2(name='category')
-                option(value='ComSci',selected='ComSci'==event.Category) Computer Science
-                option(value='Finance',selected='Finance'==event.Category) Finance
-                option(value='Life',selected='Life'==event.Category) Life
-                option(value='HomeEcon',selected='HomEcon'==event.Category) Home Economics
-                option(value='Culture',selected='Culture'==event.Category) Culture
-                option(value='others',selected='others'==event.Category) Others
+            td
+              #myInput.form-control(style='display: none; border: transparent; padding: 0;')
+                label.sr-only.mr-2(for='inlineFormCustomSelectPref') Category            
+                select.custom-select.mb-2.mr-sm-2(name='category')
+                  option(value='ComSci',selected='ComSci'==event.Category) Computer Science
+                  option(value='Finance',selected='Finance'==event.Category) Finance
+                  option(value='Life',selected='Life'==event.Category) Life
+                  option(value='HomeEcon',selected='HomEcon'==event.Category) Home Economics
+                  option(value='Culture',selected='Culture'==event.Category) Culture
+                  option(value='others',selected='others'==event.Category) Others
           +table1("Detail :",'text','detail', event.Detail,'detail' )
           +table1("Price :",'number','price', event.Price,'' )
           +table1("Max Seat :",'number','maxseat', event.MaxSeat,'')
           +table1("Location:",'text','location', event.Location, '')
           +table1("Exp :",'date','exp',event.Exp,'Exp' )
           +table1("Contact :",'text','contact', event.Contact,'' )
-        button#savebtn.btn.btn-primary.ml-auto.mr-3(type='submit', onsubmit='toSubmit()', style='display: none;') Save 
+        .row
+          button#cancelbtn.btn.btn-danger.ml-auto.mr-3(type='button', onclick='toCancel()', style='display: none;') Cancel 
+          button#savebtn.btn.btn-primary.mr-3(type='submit', onsubmit='toSubmit()', style='display: none;') Save 
       form.ml-4(name="boost",method="post",action="/boost")
         -console.log(event.Boost);
         - if(event.Boost){

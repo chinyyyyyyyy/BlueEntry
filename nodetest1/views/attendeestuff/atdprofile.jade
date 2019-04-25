@@ -52,7 +52,10 @@ block body
                                     .custom-control.custom-radio.custom-control-inline.ml-2
                                         input#customRadioInline2.custom-control-input(type='radio', name='gender' value='Female' checked='Female'==profile.Gender)
                                         label.custom-control-label(for='customRadioInline2') Female 
-                                button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;margin-left:40%;height:35px') Save
+                            .row.ml-auto
+                                button#cancelbtn.btn.btn-danger.ml-auto.mr-3(type='button', onclick='toCancel()', style='display: none;') Cancel 
+                                button#savebtn.btn.btn-primary(type='submit', onsubmit='toSubmit()', style='display: none;') Save
+                                //- button#savebtn.btn.btn-primary(type='submit', onclick='toSubmit()', style='display: none;margin-left:40%;height:35px') Save
                 #cardinfo.row.bg-w
                     .col.d-flex.justify-content-between
                         p.h3 Credit Card Information
