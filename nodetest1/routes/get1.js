@@ -8,7 +8,6 @@ var express               = require('express'),
 router.get('/',function(req,res,next){
   req.event.find({}, function(e,docs){
     req.event.find({Boost:true}, function(e,docs2){
-      console.log(docs2);
       res.render('./general/home',{currentUser:req.user ,allevent:docs ,boosted_event:docs2});
       });
     });

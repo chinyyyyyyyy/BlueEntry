@@ -17,12 +17,12 @@ block body
           th Event Name
           th
       tbody
-        -for (i in myevent){
+        -for(i in myevent){
           tr
             td #{myevent[i].Fname} 
             td #{myevent[i].Lname}
             td #{myevent[i].Payment}
-            td #{ename[i].Ename}
+            td #{ename[i]}
             td 
               a.btn.btn-primary.btn-sm(role='button' href=`/reservedetail/${myevent[i]._id}`) Reserve Detail
         -}

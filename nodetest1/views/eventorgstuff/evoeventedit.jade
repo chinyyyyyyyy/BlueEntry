@@ -36,9 +36,9 @@ block body
           +table1("Price :",'number','price', event.Price,'' )
           +table1("Max Seat :",'number','maxseat', event.MaxSeat,'')
           +table1("Location:",'text','location', event.Location, '')
-          +table1("Exp :",'date','exp', event.Exp,'Exp' )
+          +table1("Exp :",'date','exp',event.Exp,'Exp' )
           +table1("Contact :",'text','contact', event.Contact,'' )
-        button#savebtn.btn.btn-primary.ml-auto.mr-3(type='submit', onclick='toSubmit()', style='display: none;') Save 
+        button#savebtn.btn.btn-primary.ml-auto.mr-3(type='submit', onsubmit='toSubmit()', style='display: none;') Save 
       form.ml-4(name="boost",method="post",action="/boost")
         -console.log(event.Boost);
         - if(event.Boost){
