@@ -13,8 +13,7 @@ block body
             button#editbtn.btn.btn-white.ml-2(onclick='toInput()')
               img.img-fluid(src='/images/edit.png', width='25')
           -}
-         
-      img(src=event.ImgLink)
+      img.mx-auto.d-block(src=event.ImgLink,style="width:1000px")
       form.col-md-10(name="regis",method="post",action="/editevent")
         input(type='hidden', name='id',value=event._id)
         table.table
