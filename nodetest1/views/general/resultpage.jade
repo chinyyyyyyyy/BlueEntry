@@ -38,7 +38,7 @@ block body
           .col-lg-3.col-md-6.col-sm-auto.mb-lg-4
             .card
               .card-head
-                img.card-img-top(src='/images/pictest.jpg', style='min-height: 250px; padding:10px', alt='Generic placeholder image')
+                img.card-img-top(src=row.ImgLink, style='min-height: 250px; padding:10px', alt='Generic placeholder image')
               .card-body
                 a.card-title.h4.d-inline-block.text-truncate(class = 'text-primary' href=`/events/${row._id}` style="max-width: 200px;")= row.Ename 
                 p.card-text Category :
