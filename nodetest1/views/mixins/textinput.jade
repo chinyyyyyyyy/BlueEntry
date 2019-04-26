@@ -1,8 +1,8 @@
 //for columns input 
-mixin textinput(size,description,idname,ty,pholder)
+mixin textinput(size,description,idname,ty,pholder,pt)
     .container(class='form-group col-md-'+size)
         label(for='ex4')= description
-        input.form-control(type=ty,name=idname,id=idname,placeholder=pholder,required)
+        input.form-control(type=ty,pattern=pt ,name=idname,id=idname,placeholder=pholder, required='required')
         .invalid-feedback
               .p='Please fill ' + description
 
