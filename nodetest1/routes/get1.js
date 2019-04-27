@@ -47,8 +47,7 @@ router.get(['/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend','/results/q=&ca
         res.render('./general/resultpage', {currentUser:req.user ,"userlist": docs,request:{"key":key,"cat":listcat,"pstart":pstart,"pend":pend}});
       });
     } else {
-      req.event.find({ $and: [{ $text: { $search: key } }, { Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
-        console.log(docs);
+      req.event.find({ $and: [{ Ename: { $regex: key ,$options: 'i'} }, { Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
         res.render('./general/resultpage', {currentUser:req.user ,"userlist": docs,request:{key:key,cat:listcat,pstart:pstart,pend:pend}});
       });
   }
