@@ -11,19 +11,19 @@ block body
           .row.flex-column#nevent
             .row.form-inline
               label Username
-              input.form-control(type='text', name='username',placeholder='Username', required)
+              input.form-control(type='text', name='username',placeholder='Username', minlength="8", maxlength="30", required)
             .row.form-inline          
               label Password 
-              input.form-control(type='password', name='password',placeholder='Password', required)
+              input.form-control(type='password', name='password',placeholder='Password', minlength="8", maxlength="30", required)
             .row.form-inline  
               label First Name  
-              input.form-control(type='text', name='fname',placeholder='First Name', required)
+              input.form-control(type='text', name='fname',placeholder='First Name',pattern='[A-Za-zก-ฮฯ-๐]*', required)
             .row.form-inline  
               label Last Name
-              input.form-control(type='text', name='lname',placeholder='Last Name', required)
+              input.form-control(type='text', name='lname',placeholder='Last Name',pattern='[A-Za-zก-ฮฯ-๐]*', required)
             .row.form-inline  
               label Telephone
-              input.form-control#ip(type='text', name='tel',placeholder='0xx-xxxxxxx', onkeypress='isTel(event)' required)
+              input#ip.form-control(type='text', name='tel',placeholder='0xxxxxxxxx',pattern="^(([0][0-9]{8,9}))$",onkeypress='isTel(event)', minlength="9", maxlength="10", required)
             .row.form-inline  
               label Email
               input.form-control(type='email', name='email',placeholder='example@example.com', required)

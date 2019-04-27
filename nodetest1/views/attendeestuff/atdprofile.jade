@@ -11,7 +11,7 @@ block body
             #profilePic.col-md-3.col-sm-12
                 img(src=profile.ImgLink, width='250px')
                 form.d-flex.align-items-center(name='updateprofilepic',method='post', action='/editattendeepic')
-                    input(type='text',name='link',placeholder='Picture Link',required)
+                    input(type='text',name='link',pattern='(https?:\/\/.*\.(?:png|jpg|svg))',placeholder='Picture Link',required)
                     button.btn.btn-secondary(type='submit') Upload
             .col-md-8.col-sm-12
                 #profileInfo.row.bg-w
@@ -24,15 +24,15 @@ block body
                             .row.mb-3                                                               
                                     b FirstName :
                                     p#tf.ml-4  #{profile.Fname}
-                                    input#myInput.form-control(type='text',name='fname', value=profile.Fname, style='display: none;',required)                                   
+                                    input#myInput.form-control(type='text',name='fname', value=profile.Fname, style='display: none;',pattern='[A-Za-zก-ฮฯ-๐]*',required)                                   
                                     
                                     b LastName :
                                     p#tf.ml-4 #{profile.Lname} 
-                                    input#myInput.form-control(type='text',name='lname', value=profile.Lname, style='display: none;',required)
+                                    input#myInput.form-control(type='text',name='lname', value=profile.Lname, style='display: none;',pattern='[A-Za-zก-ฮฯ-๐]*',required)
                             .row.mb-3
                                 b Telephone :
                                 p#tf.ml-4 #{profile.Tel} 
-                                input#myInput.form-control(pattern="^(([0][0-9]{8,9}))$",onkeypress='isTel(event)', type='tel',name='tel', value=profile.Tel,placeholeder='0xxxxxxxxx' , style='display: none;',required)
+                                input#myInput.form-control(type='text', name='tel',placeholder='0xxxxxxxxx',pattern="^(([0][0-9]{8,9}))$",onkeypress='isTel(event)', minlength="9", maxlength="10", style='display: none;', required)
                             .row.mb-3
                                 b Email :
                                 p#tf.ml-4 #{profile.Email}
@@ -77,9 +77,9 @@ block body
                                 .row
                                     b Card Name :
                                     p.ml-4 #{row.CName}
-                                .row
-                                    b CVV :
-                                    p.ml-4 #{row.CVV}
+                                //- .row
+                                //-     b CVV :
+                                //-     p.ml-4 #{row.CVV}
                                 .row.d-flex.justify-content-between.ml-1
                                     .row
                                         b EXP :
@@ -102,13 +102,13 @@ block body
                         form#myForm.d-flex.flex-column(name="addcard",method="post",action="/addcard",style='margin-left: 4vw')
                             .row
                                 b Card Number :
-                                input#ip.form-control.ml-4(onkeypress="isCardnumber(event)" type='text', name='cno', placeholder='Card Number' min='1000000000000' max='9999999999999' required)
+                                input#ip.form-control.ml-4(onkeypress="isCardnumber(event)" type='text', name='cno', placeholder='Card Number' minlength='16' maxlength='16' required)
                             .row
                                 b Card Name :
-                                input#ip.form-control.ml-4(onkeypress="" type='text', name='cname', placeholder='Card Name' required)
+                                input#ip.form-control.ml-4( type='text',pattern='[A-Za-zก-ฮฯ-๐]*', name='cname', placeholder='Card Name' maxlength='30' required)
                             .row
                                 b CVV :
-                                input#ip.form-control.ml-4(onkeypress="isCvv(event)" type='text', name='cvv', placeholder='cvv' min="0" max="999" required)
+                                input#ip.form-control.ml-4(onkeypress="isCvv(event)" type='text', name='cvv', placeholder='cvv' minlength='3' maxlength='3' required)
                               
                             .row.d-flex
                                 b EXP :
