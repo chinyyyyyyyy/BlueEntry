@@ -32,7 +32,7 @@ router.get('/events/:id', function (req, res) {
 
 //3 serch result
 router.get(['/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend','/results/q=&cat=:cat&pstart=:pstart&pend=:pend'], function (req, res) {
-    var listcat = ['ComSci', 'Finance', 'HomeEcon', 'Life', 'Culture'];
+    var listcat = ['ComSci', 'Finance', 'HomeEcon', 'Life', 'Culture','others'];
     var pstart = Number(req.params.pstart);
     var pend = Number(req.params.pend);
     var key = "";
@@ -48,6 +48,7 @@ router.get(['/results/q=:key&cat=:cat&pstart=:pstart&pend=:pend','/results/q=&ca
       });
     } else {
       req.event.find({ $and: [{ $text: { $search: key } }, { Price: { $gte: pstart, $lte: pend } }, { Category: { $in: listcat } }] }, function (e, docs) {
+        console.log(docs);
         res.render('./general/resultpage', {currentUser:req.user ,"userlist": docs,request:{key:key,cat:listcat,pstart:pstart,pend:pend}});
       });
   }
