@@ -9,7 +9,7 @@ block body
     form.row.flex-column#nevent(name="regis",method="post",action="/addevent")
         .row.form-inline
           label Event Name
-          input.form-control(type='text', name='name',placeholder='Event Name')
+          input.form-control(type='text', name='name',placeholder='Event Name',required)
           label(for="inputGroupSelect01") Category
           select#inputGroupSelect01(class='custom-select',name='category')
                   option(value='ComSci') Computer Science
@@ -20,24 +20,24 @@ block body
                   option(value='others') Others
         .row.form-inline          
           label detail  
-          textarea.form-control(type='text', name='detail',placeholder='Detail')
+          textarea.form-control(type='text', name='detail',placeholder='Detail',required)
         .row.form-inline  
           label Price  
-          input.form-control(onkeypress='isNum(event)' type='text', name='price',placeholder='Price')
+          input.form-control(onkeypress='isNum(event)' type='text', name='price',placeholder='Price',required)
         .row.form-inline  
           label Max seat 
-          input.form-control(onkeypress='isNum(event)' type='text', name='seat',placeholder='Max seat')
+          input.form-control(onkeypress='isNum(event)' type='text', name='seat',placeholder='Max seat',required)
         .row.form-inline  
           label Location
-          textarea.form-control(type='text', name='location',placeholder='Location')
+          textarea.form-control(type='text', name='location',placeholder='Location',required)
         .row.form-inline  
           label Last Date Reservable
-          input.form-control(type='date', name='exp',placeholder='Last Date Reservable ')
+          input.form-control(type='date', name='exp',placeholder='Last Date Reservable ',required)
         .row.form-inline  
           label Contact 
-          textarea.form-control(type='text', name='contact',placeholder='ex mail or tel ')
+          textarea.form-control(type='text', name='contact',placeholder='ex mail or tel ',required)
         .row.form-inline  
           label Image Link 
-          input.form-control(type='text', name='link',placeholder='Image Link')
+          input.form-control(type='text', name='link',pattern='(https?:\/\/.*\.(?:png|jpg|svg))',placeholder='Image Link')
         button.btn.btn-success(type='submit') Add Event
       

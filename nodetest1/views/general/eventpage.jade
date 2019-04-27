@@ -48,22 +48,34 @@ block body
                             -}
                             h4(class='text-primary') Personal Information
                             .form-row
-                                +textinput('6','First Name','fname','text','First Name')
-                                +textinput('6','Last Name','lname','text','Last Name')
+                                //- +textinput('6','First Name','fname','text','First Name')
+                                .container(class='form-group col-md-6')
+                                    label(for='ex4') First Name
+                                    input.form-control(type='text',name='fname',id='fname',placeholder='First Name', pattern='[A-Za-zก-ฮฯ-๐]*', required)
+                                //- +textinput('6','Last Name','lname','text','Last Name')
+                                .container(class='form-group col-md-6')
+                                    label(for='ex4') Last Name   
+                                    input.form-control(type='text',name='lname',id='lname',placeholder='Last Name',pattern='[A-Za-zก-ฮฯ-๐]*', required)                                
                             .form-row
-                                +textinput('12','Telephone','tel','tel','0xxxxxxxxx',"^(([0][0-9]{8,9}))$")
+                                //- +textinput('12','Telephone','tel','tel','0xxxxxxxxx',"^(([0][0-9]{8,9}))$")
+                                .container(class='form-group col-md-12')
+                                    label(for='ex4') Telephone
+                                    input.form-control(type='tel', pattern='^(([0][0-9]{8,9}))$',name='tel',id='tel',placeholder='0xxxxxxxxx',required)                                
                             .form-row
-                                +textinput('12','Address','address','text','Address')
+                                //- +textinput('12','Address','address','text','Address')
+                                .container(class='form-group col-md-12')
+                                    label(for='ex4') Address 
+                                    input.form-control(type='text', name='address',id='address',placeholder='Address', required)                                
                         .container(class='formcenter')
                             h4(class='text-primary') Choose Payment Method   
                             .row 
-                                u.ml-4.col-2 Credit Card
+                                .ml-4.col-3 Credit Card :
                                 each row in credit
-                                    .form-check.form-check-inline.offset-1
+                                    .form-check.form-check-inline
                                         input#inlineRadio1.form-check-input(type='radio', name='payment', value="credit",required)
                                         label.form-check-label(for='inlineRadio1') #{row.CNO}           
                             .row
-                                u.ml-4.col-3 Bank Transfer                            
+                                .ml-4.col-3 Bank Transfer :                          
                                 .form-check.form-check-inline
                                     input#inlineRadio1.form-check-input(type='radio', name='payment', value="transfer",checked="checked",required)
                                     label.form-check-label(for='inlineRadio1') Bank Transfer       

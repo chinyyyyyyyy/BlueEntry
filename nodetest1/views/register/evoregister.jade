@@ -10,16 +10,16 @@ block body
           input(type='hidden',value='eventorg', name='type')
           .row.form-inline
             label Username
-            input.form-control(type='text', name='username',placeholder='Username' required)
+            input.form-control(type='text', name='username',placeholder='Username', minlength="8", maxlength="30",required)
           .row.form-inline          
             label Password 
-            input.form-control(type='password', name='password',placeholder='Password' required)
+            input.form-control(type='password', name='password',placeholder='Password', minlength="8", maxlength="30",required)
           .row.form-inline  
             label Name  
-            input.form-control(type='text', name='name',placeholder='Organizer Name' required)
+            input.form-control(type='text', name='name',placeholder='Organizer Name',pattern='[A-Za-zก-ฮฯ-๐]*',required)
           .row.form-inline  
             label Telephone
-            input#ip.form-control(onkeypress='isTel(event,1)' type='text', name='tel',placeholder='0xx-xxxxxxx' required)
+            input#ip.form-control(type='text', name='tel',placeholder='0xxxxxxxxx',pattern="^(([0][0-9]{8,9}))$",onkeypress='isTel(event)', minlength="9", maxlength="10", required)
           .row.form-inline  
             label Email
             input.form-control(type='email', name='email',placeholder='example@example.com' required)

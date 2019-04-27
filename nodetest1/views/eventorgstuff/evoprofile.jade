@@ -4,27 +4,15 @@ block head
   title My Profile
 
 block body
-  //- img(src=profile.ImgLink,height="300",width="400")
-  //- P Name = #{profile.Name} 
-  //- p Tel = #{profile.Tel} 
-  //- p Email = #{profile.Email}  
-  //- form(name="regis",method="post",action="/editeventorgpic")
-  //-     input(type='text', name='link',placeholder='Picture Link')
-  //-     button(type='submit') Update Profile Picture
-  //- form(name="regis",method="post",action="/editeventorgprofile")
-  //-     input(type='text', name='name',value=profile.Name)
-  //-     input(type='text', name='tel',value=profile.Tel)
-  //-     input(type='text', name='email',value=profile.Email)
-  //-     button(type='submit') Update Profile
   .container(style='margin-top:15vh')
       h1
           u Organizer's Profile
       .row
           #profilePic.col-lg-4.col-sm-6
-              img(src=profile.ImgLink, width='250px')
+              img(src=profile.ImgLink, width='250px' height='250px')
               form.d-flex.align-items-center(name='regis', method='post', action='/editeventorgpic')
-                  input(type='text', ,name='link', ,placeholder='Picture Link',required)
-                  button.btn.btn-secondary(type='submit') Upload
+                    input(type='text',name='link', pattern='(https?:\/\/.*\.(?:png|jpg|svg))',placeholder='Picture Link', required)
+                    button.btn.btn-secondary(type='submit') Upload
           .col.lg-8.col-sm-6
               #profileInfo.row.bg-w                
                 .col-md-12.d-flex.justify-content-between
@@ -42,12 +30,12 @@ block body
                         .row
                             b Telephone :
                             p#tf.ml-4 #{profile.Tel} 
-                            input#myInput.form-control.mb-3(pattern="^(([0][0-9]{8,9}))$" maxlength="10" type='tel',name='tel', value=profile.Tel, style='display: none;',required)
+                            input#myInput.form-control.mb-3(pattern="^(([0][0-9]{8,9}))$", minlength="9",maxlength="10",type='tel',name='tel', value=profile.Tel, style='display: none;',required)
                         .row
                             b Email :
                             p#tf.ml-4 #{profile.Email}
                             input#myInput.form-control.mb-3(type='email',name='email', value=profile.Email, style='display: none;',required)                
-                        .row.ml-auto
-                            button#cancelbtn.btn.btn-danger.ml-auto.mr-3(type='button', onclick='toCancel()', style='display: none;') Cancel 
+                        .row(style='margin-left:17vw')
+                            button#cancelbtn.btn.btn-danger.mr-3(type='button', onclick='toCancel()', style='display: none;') Cancel 
                             button#savebtn.btn.btn-primary(type='submit', onsubmit='toSubmit()', style='display: none;') Save
 

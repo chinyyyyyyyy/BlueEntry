@@ -15,12 +15,12 @@ function isCvv(evt) {
 }
 function isTel(evt) {
     var ch = String.fromCharCode(evt.which);
-    var ip = document.querySelectorAll('#ip');
+    // var ip = document.querySelectorAll('#ip');
 
-    if (!(/[0-9]/.test(ch)) | ip[0].value.length >= 10) {
+    if (!(/[0-9]/.test(ch))) {
         evt.preventDefault();
     }
-    var myinput = document.getElementsByName('tel');
+    // var myinput = document.getElementsByName('tel');
     // if (!(/[0-9]/.test(ch)) | myinput.value.length >= 10) {
     //     evt.preventDefault();
     // }
