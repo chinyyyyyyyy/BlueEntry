@@ -44,7 +44,7 @@ block body
                 p Not Uploaded
             -}else{
             td 
-              a.btn.btn-primary.btn-sm(role='button' href=row.ImgLink) View Reciept
+              a.btn.btn-primary.btn-sm(role='button' href=row.ImgLink) View Receipt
             -}
             -}
             
@@ -54,13 +54,13 @@ block body
             -}else{
             - if(row.ImgLink==""){
             td
-              button.btn.btn-warning.btn-sm(type='submit',disabled) Valid
+              button.btn.btn-warning.btn-sm(type='submit',disabled) Validate
             -}else{
             td
                 form(name="regis",method="post",action="/validreceipt")
                   input(type='hidden', name='id',value=row._id)
                   input(type='hidden', name='eid',value=row.Event)
-                  button.btn.btn-warning.btn-sm(type='submit') Valid
+                  button.btn.btn-warning.btn-sm(type='submit') Validate
             -}
             -}
             
